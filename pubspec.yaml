@@ -49,6 +49,8 @@ dependencies:
   timeago: ^3.7.0
   cached_network_image: ^3.4.1
   toggle_switch: ^2.3.0
+  flutter_svg: ^2.0.17
+  flutter_screenutil:
 
 dev_dependencies:
   flutter_test:

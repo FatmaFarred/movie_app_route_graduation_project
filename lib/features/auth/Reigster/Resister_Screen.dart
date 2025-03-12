@@ -2,6 +2,8 @@
 import 'package:flutter/gestures.dart';
   import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:movie_app_route_graduation_project/Api%20manager/dependency%20injection/Di.dart';
 import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/Customized%20Elevated%20bottom.dart';
@@ -14,6 +16,7 @@ import 'package:movie_app_route_graduation_project/core/resources/style%20manage
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Avatar%20_widget.dart';
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Register_cubit/register_state.dart';
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Register_cubit/register_view_model.dart';
+import 'package:movie_app_route_graduation_project/main.dart';
 
 
 
@@ -62,13 +65,13 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
           }else if(state is ErrorRegisterState) {
           Customizied_Alert_Dialogue.hideLoading(context: context);
           Customizied_Alert_Dialogue.showMessage(context: context, message: state.error.errorMessage??"",
-          positiveActionButtonName: "OK ",title: "Error");
+          positiveActionButtonName: "OK ",title: "Error",positiveActionButton:  () => onPositiveAction(context));
 
 
           }else if (state is SuccessRegisterState){
             Customizied_Alert_Dialogue.hideLoading(context: context);
             Customizied_Alert_Dialogue.showMessage(context: context, message: "Register Successfully",
-                positiveActionButtonName: "OK ",title: "Success");
+                positiveActionButtonName: "OK ",title: "Success",positiveActionButton:  () => onPositiveAction(context));
 
           }
         },
@@ -126,7 +129,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
             
                   },
                     keyBoardType: TextInputType.text,
-                    prefixIcon: ImageIcon(AssetImage(SvgAssets.icName)),
+                    prefixIcon: SvgPicture.asset(SvgAssets.icName,height: 25.h,width:25.h,fit: BoxFit.scaleDown),
                     hintText: 'Name',
                     controller: registerViewModel.nameController,
                   ),
@@ -147,7 +150,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
             
                   },
                     keyBoardType: TextInputType.emailAddress,
-                    prefixIcon: ImageIcon(AssetImage(SvgAssets.icEmail)),
+                    prefixIcon: SvgPicture.asset(SvgAssets.icEmail,height: 25.h,width:25.h,fit: BoxFit.scaleDown),
                     hintText: 'Email',
                     controller: registerViewModel.emailController,
                   ),
@@ -169,7 +172,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
                       return null ;
             
                     },
-                    prefixIcon: ImageIcon(AssetImage(SvgAssets.icPassword)),
+                    prefixIcon: SvgPicture.asset(SvgAssets.icPassword,height: 25.h,width:25.h,fit: BoxFit.scaleDown),
                     hintText: 'Password',
             
                     suffixIcon: IconButton(
@@ -204,7 +207,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
             
             
                   },
-                    prefixIcon: ImageIcon(AssetImage(SvgAssets.icPassword)),
+                    prefixIcon: SvgPicture.asset(SvgAssets.icPassword,height: 25.h,width:25.h,fit: BoxFit.scaleDown),
                     hintText: 'Confirm Password',
             
                     suffixIcon: IconButton(
@@ -242,7 +245,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
                   },
             
                     keyBoardType: TextInputType.phone,
-                    prefixIcon: ImageIcon(AssetImage(SvgAssets.icPhone)),
+                    prefixIcon: SvgPicture.asset(SvgAssets.icPhone,height: 25.h,width:25.h,fit: BoxFit.scaleDown),
                     hintText: 'Phone Number',
                     controller: registerViewModel.phonenumberController,
                   ),
@@ -252,7 +255,9 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
                     onpressed:() {
                       registerViewModel.Register();
                     },
-                    text: 'Create Account',style: getRegularStyle(color: AppColors.blackColor,fontSize:FontSize.s20 )
+                    text: 'Create Account',
+                      style:getRegularStyle(color: AppColors.blackColor,fontSize: 20) ,
+                        
                   ),
             
                   SizedBox(height: height * 0.02),
@@ -304,6 +309,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Regist
 
   }
    void onPositiveAction (BuildContext context){
+
      Navigator.of(context).pop();
    }
 }

@@ -32,7 +32,7 @@ class CustomeizedElevatedButtom extends StatelessWidget {
           children: [
             IconImage ??SizedBox(),
             SizedBox(width: width*0.01,),
-            Text(text,)
+            Text(text,style: style,)
 
           ],)
     );
