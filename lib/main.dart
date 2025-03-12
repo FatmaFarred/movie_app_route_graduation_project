@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_route_graduation_project/core/app%20theme.dart';
+import 'package:movie_app_route_graduation_project/core/app_theme.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/home_screen.dart';
 
 
