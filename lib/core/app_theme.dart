@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_route_graduation_project/core/utilis/App_colors.dart';
-
-
+import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 
 class AppTheme{
   static ThemeData themeData = ThemeData(

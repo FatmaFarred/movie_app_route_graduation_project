@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_route_graduation_project/core/utilis/App_colors.dart';
+import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 
 
 
@@ -32,7 +32,7 @@ class CustomeizedElevatedButtom extends StatelessWidget {
           children: [
             IconImage ??SizedBox(),
             SizedBox(width: width*0.01,),
-            Text(text,)
+            Text(text,style: style,)
 
           ],)
     );

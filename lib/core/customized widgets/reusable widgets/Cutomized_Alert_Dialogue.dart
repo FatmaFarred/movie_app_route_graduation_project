@@ -36,11 +36,13 @@ class Customizied_Alert_Dialogue{
     List<Widget>actionList=[];
       if (positiveActionButtonName!=null){
        actionList.add(TextButton(onPressed:() {
-         positiveActionButton?.call();
+         positiveActionButton!();
        }, child: Text(positiveActionButtonName)));
       }
     if (NigativeActionButtonName!=null){
-      actionList.add(TextButton(onPressed:NigativeActionButton?.call() , child: Text(NigativeActionButtonName)));
+      actionList.add(TextButton(onPressed:() {
+        positiveActionButton!();
+      }, child: Text(NigativeActionButtonName)));
     }
 
 
