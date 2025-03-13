@@ -6,12 +6,13 @@ class AppColors {
   static const Color  orangeColorTransparent  = Color (0x56FFBB3B) ;
 
   static const Color  darkGrayColor = Color (0xff282A28  ) ;
+  static const Color  lightWhiteColor = Color (0x99ffffff) ;
   static const Color  whiteColor = Color (0xffFFFFFF  ) ;
   static const Color  blackColor  = Color (0xff121312  ) ;
   static const Color  greenColor  = Color (0xff57AA53 ) ;
   static const Color darkBlackColor= Color(0xff000000);
-  static const Color Transparent= Color(0x0);
-  static const Color gradientonboarding1De1 = Color(0x1e1e1e);
+  static const Color Transparent= Color(0x00000000);
+  static const Color gradientonboarding1De1 = Color(0xff1e1e1e);
   static const Color gradientonboarding1De2  = Color(0x80121312);
   static const Color gradientonboarding1De3 = Color(0xe8121312);
   static const Color gradientonboarding1De4 = Color(0xff121312);
