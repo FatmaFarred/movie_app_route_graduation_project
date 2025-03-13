@@ -2,6 +2,7 @@ const String imagePath = "assets/images";
 const String svgPath = "assets/svg_images";
 
 abstract class ImageAssets {
+  static const String languageswitch = "$imagePath/Language Switch.png";
   static const String appLogo = "$imagePath/logo.png";
   static const String routeLogo = "$imagePath/route.png";
   static const String emptyImage = "$imagePath/empty.png";
