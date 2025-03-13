@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
+import 'package:movie_app_route_graduation_project/core/resources/app_colors.dart';
 
-
-
-class CustomeizedElevatedButtom extends StatelessWidget {
-  Color? bordercolor;
+class CustomizedElevatedButtom extends StatelessWidget {
+  Color? borderColor;
   Color? color;
   String text;
-  Widget? IconImage;
+  Widget? iconImage;
   TextStyle? style;
-  Function ? onpressed;
-  CustomeizedElevatedButtom ({ this.bordercolor,
-    this.color, required this.text, this.IconImage, this.style, this.onpressed});
+  Function ? onPressed;
+  CustomizedElevatedButtom ({ this.borderColor,
+    this.color, required this.text, this.iconImage, this.style, this.onPressed});
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -20,17 +18,17 @@ class CustomeizedElevatedButtom extends StatelessWidget {
 
         style: ElevatedButton.styleFrom(elevation: 0,
             padding: EdgeInsets.symmetric(vertical: height*0.01,horizontal: width*0.04),
-            shape: RoundedRectangleBorder(side: BorderSide(color:bordercolor ??AppColors.orangeColor),
+            shape: RoundedRectangleBorder(side: BorderSide(color:borderColor ??AppColors.orangeColor),
                 borderRadius: BorderRadius.circular(16)),backgroundColor:color ?? AppColors.orangeColor),
         onPressed: () { //NAVIGATION
-          if (onpressed != null) {
-            onpressed!();
+          if (onPressed != null) {
+            onPressed!();
           };
 
         },
         child:  Row(mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconImage ??SizedBox(),
+            iconImage ??SizedBox(),
             SizedBox(width: width*0.01,),
             Text(text,)
 

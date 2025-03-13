@@ -19,7 +19,7 @@ TextStyle getBoldStyle(
   return _getTextStyle(fontSize, FontWeightManager.bold, color,fontFamily);
 }
 
-TextStyle getMidiumStyle(
+TextStyle getMediumStyle(
     {double fontSize = FontSize.s16, required Color color,String fontFamily=FontConstants.robotoFont }) {
   return _getTextStyle(fontSize, FontWeightManager.medium, color,fontFamily);
 }

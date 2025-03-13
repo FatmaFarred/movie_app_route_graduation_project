@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Customizied_Alert_Dialogue{
+class CustomizedAlertDialogue{
 
   static void showLoading ({
    required BuildContext context,
@@ -10,7 +10,7 @@ class Customizied_Alert_Dialogue{
   showDialog(context: context, builder: (context){
     return AlertDialog(backgroundColor:backgroundColor ,
     content: Row(children: [
-      CircularProgressIndicator(),
+      const CircularProgressIndicator(),
       Text(message),
 
     ],),
@@ -28,9 +28,9 @@ class Customizied_Alert_Dialogue{
    required String message,
     String title="",
     Function? positiveActionButton,
-    Function? NigativeActionButton,
+    Function? negativeActionButton,
     String ? positiveActionButtonName,
-    String ? NigativeActionButtonName,
+    String ? negativeActionButtonName,
 
   }){
     List<Widget>actionList=[];
@@ -39,8 +39,8 @@ class Customizied_Alert_Dialogue{
          positiveActionButton?.call();
        }, child: Text(positiveActionButtonName)));
       }
-    if (NigativeActionButtonName!=null){
-      actionList.add(TextButton(onPressed:NigativeActionButton?.call() , child: Text(NigativeActionButtonName)));
+    if (negativeActionButtonName!=null){
+      actionList.add(TextButton(onPressed:negativeActionButton?.call() , child: Text(negativeActionButtonName)));
     }
 
 
@@ -56,10 +56,5 @@ class Customizied_Alert_Dialogue{
 
     });
 
-
-
 }
-
-
-
 }
