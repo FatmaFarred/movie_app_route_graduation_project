@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_route_graduation_project/core/utilis/App_colors.dart';
+import '../../core/resources/App_colors.dart';
 import 'browse_page.dart';
 import 'home_page.dart';
 import 'profile_page.dart';

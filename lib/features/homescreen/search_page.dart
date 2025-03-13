@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
-import 'package:movie_app_route_graduation_project/core/utilis/App_colors.dart';
+
+import '../../core/resources/App_colors.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});

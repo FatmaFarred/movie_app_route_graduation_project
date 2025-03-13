@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/Customized%20Elevated%20bottom.dart';
 import 'package:movie_app_route_graduation_project/core/resources/font_manager.dart';
+import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
 import '../../../core/resources/App_colors.dart';
@@ -71,26 +72,28 @@ class CustomPageView extends StatelessWidget {
                 ),
               CustomeizedElevatedButtom(
                 color: AppColors.orangeColor,
-                text: Text(
-                  currentPage == pageCount
-                      ? getTranslations(context).finish
-                      : getTranslations(context).next,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                      color: AppColors.blackColor,
-                      fontWeight: FontWeightManager.semiBold),
-                ),
-                onpressed: onNextPage,
+                text: currentPage == pageCount
+                    ? getTranslations(context).finish
+                    : getTranslations(context).next,
+                style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                    color: AppColors.blackColor,
+                    fontWeight: FontWeightManager.semiBold),
+                onpressed: (){
+                  if (currentPage == pageCount){
+                    Navigator.pushReplacementNamed(context, Routes.registerRoute);
+                  }else{
+                    onNextPage();
+                  }
+                },
               ),
               if (currentPage > 0)
                 CustomeizedElevatedButtom(
                   color: AppColors.Transparent,
                   bordercolor: AppColors.orangeColor,
-                  text: Text(
-                    getTranslations(context).back,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.orangeColor,
-                        fontWeight: FontWeightManager.semiBold),
-                  ),
+                  text: getTranslations(context).back,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: AppColors.orangeColor,
+                      fontWeight: FontWeightManager.semiBold),
                   onpressed: onPreviousPage,
                 )
             ],

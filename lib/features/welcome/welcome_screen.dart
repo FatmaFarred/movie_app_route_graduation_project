@@ -7,7 +7,7 @@ import '../../core/customized widgets/reusable widgets/Customized Elevated botto
 import '../../core/resources/App_colors.dart';
 import '../../core/resources/font_manager.dart';
 
-class WelcomeScreen extends StatelessWidget{
+class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,11 +24,11 @@ class WelcomeScreen extends StatelessWidget{
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    AppColors.gradientonboarding1De1,
-                    AppColors.gradientonboarding1De2,
-                    AppColors.gradientonboarding1De3,
-                    AppColors.gradientonboarding1De4
-                  ])),
+                AppColors.gradientonboarding1De1,
+                AppColors.gradientonboarding1De2,
+                AppColors.gradientonboarding1De3,
+                AppColors.gradientonboarding1De4
+              ])),
         ),
         Align(
           alignment: Alignment.bottomCenter,
@@ -45,21 +45,21 @@ class WelcomeScreen extends StatelessWidget{
                 ),
                 Text(
                   getTranslations(context).onBoardingDescPage1,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                    color: AppColors.lightWhiteColor
-                  ),
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodySmall!
+                      .copyWith(color: AppColors.lightWhiteColor),
                   textAlign: TextAlign.center,
                 ),
                 CustomeizedElevatedButtom(
                   color: AppColors.orangeColor,
-                  text: Text(
-                    getTranslations(context).exploreNow,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeightManager.semiBold),
-                  ),
-                  onpressed: (){
-                    Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
+                  text: getTranslations(context).exploreNow,
+                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                      color: AppColors.blackColor,
+                      fontWeight: FontWeightManager.semiBold),
+                  onpressed: () {
+                    Navigator.pushReplacementNamed(
+                        context, Routes.onBoardingRoute);
                   },
                 ),
               ],
@@ -69,5 +69,4 @@ class WelcomeScreen extends StatelessWidget{
       ]),
     );
   }
-
 }
