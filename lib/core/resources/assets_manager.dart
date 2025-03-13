@@ -8,11 +8,11 @@ abstract class ImageAssets {
   static const String availableNowImage = "$imagePath/available_now.png";
   static const String watchNowImage = "$imagePath/watch_now.png";
   static const String onBoarding1 = "$imagePath/on_boarding_1.png";
-  static const String onBoarding2 = "$imagePath/on_boarding_2.png";
-  static const String onBoarding3 = "$imagePath/on_boarding_3.png";
-  static const String onBoarding4 = "$imagePath/on_boarding_4.png";
-  static const String onBoarding5 = "$imagePath/on_boarding_5.png";
-  static const String onBoarding6 = "$imagePath/on_boarding_6.png";
+  static const String onBoarding2 = "$imagePath/on_boarding_2.jpg";
+  static const String onBoarding3 = "$imagePath/on_boarding_3.jpg";
+  static const String onBoarding4 = "$imagePath/on_boarding_4.jpg";
+  static const String onBoarding5 = "$imagePath/on_boarding_5.jpg";
+  static const String onBoarding6 = "$imagePath/on_boarding_6.jpg";
   static const String avatar1 = "$imagePath/avatar_1.png";
   static const String avatar2 = "$imagePath/avatar_2.png";
   static const String avatar3 = "$imagePath/avatar_3.png";
