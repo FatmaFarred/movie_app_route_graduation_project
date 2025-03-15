@@ -7,6 +7,7 @@ abstract class ImageAssets {
   static const String emptyImage = "$imagePath/empty.png";
   static const String availableNowImage = "$imagePath/available_now.png";
   static const String watchNowImage = "$imagePath/watch_now.png";
+  static const String filmImage = "$imagePath/film_image.jpg";
   static const String onBoarding1 = "$imagePath/on_boarding_1.png";
   static const String onBoarding2 = "$imagePath/on_boarding_2.png";
   static const String onBoarding3 = "$imagePath/on_boarding_3.png";

@@ -17,21 +17,23 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
-          currentIndex: selectedIndex,
-          items: generateBottomNavItems({
-            SvgAssets.icHome: "",
-            SvgAssets.icSearch: "",
-            SvgAssets.icExplore: "",
-            SvgAssets.icProfile: "",
-          })),
-      body: taps[selectedIndex],
+    return SafeArea(
+      child: Scaffold(
+        bottomNavigationBar: BottomNavigationBar(
+            onTap: (index) {
+              setState(() {
+                selectedIndex = index;
+              });
+            },
+            currentIndex: selectedIndex,
+            items: generateBottomNavItems({
+              SvgAssets.icHome: "",
+              SvgAssets.icSearch: "",
+              SvgAssets.icExplore: "",
+              SvgAssets.icProfile: "",
+            })),
+        body: taps[selectedIndex],
+      ),
     );
   }
 }

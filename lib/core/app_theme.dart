@@ -27,9 +27,9 @@ class AppTheme{
       labelLarge: TextStyle(
           color: AppColors.whiteColor, fontSize: 22, fontWeight: FontWeight.bold),
       labelMedium: TextStyle(
-          color: AppColors.whiteColor, fontSize: 20, fontWeight: FontWeight.bold),
+          color: AppColors.orangeColor, fontSize: 20, fontWeight: FontWeight.bold),
       labelSmall: TextStyle(
-          color: AppColors.whiteColor, fontSize: 16, fontWeight: FontWeight.bold),
+          color: AppColors.orangeColor, fontSize: 16, fontWeight: FontWeight.bold),
     ),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
