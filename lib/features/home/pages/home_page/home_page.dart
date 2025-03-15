@@ -1,7 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
-import 'package:movie_app_route_graduation_project/features/home/pages/home_page/home_page_widgets.dart';
+import '../../../../core/customized widgets/reusable widgets/customized_card_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
