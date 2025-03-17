@@ -66,14 +66,18 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                   SizedBox(
-                    height: 250,
+                    height: double.infinity,
                     width: double.infinity,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 50,
                         itemBuilder: (context, index) {
-                          return cardItem(
-                            index,
+                          return SizedBox(
+                            width: 150,
+                            height: 200,
+                            child: cardItem(
+                              index,
+                            ),
                           );
                         }),
                   ),

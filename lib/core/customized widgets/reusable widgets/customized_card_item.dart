@@ -15,6 +15,8 @@ Widget cardItem(index){
             Image.asset(
               getFilmImage(index),
               fit: BoxFit.cover,
+              width: double.infinity,
+              height: double.infinity,
             ),
             Positioned(
               top: 10,
