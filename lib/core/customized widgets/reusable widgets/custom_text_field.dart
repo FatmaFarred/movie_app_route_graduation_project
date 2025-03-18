@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
 
-
 typedef MyValidator = String? Function(String?);
 
 class CustomTextField extends StatelessWidget {
@@ -17,7 +16,7 @@ class CustomTextField extends StatelessWidget {
       {this.suffixIcon,
       this.prefixIcon,
       this.hintText,
-        this.keyBoardType,
+      this.keyBoardType,
       this.controller,
       this.obscureText = false,
       this.validator});
@@ -27,7 +26,7 @@ class CustomTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       keyboardType: keyBoardType,
-      style:getRegularStyle(color: AppColors.whiteColor),
+      style: getRegularStyle(color: AppColors.whiteColor),
       obscureText: obscureText,
       obscuringCharacter: '*',
       cursorColor: AppColors.orangeColor,
@@ -58,16 +57,13 @@ class CustomTextField extends StatelessWidget {
             borderSide: const BorderSide(
               color: AppColors.redColor,
               width: 2,
-            )
-        ),
-        focusedErrorBorder:  OutlineInputBorder(
-    borderRadius: BorderRadius.circular(15),
-    borderSide: const BorderSide(
-    color: AppColors.redColor,
-    width: 2,
-    )
-
-      ),
+            )),
+        focusedErrorBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(15),
+            borderSide: const BorderSide(
+              color: AppColors.redColor,
+              width: 2,
+            )),
       ),
     );
   }
