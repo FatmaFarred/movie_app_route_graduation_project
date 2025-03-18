@@ -12,6 +12,8 @@ import 'package:movie_app_route_graduation_project/core/customized%20widgets/reu
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
+import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
+import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Avatar%20_widget.dart';
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Register_cubit/register_state.dart';
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Register_cubit/register_view_model.dart';
@@ -59,12 +61,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
               message: state.error.errorMessage ?? "",
               positiveActionButtonName: "OK ",
               title: "Error",
+
               positiveActionButton: () => onPositiveAction(context));
         } else if (state is SuccessRegisterState) {
           Customizied_Alert_Dialogue.hideLoading(context: context);
           Customizied_Alert_Dialogue.showMessage(
               context: context,
               message: "Register Successfully",
+
               positiveActionButtonName: "OK ",
               title: "Success",
               positiveActionButton: () => onPositiveAction(context));
@@ -242,6 +246,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(height: height * 0.02),
                   CustomeizedElevatedButtom(
                     onpressed: () {
+
+
                       registerViewModel.Register();
                     },
                     text: 'Create Account',

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
 import 'package:movie_app_route_graduation_project/features/auth/Reigster/Resister_Screen.dart';
+import 'package:movie_app_route_graduation_project/features/auth/login/login_screen.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/home_screen.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/onboarding_screen.dart';
 import 'package:movie_app_route_graduation_project/features/welcome/welcome_screen.dart';
@@ -16,6 +17,8 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => RegisterScreen());
       case Routes.homeRoute:
         return MaterialPageRoute(builder: (_) => HomeScreen());
+        case Routes.loginRoute:
+          return MaterialPageRoute(builder: (_) => LoginView());
       default:
         return unDefinedRoute();
     }
