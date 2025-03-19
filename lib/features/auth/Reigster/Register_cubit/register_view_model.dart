@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
+import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
 
 import 'package:movie_app_route_graduation_project/domain/use_cases/Register_usecase.dart';
 
@@ -23,6 +25,9 @@ class RegisterViewModel extends Cubit<RegisterState>{
 
   void Register () async {
     if (formkey.currentState?.validate() == true) {
+      bool showOnboarding = await Shared_preferences.getData(key: Routes.onBoardingRoute)??false ;
+      print("the result is $showOnboarding");
+
       emit(LoadingRegisterState());
       var either = await registerUseCase.invoke(
           nameController.text, emailController.text,
