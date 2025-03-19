@@ -66,6 +66,7 @@ class _LoginViewState extends State<LoginView> {
 
 
         );
+         Navigator.of(context).pushReplacementNamed(Routes.homeRoute);
 
 
 
@@ -152,6 +153,7 @@ class _LoginViewState extends State<LoginView> {
                     alignment: Alignment.centerRight,
                     child: TextButton(
                       onPressed: () {
+                        Navigator.of(context).pushNamed(Routes.forgetRoute);
 
                       },
                       child: Text(
@@ -264,5 +266,6 @@ class _LoginViewState extends State<LoginView> {
   }
   void onPositiveAction(BuildContext context) {
     Navigator.of(context).pop();
+
   }
 }

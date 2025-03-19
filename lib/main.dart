@@ -15,17 +15,20 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 void main()  async{
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   bool showOnboarding = await Shared_preferences.getData(key: Routes.onBoardingRoute)??false ;
-  print("the result is $showOnboarding");
+  String? Mytoken = await Shared_preferences.getData(key: "token")?? null;
+
+
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   configureDependencies();
   Bloc.observer=  MyBlocObserver();
-  runApp(MyApp(showOnboarding:showOnboarding ,));
+  runApp(MyApp(showOnboarding:showOnboarding ,Mytoken: Mytoken));
   FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
   bool showOnboarding ;
-  MyApp ({required this.showOnboarding});
+  String? Mytoken;
+  MyApp ({required this.showOnboarding, required this.Mytoken});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +39,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.themeData,
-        initialRoute: showOnboarding==false?Routes.onBoardingRoute:Routes.loginRoute,
+        initialRoute: showOnboarding==false?Routes.onBoardingRoute:(Mytoken==null?Routes.loginRoute:Routes.homeRoute),
         onGenerateRoute: RouteGenerator.getRoute,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

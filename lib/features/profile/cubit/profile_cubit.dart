@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
 import 'package:movie_app_route_graduation_project/domain/entities/delete_profile.dart';
 import 'package:movie_app_route_graduation_project/domain/entities/update_profile.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/delete_profile_use_case.dart';
@@ -51,11 +52,12 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> updateProfile() async {
+    String mytoken= await Shared_preferences.getData(key: "token");
     if (formKey.currentState?.validate() == true) {
       emit(UpdateProfileLoadingState());
       try {
         var response = await _updateProfileUseCase(
-            token, nameController.text, phoneController.text, avatarIndex);
+            mytoken, nameController.text, phoneController.text, avatarIndex);
         selectedAvatar = avatarIndex;
         emit(UpdateProfileSuccessState(updateProfile: response));
       } catch (e) {

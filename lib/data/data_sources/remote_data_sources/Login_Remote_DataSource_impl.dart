@@ -23,7 +23,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDatasource {
           .checkConnectivity();
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
           connectivityResult.contains(ConnectivityResult.mobile)) {
-        var response = await apiManager.postData(endPoint: EndPoints.loginrApi,
+        var response = await apiManager.postData(endPoint: EndPoints.loginApi,
           data: {
             "email": email,
             "password": password
