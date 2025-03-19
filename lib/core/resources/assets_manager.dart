@@ -28,6 +28,8 @@ abstract class ImageAssets {
 }
 
 abstract class SvgAssets {
+  static const String icgoogle = "$svgPath/google_.svg";
+
   static const String icArrow = "$svgPath/ic_arrow.svg";
   static const String icBookmark = "$svgPath/ic_bookmark.svg";
   static const String icExplore = "$svgPath/ic_explore.svg";
@@ -46,4 +48,5 @@ abstract class SvgAssets {
   static const String icPhone = "$svgPath/ic_phone.svg";
   static const String icUser = "$svgPath/ic_user.svg";
   static const String forgotPasswordImage = "$svgPath/forgot_password.svg";
+
 }
