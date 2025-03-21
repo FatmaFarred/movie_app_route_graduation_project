@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       builder: (context, child) => MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.themeData,
-        initialRoute: Routes.welcomeRoute,
+        initialRoute: Routes.homeRoute,
         onGenerateRoute: RouteGenerator.getRoute,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,

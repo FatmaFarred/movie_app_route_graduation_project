@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/home_screen.dart';
+import 'package:movie_app_route_graduation_project/features/home_screen//home_screen.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/onboarding_screen.dart';
 import 'package:movie_app_route_graduation_project/features/welcome/welcome_screen.dart';
 
@@ -12,7 +12,7 @@ class RouteGenerator {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => OnBoardingScreen());
       case Routes.homeRoute:
-        return MaterialPageRoute(builder: (_) => Home_Screen());
+        return MaterialPageRoute(builder: (_) => HomeScreen());
       default:
         return unDefinedRoute();
     }
