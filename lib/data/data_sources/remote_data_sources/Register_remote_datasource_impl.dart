@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:movie_app_route_graduation_project/Api%20manager/Api_constant.dart';
 
 import 'package:movie_app_route_graduation_project/Api%20manager/Api_manager.dart';
 import 'package:movie_app_route_graduation_project/Api%20manager/end_points.dart';
@@ -19,6 +20,7 @@ class Register_remote_datasource_impl implements Register_remote_data_source{
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
           connectivityResult.contains(ConnectivityResult.mobile)) {
         var response = await apiManager.postData(
+          url: ApiConstant.baseUrl,
             endPoint: EndPoints.registerApi,
             data: {
               "name": name,

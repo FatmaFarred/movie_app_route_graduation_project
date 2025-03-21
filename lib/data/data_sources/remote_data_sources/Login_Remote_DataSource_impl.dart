@@ -1,6 +1,7 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
+import 'package:movie_app_route_graduation_project/Api%20manager/Api_constant.dart';
 import 'package:movie_app_route_graduation_project/Api%20manager/Api_manager.dart';
 import 'package:movie_app_route_graduation_project/Api%20manager/end_points.dart';
 import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
@@ -24,6 +25,7 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDatasource {
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
           connectivityResult.contains(ConnectivityResult.mobile)) {
         var response = await apiManager.postData(endPoint: EndPoints.loginApi,
+          url: ApiConstant.baseUrl,
           data: {
             "email": email,
             "password": password

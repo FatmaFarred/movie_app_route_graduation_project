@@ -8,11 +8,13 @@ class ApiManager {
 
   Future<Response> getData(
       {required String endPoint,
+        required String url,
+
       Map<String, dynamic>? queryParameters,
       Options? options,
       Map<String, dynamic>? headers}) {
     return dio.get(
-      ApiConstant.baseUrl + endPoint,
+      url + endPoint,
       queryParameters: queryParameters,
       options: Options(validateStatus: (status) => true, headers: headers),
     );
@@ -20,12 +22,13 @@ class ApiManager {
 
   Future<Response> postData(
       {required String endPoint,
+        required String url,
       Map<String, dynamic>? queryParameters,
       Options? options,
       Object? data,
       Map<String, dynamic>? headers}) {
     return dio.post(
-      ApiConstant.baseUrl + endPoint,
+      url + endPoint,
       queryParameters: queryParameters,
       data: data,
       options: Options(validateStatus: (status) => true, headers: headers),
@@ -34,12 +37,13 @@ class ApiManager {
 
   Future<Response> patchData(
       {required String endPoint,
+        required String url,
       Map<String, dynamic>? queryParameters,
       Options? options,
       Object? data,
       Map<String, dynamic>? headers}) {
     return dio.patch(
-      ApiConstant.baseUrl + endPoint,
+      url + endPoint,
       queryParameters: queryParameters,
       data: data,
       options: Options(validateStatus: (status) => true, headers: headers),
