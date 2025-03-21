@@ -16,8 +16,9 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
 
   MovieDetailsRemoteDataSourceImpl({required this.apiManager});
 
+
   @override
-  Future<Either<Failure, MovieDetailsResponseDm>> getMovieDetails(int id) async {
+  Future<Either<Failure, MovieDetailsResponseDm>> getMovieDeatials(int id) async{
     try {
       final List<ConnectivityResult> connectivityResult = await Connectivity().checkConnectivity();
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
@@ -50,8 +51,35 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
   }
 
   @override
-  Future<Either<Failure, MovieSuggetionResponseDm>> getMovieSuggestion(int id) async {
-    // TODO: Implement getMovieSuggestion
-    throw UnimplementedError();
+  Future<Either<Failure, MovieSuggetionResponseDm>> getMovieSuggetion(int id) async {
+    try {
+      final List<ConnectivityResult> connectivityResult = await Connectivity().checkConnectivity();
+      if (connectivityResult.contains(ConnectivityResult.wifi) ||
+          connectivityResult.contains(ConnectivityResult.mobile)) {
+        var response = await apiManager.getData(
+          endPoint: EndPoints.MovieSuggetions,
+          url: ApiConstant.baseMovieUrl,
+          queryParameters: {
+            "movie_id": id,
+
+
+          },
+        );
+        var movieSuggetionResponse = MovieSuggetionResponseDm.fromJson(response.data);
+
+
+        if (response.statusCode! >= 200 && response.statusCode! < 300) {
+          return right(movieSuggetionResponse);
+        } else {
+          return left(
+            serverError(errorMessage: movieSuggetionResponse.statusMessage ?? 'Unknown error'),
+          );
+        }
+      } else {
+        return left(NetworkError(errorMessage: "No internet connection"));
+      }
+    } catch (e) {
+      return left(Failure(errorMessage: e.toString()));
+    }
   }
 }
