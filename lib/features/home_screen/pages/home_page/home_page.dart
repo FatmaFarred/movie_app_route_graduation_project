@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 import '../../../../core/customized widgets/reusable widgets/customized_card_item.dart';
+import '../../../../core/resources/style manager.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,8 +62,8 @@ class _HomePageState extends State<HomePage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Action" , style: Theme.of(context).textTheme.labelLarge,),
-                            Text("See More" , style: Theme.of(context).textTheme.labelSmall,),
+                            Text("Action" , style: getRegularStyle(fontSize: 18, color: AppColors.whiteColor),),
+                            Text("See More" , style: getRegularStyle(fontSize: 18, color: AppColors.orangeColor),),
                           ],
                         ),
                       ),
