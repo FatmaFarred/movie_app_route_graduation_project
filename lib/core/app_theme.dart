@@ -56,5 +56,15 @@ class AppTheme {
         borderSide: const BorderSide(color: AppColors.redColor, width: 1),
       ),
     ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: AppColors.orangeColor,
+        foregroundColor: AppColors.blackColor,
+        padding: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+    ),
   );
 }
