@@ -6,10 +6,12 @@ import 'package:movie_app_route_graduation_project/features/auth/change/change_p
 import 'package:movie_app_route_graduation_project/features/auth/forget/forget_screen.dart';
 import 'package:movie_app_route_graduation_project/features/auth/login/login_screen.dart';
 
-import 'package:movie_app_route_graduation_project/features/homescreen/home_screen.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/onboarding_screen.dart';
-import 'package:movie_app_route_graduation_project/features/profile/update_profile_screen.dart';
+
 import 'package:movie_app_route_graduation_project/features/welcome/welcome_screen.dart';
+
+import '../../features/home_screen/home_screen.dart';
+import '../../features/update_profile/update_profile_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {

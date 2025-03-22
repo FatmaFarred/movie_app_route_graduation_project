@@ -2,13 +2,13 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/Api%20manager/Api_constant.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/model/delete_profile_response.dart';
+import 'package:movie_app_route_graduation_project/Api%20manager/model/profile/delete_profile_response.dart';
 import 'package:movie_app_route_graduation_project/data/data_sources/profile_online_data_source.dart';
 import 'package:movie_app_route_graduation_project/domain/entities/delete_profile.dart';
 import 'package:movie_app_route_graduation_project/domain/entities/profile.dart';
 
 import '../model/profile/profile_response.dart';
-import '../model/update_profile_response.dart';
+import '../model/profile/update_profile_response.dart';
 import '../../domain/entities/update_profile.dart';
 import '../Api_manager.dart';
 import '../end_points.dart';

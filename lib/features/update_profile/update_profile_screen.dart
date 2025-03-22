@@ -6,8 +6,7 @@ import 'package:movie_app_route_graduation_project/Api%20manager/dependency%20in
 import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/custom_loading.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 import 'package:movie_app_route_graduation_project/core/utils/validation_utils.dart';
-import 'package:movie_app_route_graduation_project/features/profile/cubit/profile_cubit.dart';
-import 'package:movie_app_route_graduation_project/features/profile/widgets/avatar_bottom_sheet.dart';
+import 'package:movie_app_route_graduation_project/features/update_profile/widgets/avatar_bottom_sheet.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
 import '../../core/customized widgets/reusable widgets/Customized Elevated bottom.dart';
@@ -15,6 +14,7 @@ import '../../core/customized widgets/reusable widgets/custom_dialog.dart';
 import '../../core/customized widgets/reusable widgets/custom_text_field.dart';
 import '../../core/resources/App_colors.dart';
 import '../../core/resources/font_manager.dart';
+import 'cubit/update_profile_cubit.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
   @override
@@ -34,7 +34,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     ImageAssets.avatar9,
   ];
 
-  ProfileCubit profileCubit = getIt<ProfileCubit>();
+  UpdateProfileCubit profileCubit = getIt<UpdateProfileCubit>();
 
   @override
   void initState() {
@@ -44,7 +44,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProfileCubit, ProfileState>(
+    return BlocConsumer<UpdateProfileCubit, UpdateProfileState>(
       bloc: profileCubit,
       listener: (context, state) {
         if (state is UpdateProfileLoadingState ||
@@ -103,14 +103,14 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           return CustomLoading();
         }
         if (state is ProfileSuccessState) {
-          return buildProfileSection(state);
+          return buildUpdateProfileSection(state);
         }
         return const Scaffold();
       },
     );
   }
 
-  Widget buildProfileSection(ProfileSuccessState state) {
+  Widget buildUpdateProfileSection(ProfileSuccessState state) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(

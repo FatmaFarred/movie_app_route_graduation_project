@@ -1,4 +1,4 @@
-import '../profile_dto.dart';
+import 'profile_dto.dart';
 
 class ProfileResponse {
   ProfileResponse({

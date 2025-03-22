@@ -5,14 +5,16 @@ class CustomeizedElevatedButtom extends StatelessWidget {
   Color? bordercolor;
   Color? color;
   String text;
-  Widget? IconImage;
+  Widget? prefixIcon;
+  Widget? suffixIcon;
   TextStyle? style;
   Function? onpressed;
   CustomeizedElevatedButtom(
       {this.bordercolor,
       this.color,
       required this.text,
-      this.IconImage,
+      this.prefixIcon,
+      this.suffixIcon,
       this.style,
       this.onpressed});
   @override
@@ -33,19 +35,22 @@ class CustomeizedElevatedButtom extends StatelessWidget {
           if (onpressed != null) {
             onpressed!();
           }
-          ;
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconImage ?? SizedBox(),
+            prefixIcon ?? const SizedBox(),
             SizedBox(
               width: width * 0.01,
             ),
             Text(
               text,
               style: style,
-            )
+            ),
+            SizedBox(
+              width: width * 0.01,
+            ),
+            suffixIcon ?? const SizedBox(),
           ],
         ));
   }

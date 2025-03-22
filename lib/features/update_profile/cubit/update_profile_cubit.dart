@@ -12,10 +12,10 @@ import 'package:movie_app_route_graduation_project/domain/use_cases/update_profi
 import '../../../Api manager/errors/failure.dart';
 import '../../../domain/entities/profile.dart';
 
-part 'profile_state.dart';
+part 'update_profile_state.dart';
 
 @injectable
-class ProfileCubit extends Cubit<ProfileState> {
+class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   final GetProfileUseCase _getProfileUseCase;
   final UpdateProfileUseCase _updateProfileUseCase;
   final DeleteProfileUseCase _deleteProfileUseCase;
@@ -29,7 +29,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   int selectedAvatar = -1;
   int avatarIndex = -1;
 
-  ProfileCubit(this._getProfileUseCase, this._updateProfileUseCase,
+  UpdateProfileCubit(this._getProfileUseCase, this._updateProfileUseCase,
       this._deleteProfileUseCase)
       : super(ProfileInitialState());
 
@@ -52,7 +52,7 @@ class ProfileCubit extends Cubit<ProfileState> {
   }
 
   Future<void> updateProfile() async {
-    String mytoken= await Shared_preferences.getData(key: "token");
+    String mytoken= await Shared_preferences.getData(key: "token") ?? "";
     if (formKey.currentState?.validate() == true) {
       emit(UpdateProfileLoadingState());
       try {
