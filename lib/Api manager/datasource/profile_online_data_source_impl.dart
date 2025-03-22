@@ -26,7 +26,7 @@ class ProfileOnlineDataSourceImpl implements ProfileOnlineDataSource {
         await Connectivity().checkConnectivity();
     if (connectivityResult.contains(ConnectivityResult.wifi) ||
         connectivityResult.contains(ConnectivityResult.mobile)) {
-      var response = await _apiManager.getData(URL: ApiConstant.baseUrl,
+      var response = await _apiManager.getData(url: ApiConstant.baseUrl,
           endPoint: EndPoints.profileApi,
           headers: {"Authorization": "Bearer $token"});
       var profileResponse = ProfileResponse.fromJson(response.data);
@@ -47,7 +47,7 @@ class ProfileOnlineDataSourceImpl implements ProfileOnlineDataSource {
         await Connectivity().checkConnectivity();
     if (connectivityResult.contains(ConnectivityResult.wifi) ||
         connectivityResult.contains(ConnectivityResult.mobile)) {
-      var response = await _apiManager.patchData(
+      var response = await _apiManager.patchData(url: ApiConstant.baseUrl,
           endPoint: EndPoints.profileApi,
           headers: {"Authorization": "Bearer $token"},
           data: {"name": name, "phone": phone, "avaterId": avatarId});
