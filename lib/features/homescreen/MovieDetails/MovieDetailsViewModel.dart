@@ -18,7 +18,7 @@ MovieSuggetionUseCaseUseCase movieSuggetionUseCase ;
   }
 
   void _loadMovieDetails ()async{
-    var either = await movieDetailsUseCase.Invoke(10);
+    var either = await movieDetailsUseCase.Invoke(15);
     either.fold((error){
       emit(ErrorState(error: error));
       },
@@ -30,7 +30,7 @@ MovieSuggetionUseCaseUseCase movieSuggetionUseCase ;
   }
 
 void _loadMovieSuggetion ()async{
-  var either = await movieSuggetionUseCase.Invoke(10);
+  var either = await movieSuggetionUseCase.Invoke(15);
   either.fold((error){
     emit(ErrorState(error: error));
   },
