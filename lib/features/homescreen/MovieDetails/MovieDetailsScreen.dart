@@ -11,6 +11,7 @@ import 'package:movie_app_route_graduation_project/core/resources/style%20manage
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreenStates.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsViewModel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/watch%20widget.dart';
 
 import '../../../core/customized widgets/reusable widgets/Cutomized_Alert_Dialogue.dart';
@@ -66,9 +67,9 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
             CustomeizedElevatedButtom(onpressed: ()  {
     //todo: add it to watch list
     }
-
-              ,text: AppLocalizations.of(context)!.watch,
-              color: AppColors.redColor,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 20),bordercolor:AppColors.redColor ,)
+        ,text: AppLocalizations.of(context)!.watch,
+              color: AppColors.redColor,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 20),bordercolor:AppColors.redColor ,),
+        Row(children: [iconWithTextContainerWidget(imagePath: SvgAssets.icFavorite, title: "${state?.response?.data?.movie?.likeCount ?? ""}")],)
       ],
     );
   }
