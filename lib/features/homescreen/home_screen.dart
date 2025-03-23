@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreen.dart';
 import '../../core/resources/App_colors.dart';
 import 'browse_page.dart';
 import 'home_page.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<Widget> _pages = [
     const HomePage(),
-    const BrowsePage(),
+     Moviedetailsscreen(),
     const SearchPage(),
     const ProfilePage(),
   ];

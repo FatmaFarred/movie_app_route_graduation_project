@@ -5,6 +5,7 @@ import 'package:movie_app_route_graduation_project/features/auth/Reigster/Resist
 import 'package:movie_app_route_graduation_project/features/auth/change/change_password_screen.dart';
 import 'package:movie_app_route_graduation_project/features/auth/forget/forget_screen.dart';
 import 'package:movie_app_route_graduation_project/features/auth/login/login_screen.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreen.dart';
 
 import 'package:movie_app_route_graduation_project/features/homescreen/home_screen.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/onboarding_screen.dart';
@@ -32,7 +33,8 @@ class RouteGenerator {
 
         case Routes.loginRoute:
           return MaterialPageRoute(builder: (_) => LoginView());
-
+      case Routes.movieDetailsRoute:
+        return MaterialPageRoute(builder: (_) => Moviedetailsscreen());
       default:
         return unDefinedRoute();
     }
