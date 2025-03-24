@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/delete_profile.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/update_profile.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/delete_profile_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_profile_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/update_profile_use_case.dart';
 
 import '../../../Api manager/errors/failure.dart';
-import '../../../domain/entities/profile.dart';
+import '../../../data/model/common_response.dart';
+import '../../../domain/entities/profile_entity.dart';
 
 part 'update_profile_state.dart';
 
@@ -59,7 +58,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
         var response = await _updateProfileUseCase(
             mytoken, nameController.text, phoneController.text, avatarIndex);
         selectedAvatar = avatarIndex;
-        emit(UpdateProfileSuccessState(updateProfile: response));
+        emit(UpdateProfileSuccessState(response: response));
       } catch (e) {
         if (e is Failure) {
           emit(UpdateProfileErrorState(error: e));
@@ -75,7 +74,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
     emit(DeleteProfileLoadingState());
     try {
       var response = await _deleteProfileUseCase(token);
-      emit(DeleteProfileSuccessState(deleteProfile: response));
+      emit(DeleteProfileSuccessState(response: response));
     } catch (e) {
       if (e is Failure) {
         emit(DeleteProfileErrorState(error: e));

@@ -2,16 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:movie_app_route_graduation_project/domain/use_cases/add_to_history_use_case.dart';
 
-import 'package:movie_app_route_graduation_project/domain/entities/favorites.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_all_favorites_use_case.dart';
+import 'package:movie_app_route_graduation_project/domain/use_cases/get_movie_from_history_use_case.dart';
 
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_profile_use_case.dart';
 
 import '../../../../../Api manager/errors/failure.dart';
 
 import '../../../../../core/shared_ preferences.dart';
-import '../../../../../domain/entities/profile.dart';
+import '../../../../../data/model/movie/movie_model.dart';
+import '../../../../../domain/entities/profile_entity.dart';
 
 part 'profile_state.dart';
 
@@ -21,9 +23,10 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   GetAllFavoritesUseCase _getAllFavoritesUseCase;
 
-  ProfileSuccessState _profileSuccessState = ProfileSuccessState();
+  GetMovieFromHistoryUseCase _getMovieFromHistoryUseCase;
 
-  ProfileCubit(this._getProfileUseCase, this._getAllFavoritesUseCase)
+  ProfileCubit(this._getProfileUseCase, this._getAllFavoritesUseCase,
+      this._getMovieFromHistoryUseCase)
       : super(ProfileInitialState());
 
   String token =
@@ -32,29 +35,14 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> loadProfile() async {
     emit(ProfileLoadingState());
     String myToken = await Shared_preferences.getData(key: "token") ?? "";
-    _getProfile(token);
-    _getAllFavorites(token);
-  }
-
-  Future<void> _getProfile(String token) async {
     try {
-      var response = await _getProfileUseCase(token);
-      emit(_profileSuccessState =
-          _profileSuccessState.copyWith(profileData: response));
-    } catch (e) {
-      if (e is Failure) {
-        emit(ProfileErrorState(error: e));
-      } else {
-        emit(ProfileErrorState(error: Failure(errorMessage: e.toString())));
-      }
-    }
-  }
-
-  Future<void> _getAllFavorites(String token) async {
-    try {
-      var response = await _getAllFavoritesUseCase(token);
-      emit(_profileSuccessState =
-          _profileSuccessState.copyWith(favoritesList: response));
+      var profileResponse = await _getProfileUseCase(token);
+      var favoritesResponse = await _getAllFavoritesUseCase(token);
+      var historyResponse = await _getMovieFromHistoryUseCase();
+      emit(ProfileSuccessState(
+          profileData: profileResponse,
+          favoritesList: favoritesResponse,
+          historyList: historyResponse));
     } catch (e) {
       if (e is Failure) {
         emit(ProfileErrorState(error: e));

@@ -12,7 +12,7 @@ final class ProfileLoadingState extends UpdateProfileState {
 }
 
 final class ProfileSuccessState extends UpdateProfileState {
-  final Profile? profileData;
+  final ProfileEntity? profileData;
 
   ProfileSuccessState({this.profileData});
 }
@@ -29,9 +29,9 @@ final class UpdateProfileLoadingState extends UpdateProfileState{
 }
 
 final class UpdateProfileSuccessState extends UpdateProfileState {
-  final UpdateProfile? updateProfile;
+  final CommonResponse? response;
 
-  UpdateProfileSuccessState({this.updateProfile});
+  UpdateProfileSuccessState({this.response});
 }
 
 final class UpdateProfileErrorState extends UpdateProfileState {
@@ -46,9 +46,9 @@ final class DeleteProfileLoadingState extends UpdateProfileState{
 }
 
 final class DeleteProfileSuccessState extends UpdateProfileState {
-  final DeleteProfile? deleteProfile;
+  final CommonResponse? response;
 
-  DeleteProfileSuccessState({this.deleteProfile});
+  DeleteProfileSuccessState({this.response});
 }
 
 final class DeleteProfileErrorState extends UpdateProfileState {

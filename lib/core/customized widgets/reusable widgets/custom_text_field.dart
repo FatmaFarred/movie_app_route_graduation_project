@@ -3,6 +3,7 @@ import 'package:movie_app_route_graduation_project/core/resources/App_colors.dar
 import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
 
 typedef MyValidator = String? Function(String?);
+typedef OnFieldSubmitted = void Function(String?);
 
 class CustomTextField extends StatelessWidget {
   Widget? suffixIcon;
@@ -12,14 +13,17 @@ class CustomTextField extends StatelessWidget {
   MyValidator? validator;
   TextEditingController? controller;
   TextInputType? keyBoardType;
-  CustomTextField(
-      {this.suffixIcon,
-      this.prefixIcon,
-      this.hintText,
-      this.keyBoardType,
-      this.controller,
-      this.obscureText = false,
-      this.validator});
+  OnFieldSubmitted? onFieldSubmitted;
+  CustomTextField({
+    this.suffixIcon,
+    this.prefixIcon,
+    this.hintText,
+    this.keyBoardType,
+    this.controller,
+    this.obscureText = false,
+    this.validator,
+    this.onFieldSubmitted,
+  });
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -65,6 +69,7 @@ class CustomTextField extends StatelessWidget {
               width: 2,
             )),
       ),
+      onFieldSubmitted: onFieldSubmitted,
     );
   }
 }

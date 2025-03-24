@@ -1,12 +1,11 @@
-import 'package:movie_app_route_graduation_project/domain/entities/add_favorite.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/favorites.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/is_favorite.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/remove_favorite.dart';
+import '../../data/model/common_response.dart';
+import '../../data/model/favorites/is_favorite_response.dart';
+import '../../data/model/movie/movie_model.dart';
 
 abstract class FavoritesRepo {
-  Future<AddFavorite?> addMovieToFavorite(String token, String movieId,
+  Future<MovieModel?> addMovieToFavorite(String token, String movieId,
       String name, double rating, String imageURL, String year);
-  Future<RemoveFavorite?> removeMovieFromFavorite(String token, String movieId);
-  Future<List<Favorites>?> getAllFavorites(String token);
-  Future<IsFavorite?> getMovieIsFavorite(String token, String movieId);
+  Future<CommonResponse?> removeMovieFromFavorite(String token, String movieId);
+  Future<List<MovieModel>?> getAllFavorites(String token);
+  Future<IsFavoriteResponse?> getMovieIsFavorite(String token, String movieId);
 }

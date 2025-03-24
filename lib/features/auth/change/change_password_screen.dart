@@ -42,7 +42,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
             CustomDialog.positiveButton(
                 context: context,
                 title: getTranslations(context).success,
-                message: state.changePassword!.message,
+                message: state.response!.message,
                 positiveOnClick: () {
                   Navigator.pop(context);
                 });

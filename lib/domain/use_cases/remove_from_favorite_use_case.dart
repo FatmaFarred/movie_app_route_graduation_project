@@ -1,7 +1,7 @@
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/domain/repositries/favorites_repo.dart';
 
-import '../entities/remove_favorite.dart';
+import '../../data/model/common_response.dart';
 
 @injectable
 class RemoveFromFavoriteUseCase {
@@ -9,7 +9,7 @@ class RemoveFromFavoriteUseCase {
 
   RemoveFromFavoriteUseCase(this._favoritesRepo);
 
-  Future<RemoveFavorite?> call(String token, String movieId) {
+  Future<CommonResponse?> call(String token, String movieId) {
     return _favoritesRepo.removeMovieFromFavorite(token, movieId);
   }
 }

@@ -59,7 +59,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           CustomDialog.positiveButton(
               context: context,
               title: getTranslations(context).success,
-              message: state.updateProfile!.message,
+              message: state.response!.message,
               positiveOnClick: () {
                 Navigator.pop(context);
               });
@@ -70,7 +70,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           CustomDialog.positiveButton(
               context: context,
               title: getTranslations(context).success,
-              message: state.deleteProfile!.message,
+              message: state.response!.message,
               positiveOnClick: () {
                 Navigator.pop(context);
               });

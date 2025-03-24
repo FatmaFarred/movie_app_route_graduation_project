@@ -1,5 +1,5 @@
-import 'package:movie_app_route_graduation_project/domain/entities/change_password.dart';
+import '../../data/model/common_response.dart';
 
 abstract class ChangePasswordRepo{
-  Future<ChangePassword?> changePassword(String token, String oldPassword, String newPassword);
+  Future<CommonResponse?> changePassword(String token, String oldPassword, String newPassword);
 }

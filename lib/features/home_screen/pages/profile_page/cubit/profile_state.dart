@@ -11,19 +11,10 @@ final class ProfileLoadingState extends ProfileState {
 }
 
 final class ProfileSuccessState extends ProfileState {
-  final Profile? profileData;
-  final List<Favorites>? favoritesList;
-  ProfileSuccessState({this.profileData, this.favoritesList});
-
-  ProfileSuccessState copyWith({
-    Profile? profileData,
-    List<Favorites>? favoritesList,
-  }) {
-    return ProfileSuccessState(
-      profileData: profileData ?? this.profileData,
-      favoritesList: favoritesList ?? this.favoritesList,
-    );
-  }
+  final ProfileEntity? profileData;
+  final List<MovieModel>? favoritesList;
+  final List<MovieModel>? historyList;
+  ProfileSuccessState({this.profileData, this.favoritesList, this.historyList});
 }
 
 final class ProfileErrorState extends ProfileState {

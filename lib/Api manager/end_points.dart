@@ -9,6 +9,7 @@ class EndPoints {
   static const String addFavoriteApi = "favorites/add";
   static const String removeFavoriteApi = "favorites/remove/";
   static const String isFavoriteApi = "favorites/is-favorite/";
+  static const String movieSearchApi = "list_movies.json";
 
 
 }

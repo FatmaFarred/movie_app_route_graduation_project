@@ -1,13 +1,12 @@
-import 'package:movie_app_route_graduation_project/domain/entities/delete_profile.dart';
+import '../../data/model/common_response.dart';
+import '../entities/profile_entity.dart';
 
-import '../entities/profile.dart';
-import '../entities/update_profile.dart';
 
 abstract class ProfileRepo {
-  Future<Profile?> getProfile(String token);
+  Future<ProfileEntity?> getProfile(String token);
 
-  Future<UpdateProfile?> updateProfile(
+  Future<CommonResponse?> updateProfile(
       String token, String name, String phone, int avatarId);
 
-  Future<DeleteProfile?> deleteProfile(String token);
+  Future<CommonResponse?> deleteProfile(String token);
 }

@@ -2,19 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/assets_manager.dart';
+import '../../../data/model/movie/movie_model.dart';
 
 class CustomizedCardItem extends StatelessWidget {
 
-  String movieId, name, imageURL, year;
-
-  double rating;
+  MovieModel movie;
 
   CustomizedCardItem({
-    required this.movieId,
-    required this.name,
-    required this.imageURL,
-    required this.year,
-    required this.rating,
+    required this.movie,
   });
 
   @override
@@ -27,7 +22,7 @@ class CustomizedCardItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
         child: Stack(
           children: [
-            Image.network(imageURL,
+            Image.network(movie.imageURL!,
               fit: BoxFit.cover,
               width: double.infinity,
               height: double.infinity,),
@@ -47,7 +42,7 @@ class CustomizedCardItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
-                      '$rating',
+                      '${movie.rating}',
                       // Display film rating
                       style: const TextStyle(
                         color: Colors.white,

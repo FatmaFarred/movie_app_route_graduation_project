@@ -72,5 +72,6 @@
     "updateAccountAlert": "Are you sure you want to update your account?",
     "oldPassword": "Old Password",
     "newPassword": "New Password",
-    "confirmLogout": "Are you sure you want to logout?"
+    "confirmLogout": "Are you sure you want to logout?",
+    "emptySearch": "Please enter a movie name to search."
 }

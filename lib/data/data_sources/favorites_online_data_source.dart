@@ -1,12 +1,11 @@
-import '../../domain/entities/add_favorite.dart';
-import '../../domain/entities/favorites.dart';
-import '../../domain/entities/is_favorite.dart';
-import '../../domain/entities/remove_favorite.dart';
+import '../model/common_response.dart';
+import '../model/favorites/is_favorite_response.dart';
+import '../model/movie/movie_model.dart';
 
 abstract class FavoritesOnlineDataSource {
-  Future<AddFavorite?> addMovieToFavorite(String token, String movieId,
+  Future<MovieModel?> addMovieToFavorite(String token, String movieId,
       String name, double rating, String imageURL, String year);
-  Future<RemoveFavorite?> removeMovieFromFavorite(String token, String movieId);
-  Future<List<Favorites>?> getAllFavorites(String token);
-  Future<IsFavorite?> getMovieIsFavorite(String token, String movieId);
+  Future<CommonResponse?> removeMovieFromFavorite(String token, String movieId);
+  Future<List<MovieModel>?> getAllFavorites(String token);
+  Future<IsFavoriteResponse?> getMovieIsFavorite(String token, String movieId);
 }
