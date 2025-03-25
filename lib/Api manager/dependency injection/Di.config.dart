@@ -36,12 +36,10 @@ import '../../data/data_sources/search_online_data_source.dart' as _i456;
 import '../../data/repositries/change_password_repo_impl.dart' as _i667;
 import '../../data/repositries/favorites_repo_impl.dart' as _i509;
 import '../../data/repositries/history_repo_impl.dart' as _i870;
-import '../../data/repositries/change_password_repo_impl.dart' as _i667;
 import '../../data/repositries/Login_repositry_impl.dart' as _i109;
 import '../../data/repositries/Movie_Deatils_repositry_impl.dart' as _i329;
 import '../../data/repositries/profile_repo_impl.dart' as _i688;
 import '../../data/repositries/Register_Repositry_impl.dart' as _i713;
-import '../../domain/repositries/change_password_repo.dart' as _i874;
 import '../../data/repositries/search_repo_impl.dart' as _i61;
 import '../../domain/repositries/change_password_repo.dart' as _i874;
 import '../../domain/repositries/data_sources/remote_data_sources/Login_remote_datasource.dart'
@@ -54,9 +52,6 @@ import '../../domain/repositries/favorites_repo.dart' as _i414;
 import '../../domain/repositries/history_repo.dart' as _i356;
 import '../../domain/repositries/profile_repo.dart' as _i649;
 import '../../domain/repositries/reposotries/auth_repositry.dart' as _i1048;
-import '../../domain/repositries/reposotries/Login_repositry.dart' as _i699;
-import '../../domain/repositries/reposotries/movie_details_repositry.dart'
-    as _i691;
 import '../../domain/repositries/reposotries/Login_repositry.dart' as _i699;
 import '../../domain/repositries/reposotries/movie_details_repositry.dart'
     as _i691;
@@ -73,9 +68,6 @@ import '../../domain/use_cases/get_search_use_case.dart' as _i659;
 import '../../domain/use_cases/Login_useCase.dart' as _i467;
 import '../../domain/use_cases/Movie%20_suggetion_use_case.dart' as _i768;
 import '../../domain/use_cases/movie_deatils_use_case.dart' as _i729;
-import '../../domain/use_cases/Login_useCase.dart' as _i467;
-import '../../domain/use_cases/Movie%20_suggetion_use_case.dart' as _i768;
-import '../../domain/use_cases/movie_deatils_use_case.dart' as _i729;
 import '../../domain/use_cases/Register_usecase.dart' as _i147;
 import '../../domain/use_cases/remove_from_favorite_use_case.dart' as _i90;
 import '../../domain/use_cases/update_profile_use_case.dart' as _i557;
@@ -83,14 +75,14 @@ import '../../features/auth/change/cubit/change_password_cubit.dart' as _i1063;
 import '../../features/auth/login/login_cubit/login_view_model.dart' as _i301;
 import '../../features/auth/Reigster/Register_cubit/register_view_model.dart'
     as _i225;
-import '../../features/homescreen/MovieDetails/MovieDetailsViewModel.dart'
-    as _i334;
-import '../../features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
-    as _i291;
 import '../../features/home_screen/pages/profile_page/cubit/profile_cubit.dart'
     as _i978;
 import '../../features/home_screen/pages/search_page/cubit/search_cubit.dart'
     as _i91;
+import '../../features/homescreen/MovieDetails/MovieDetailsViewModel.dart'
+    as _i334;
+import '../../features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
+    as _i291;
 import '../../features/update_profile/cubit/update_profile_cubit.dart' as _i854;
 import '../Api_manager.dart' as _i681;
 
@@ -108,11 +100,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i681.ApiManager>(() => _i681.ApiManager());
     gh.factory<_i965.LoginRemoteDatasource>(() =>
         _i944.LoginRemoteDataSourceImpl(apiManager: gh<_i681.ApiManager>()));
-    gh.factory<_i78.HistoryOfflineDataSource>(
-        () => _i584.HistoryOfflineDataSourceImpl());
     gh.factory<_i910.MovieDetailsDataSource>(() =>
         _i315.MovieDetailsRemoteDataSourceImpl(
             apiManager: gh<_i681.ApiManager>()));
+    gh.factory<_i78.HistoryOfflineDataSource>(
+        () => _i584.HistoryOfflineDataSourceImpl());
     gh.factory<_i398.Register_remote_data_source>(() =>
         _i282.Register_remote_datasource_impl(
             apiManager: gh<_i681.ApiManager>()));
@@ -120,13 +112,7 @@ extension GetItInjectableX on _i174.GetIt {
         loginRemoteDatasource: gh<_i965.LoginRemoteDatasource>()));
     gh.factory<_i456.SearchOnlineDataSource>(
         () => _i278.SearchOnlineDataSourceImpl(gh<_i681.ApiManager>()));
-    gh.factory<_i699.LoginRepositry>(() => _i109.LoginRepositryImpl(
-        loginRemoteDatasource: gh<_i965.LoginRemoteDatasource>()));
     gh.factory<_i222.ChangePasswordOnlineDataSource>(
-        () => _i272.ChangePasswordOnlineDataSourceImpl(gh<_i681.ApiManager>()));
-    gh.factory<_i691.MovieDetailsRepositry>(() =>
-        _i329.MovieDetailsRepositryImpl(
-            movieDetailsDataSource: gh<_i910.MovieDetailsDataSource>()));
         () => _i557.ChangePasswordOnlineDataSourceImpl(gh<_i681.ApiManager>()));
     gh.factory<_i908.FavoritesOnlineDataSource>(
         () => _i148.FavoritesOnlineDataSourceImpl(gh<_i681.ApiManager>()));
@@ -166,10 +152,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i538.GetMovieFromHistoryUseCase(gh<_i356.HistoryRepo>()));
     gh.factory<_i659.GetSearchUseCase>(
         () => _i659.GetSearchUseCase(gh<_i1021.SearchRepo>()));
-    gh.factory<_i847.GetAllFavoritesUseCase>(
-        () => _i847.GetAllFavoritesUseCase(gh<_i414.FavoritesRepo>()));
     gh.factory<_i851.AddToFavoriteUseCase>(
         () => _i851.AddToFavoriteUseCase(gh<_i414.FavoritesRepo>()));
+    gh.factory<_i847.GetAllFavoritesUseCase>(
+        () => _i847.GetAllFavoritesUseCase(gh<_i414.FavoritesRepo>()));
     gh.factory<_i802.GetMovieIsFavoriteUseCase>(
         () => _i802.GetMovieIsFavoriteUseCase(gh<_i414.FavoritesRepo>()));
     gh.factory<_i90.RemoveFromFavoriteUseCase>(
@@ -183,16 +169,11 @@ extension GetItInjectableX on _i174.GetIt {
             movieSuggetionUseCase: gh<_i768.MovieSuggetionUseCaseUseCase>()));
     gh.factory<_i980.DeleteProfileUseCase>(
         () => _i980.DeleteProfileUseCase(gh<_i649.ProfileRepo>()));
-    gh.factory<_i301.LoginViewModel>(
-        () => _i301.LoginViewModel(useCase: gh<_i467.LoginUseCase>()));
     gh.factory<_i305.GetProfileUseCase>(
         () => _i305.GetProfileUseCase(gh<_i649.ProfileRepo>()));
     gh.factory<_i557.UpdateProfileUseCase>(
         () => _i557.UpdateProfileUseCase(gh<_i649.ProfileRepo>()));
-    gh.factory<_i980.DeleteProfileUseCase>(
-        () => _i980.DeleteProfileUseCase(gh<_i649.ProfileRepo>()));
     gh.factory<_i854.UpdateProfileCubit>(() => _i854.UpdateProfileCubit(
-    gh.factory<_i271.ProfileCubit>(() => _i271.ProfileCubit(
           gh<_i305.GetProfileUseCase>(),
           gh<_i557.UpdateProfileUseCase>(),
           gh<_i980.DeleteProfileUseCase>(),
