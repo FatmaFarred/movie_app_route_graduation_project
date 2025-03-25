@@ -14,6 +14,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import '../../data/data_sources/change_password_online_data_source.dart'
     as _i222;
 import '../../data/data_sources/favorites_online_data_source.dart' as _i908;
+import '../../data/data_sources/genre_online_data_source.dart' as _i995;
 import '../../data/data_sources/history_offline_data_source.dart' as _i78;
 import '../../data/data_sources/offline_data_source/history_offline_data_source_impl.dart'
     as _i584;
@@ -22,6 +23,8 @@ import '../../data/data_sources/remote_data_sources/change_password_online_data_
     as _i557;
 import '../../data/data_sources/remote_data_sources/favorites_online_data_source_impl.dart'
     as _i148;
+import '../../data/data_sources/remote_data_sources/genre_online_data_source_impl.dart'
+    as _i396;
 import '../../data/data_sources/remote_data_sources/Login_Remote_DataSource_impl.dart'
     as _i944;
 import '../../data/data_sources/remote_data_sources/profile_online_data_source_impl.dart'
@@ -33,6 +36,7 @@ import '../../data/data_sources/remote_data_sources/search_online_data_source_im
 import '../../data/data_sources/search_online_data_source.dart' as _i456;
 import '../../data/repositries/change_password_repo_impl.dart' as _i667;
 import '../../data/repositries/favorites_repo_impl.dart' as _i509;
+import '../../data/repositries/genre_repo_impl.dart' as _i851;
 import '../../data/repositries/history_repo_impl.dart' as _i870;
 import '../../data/repositries/Login_repositry_impl.dart' as _i109;
 import '../../data/repositries/Movie_Deatils_repositry_impl.dart' as _i329;
@@ -47,6 +51,7 @@ import '../../domain/repositries/data_sources/remote_data_sources/Movie%20_Detai
 import '../../domain/repositries/data_sources/remote_data_sources/Register_remote_datasource.dart'
     as _i398;
 import '../../domain/repositries/favorites_repo.dart' as _i414;
+import '../../domain/repositries/genre_repo.dart' as _i434;
 import '../../domain/repositries/history_repo.dart' as _i356;
 import '../../domain/repositries/profile_repo.dart' as _i649;
 import '../../domain/repositries/reposotries/auth_repositry.dart' as _i1048;
@@ -59,6 +64,7 @@ import '../../domain/use_cases/add_to_history_use_case.dart' as _i889;
 import '../../domain/use_cases/change_password_use_case.dart' as _i838;
 import '../../domain/use_cases/delete_profile_use_case.dart' as _i980;
 import '../../domain/use_cases/get_all_favorites_use_case.dart' as _i847;
+import '../../domain/use_cases/get_genre_use_case.dart' as _i486;
 import '../../domain/use_cases/get_movie_from_history_use_case.dart' as _i538;
 import '../../domain/use_cases/get_movie_is_favorite_use_case.dart' as _i802;
 import '../../domain/use_cases/get_profile_use_case.dart' as _i305;
@@ -73,6 +79,8 @@ import '../../features/auth/change/cubit/change_password_cubit.dart' as _i1063;
 import '../../features/auth/login/login_cubit/login_view_model.dart' as _i301;
 import '../../features/auth/Reigster/Register_cubit/register_view_model.dart'
     as _i225;
+import '../../features/home_screen/pages/explore_page/cubit/explore_cubit.dart'
+    as _i1005;
 import '../../features/home_screen/pages/profile_page/cubit/profile_cubit.dart'
     as _i978;
 import '../../features/home_screen/pages/search_page/cubit/search_cubit.dart'
@@ -114,6 +122,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i870.HistoryRepoImpl(gh<_i78.HistoryOfflineDataSource>()));
     gh.factory<_i414.FavoritesRepo>(
         () => _i509.FavoritesRepoImpl(gh<_i908.FavoritesOnlineDataSource>()));
+    gh.factory<_i995.GenreOnlineDataSource>(
+        () => _i396.GenreOnlineDataSourceImpl(gh<_i681.ApiManager>()));
     gh.factory<_i525.ProfileOnlineDataSource>(
         () => _i150.ProfileOnlineDataSourceImpl(gh<_i681.ApiManager>()));
     gh.factory<_i874.ChangePasswordRepo>(() => _i667.ChangePasswordRepoImpl(
@@ -123,8 +133,12 @@ extension GetItInjectableX on _i174.GetIt {
             movieDetailsRepositry: gh<_i691.MovieDetailsRepositry>()));
     gh.factory<_i729.MovieDetailsUseCase>(() => _i729.MovieDetailsUseCase(
         movieDetailsRepositry: gh<_i691.MovieDetailsRepositry>()));
+    gh.factory<_i434.GenreRepo>(
+        () => _i851.GenreRepoImpl(gh<_i995.GenreOnlineDataSource>()));
     gh.factory<_i1048.RegisterRepositry>(() => _i713.Register_repositry_impl(
         register_remote_data_source: gh<_i398.Register_remote_data_source>()));
+    gh.factory<_i486.GetGenreUseCase>(
+        () => _i486.GetGenreUseCase(gh<_i434.GenreRepo>()));
     gh.factory<_i649.ProfileRepo>(
         () => _i688.ProfileRepoImpl(gh<_i525.ProfileOnlineDataSource>()));
     gh.factory<_i147.RegisterUseCase>(() => _i147.RegisterUseCase(
@@ -133,6 +147,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i467.LoginUseCase(loginRepositry: gh<_i699.LoginRepositry>()));
     gh.factory<_i1021.SearchRepo>(
         () => _i61.SearchRepoImpl(gh<_i456.SearchOnlineDataSource>()));
+    gh.factory<_i1005.ExploreCubit>(
+        () => _i1005.ExploreCubit(gh<_i486.GetGenreUseCase>()));
     gh.factory<_i225.RegisterViewModel>(() =>
         _i225.RegisterViewModel(registerUseCase: gh<_i147.RegisterUseCase>()));
     gh.factory<_i889.AddToHistoryUseCase>(

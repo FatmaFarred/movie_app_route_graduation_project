@@ -6,7 +6,6 @@ import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_search_use_case.dart';
 
 import '../../../../../Api manager/errors/failure.dart';
-import '../../../../../data/model/MovieDetailsResponseDm.dart';
 
 part 'search_state.dart';
 

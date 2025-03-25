@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_route_graduation_project/domain/use_cases/add_to_history_use_case.dart';
 
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_all_favorites_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_movie_from_history_use_case.dart';

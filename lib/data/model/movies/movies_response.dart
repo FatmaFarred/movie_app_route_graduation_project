@@ -1,8 +1,8 @@
-import 'Data.dart';
-import 'Meta.dart';
+import 'data.dart';
+import 'meta.dart';
 
-class SearchResponse {
-  SearchResponse({
+class MoviesResponse {
+  MoviesResponse({
     String? status,
     String? statusMessage,
     Data? data,
@@ -14,7 +14,7 @@ class SearchResponse {
     _meta = meta;
   }
 
-  SearchResponse.fromJson(dynamic json) {
+  MoviesResponse.fromJson(dynamic json) {
     _status = json['status'];
     _statusMessage = json['status_message'];
     _data = json['data'] != null ? Data.fromJson(json['data']) : null;
@@ -24,13 +24,13 @@ class SearchResponse {
   String? _statusMessage;
   Data? _data;
   Meta? _meta;
-  SearchResponse copyWith({
+  MoviesResponse copyWith({
     String? status,
     String? statusMessage,
     Data? data,
     Meta? meta,
   }) =>
-      SearchResponse(
+      MoviesResponse(
         status: status ?? _status,
         statusMessage: statusMessage ?? _statusMessage,
         data: data ?? _data,

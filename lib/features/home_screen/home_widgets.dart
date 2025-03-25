@@ -22,7 +22,7 @@ List<BottomNavigationBarItem> generateBottomNavItems(
 
 List<Widget> taps = [
   const HomePage(),
-   SearchPage(),
-  const ExplorePage(),
+  SearchPage(),
+   ExplorePage(),
   const ProfilePage(),
 ];
