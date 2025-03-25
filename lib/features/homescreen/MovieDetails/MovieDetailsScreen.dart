@@ -11,10 +11,13 @@ import 'package:movie_app_route_graduation_project/core/resources/style%20manage
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreenStates.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsViewModel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionScreen.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/screen%20shot%20widegt.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/watch%20widget.dart';
 
 import '../../../core/customized widgets/reusable widgets/Cutomized_Alert_Dialogue.dart';
+import '../../../core/resources/font_manager.dart';
 
 class Moviedetailsscreen extends StatefulWidget {
 
@@ -61,15 +64,38 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
   }
 
   Widget BuildSuccessState(SuccessState state) {
+    print("Movies: ${state.response?.data?.movie}");
     return Column(
       children: [
         Playwidget(state: state),
-            CustomeizedElevatedButtom(onpressed: ()  {
-    //todo: add it to watch list
-    }
-        ,text: AppLocalizations.of(context)!.watch,
-              color: AppColors.redColor,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 20),bordercolor:AppColors.redColor ,),
-        Row(children: [iconWithTextContainerWidget(imagePath: SvgAssets.icFavorite, title: "${state?.response?.data?.movie?.likeCount ?? ""}")],)
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal:16.w),
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                children: [ CustomeizedElevatedButtom(onpressed: ()  {
+                //todo: add it to watch list
+              }
+                ,text: AppLocalizations.of(context)!.watch,
+                color: AppColors.redColor,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 20),bordercolor:AppColors.redColor ,),
+                Padding(
+                  padding: EdgeInsets.only(top: 16.h,bottom: 16.h),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [iconWithTextContainerWidget(imagePath: SvgAssets.icFavorite, title: "${state?.response?.data?.movie?.likeCount ?? ""}"),
+                    iconWithTextContainerWidget(imagePath: SvgAssets.icRuntime, title: "${state?.response?.data?.movie?.runtime ?? ""}"),
+                    iconWithTextContainerWidget(imagePath: SvgAssets.icRate, title: "${state?.response?.data?.movie?.rating ?? ""}")],),
+                ),
+                Text(AppLocalizations.of(context)!.screenShots,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                  ScreenShotWidget(imagePath: state?.response?.data?.movie?.mediumScreenshotImage1??"",height:166.h ,),
+                  ScreenShotWidget(imagePath: state?.response?.data?.movie?.mediumScreenshotImage2??"",height:166.h),
+                  ScreenShotWidget(imagePath: state?.response?.data?.movie?.mediumScreenshotImage3??"",height:166.h),
+                  SizedBox(height:9.h ,),
+                  Text(AppLocalizations.of(context)!.similar,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                  SizedBox(height:9.h ,),
+                  MovieSuggetionScreen(),
+
+
+                ],),
+            )
+
       ],
     );
   }

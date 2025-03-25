@@ -11,9 +11,8 @@ class LoadingState extends MovieDetailsScreenState {}
 class SuccessState extends MovieDetailsScreenState {
 
 MovieDetailsResponseEntity? response;
-List<MoviesSugEntity> ?suggetionResponse ;
 
-SuccessState({ this.response ,  this.suggetionResponse});
+SuccessState({ this.response });
 
 
 }

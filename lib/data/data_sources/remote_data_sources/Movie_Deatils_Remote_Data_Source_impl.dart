@@ -30,6 +30,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
             "with_images": true,
           },
         );
+        print ("the uri is ${ApiConstant.baseMovieUrl+EndPoints.MovieDetails}?movie_id=$id");
         var movieDetailsResponse = MovieDetailsResponseDm.fromJson(response.data);
 
 
@@ -63,6 +64,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
 
           },
         );
+
         var movieSuggetionResponse = MovieSuggetionResponseDm.fromJson(response.data);
 
 

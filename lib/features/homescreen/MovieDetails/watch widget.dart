@@ -28,17 +28,10 @@ class Playwidget extends StatelessWidget {
 
                 colors: [ AppColors.lightblackColor,AppColors.blackColor ]) ),),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    AppColors.lightblackColor,
-                    AppColors.blackColor,
-                  ],
-                ),
+
                 image: DecorationImage(
                   image: imageProvider,
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
             ),

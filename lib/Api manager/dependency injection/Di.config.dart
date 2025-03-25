@@ -51,6 +51,8 @@ import '../../features/auth/Reigster/Register_cubit/register_view_model.dart'
     as _i225;
 import '../../features/homescreen/MovieDetails/MovieDetailsViewModel.dart'
     as _i334;
+import '../../features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
+    as _i291;
 import '../../features/profile/cubit/profile_cubit.dart' as _i271;
 import '../Api_manager.dart' as _i681;
 import '../datasource/change_password_online_data_source_impl.dart' as _i272;
@@ -100,16 +102,17 @@ extension GetItInjectableX on _i174.GetIt {
         registerRepositry: gh<_i1048.RegisterRepositry>()));
     gh.factory<_i467.LoginUseCase>(
         () => _i467.LoginUseCase(loginRepositry: gh<_i699.LoginRepositry>()));
+    gh.factory<_i334.MovieDetailsViewModel>(() => _i334.MovieDetailsViewModel(
+        movieDetailsUseCase: gh<_i729.MovieDetailsUseCase>()));
     gh.factory<_i225.RegisterViewModel>(() =>
         _i225.RegisterViewModel(registerUseCase: gh<_i147.RegisterUseCase>()));
     gh.factory<_i838.ChangePasswordUseCase>(
         () => _i838.ChangePasswordUseCase(gh<_i874.ChangePasswordRepo>()));
     gh.factory<_i301.LoginViewModel>(
         () => _i301.LoginViewModel(useCase: gh<_i467.LoginUseCase>()));
-    gh.factory<_i334.MovieDetailsViewModel>(() => _i334.MovieDetailsViewModel(
-          movieDetailsUseCase: gh<_i729.MovieDetailsUseCase>(),
-          movieSuggetionUseCase: gh<_i768.MovieSuggetionUseCaseUseCase>(),
-        ));
+    gh.factory<_i291.MovieSuggetionViewModel>(() =>
+        _i291.MovieSuggetionViewModel(
+            movieSuggetionUseCase: gh<_i768.MovieSuggetionUseCaseUseCase>()));
     gh.factory<_i980.DeleteProfileUseCase>(
         () => _i980.DeleteProfileUseCase(gh<_i649.ProfileRepo>()));
     gh.factory<_i305.GetProfileUseCase>(
