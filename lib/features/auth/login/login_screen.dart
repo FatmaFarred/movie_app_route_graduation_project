@@ -232,7 +232,7 @@ class _LoginViewState extends State<LoginView> {
                     onpressed: () {
                       // Add Google login logic here
                     },
-                    IconImage: SvgPicture.asset(SvgAssets.icgoogle,
+                    prefixIcon: SvgPicture.asset(SvgAssets.icgoogle,
                         height: 25.h, width: 25.h, fit: BoxFit.scaleDown),
                     text: AppLocalizations.of(context)!.loginWithGoogle,style: getRegularStyle(color: AppColors.blackColor,fontSize: 16),
                   ),

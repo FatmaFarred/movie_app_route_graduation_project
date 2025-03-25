@@ -1,12 +1,11 @@
-import '../../domain/entities/delete_profile.dart';
-import '../../domain/entities/profile.dart';
-import '../../domain/entities/update_profile.dart';
+import '../../domain/entities/profile_entity.dart';
+import '../model/common_response.dart';
 
 abstract class ProfileOnlineDataSource {
-  Future<Profile?> getProfile(String token);
+  Future<ProfileEntity?> getProfile(String token);
 
-  Future<UpdateProfile?> updateProfile(
+  Future<CommonResponse?> updateProfile(
       String token, String name, String phone, int avatarId);
 
-  Future<DeleteProfile?> deleteProfile(String token);
+  Future<CommonResponse?> deleteProfile(String token);
 }

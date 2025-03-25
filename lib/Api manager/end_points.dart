@@ -5,6 +5,11 @@ class EndPoints {
   static const String profileApi = "profile";
   static const String MovieDetails = "movie_details.json";
   static const String MovieSuggetions = "movie_suggestions.json";
+  static const String allFavoritesApi = "favorites/all";
+  static const String addFavoriteApi = "favorites/add";
+  static const String removeFavoriteApi = "favorites/remove/";
+  static const String isFavoriteApi = "favorites/is-favorite/";
+  static const String movieSearchApi = "list_movies.json";
 
 
 }

@@ -8,11 +8,13 @@ import 'package:movie_app_route_graduation_project/features/auth/login/login_scr
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreen.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/webViewWidgetViewer.dart';
 
-import 'package:movie_app_route_graduation_project/features/homescreen/home_screen.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/onboarding_screen.dart';
-import 'package:movie_app_route_graduation_project/features/profile/update_profile_screen.dart';
+
 import 'package:movie_app_route_graduation_project/features/welcome/welcome_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+
+import '../../features/home_screen/home_screen.dart';
+import '../../features/update_profile/update_profile_screen.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {

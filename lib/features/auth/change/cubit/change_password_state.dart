@@ -12,9 +12,9 @@ final class ChangePasswordLoadingState extends ChangePasswordState {
 }
 
 final class ChangePasswordSuccessState extends ChangePasswordState {
-  final ChangePassword? changePassword;
+  final CommonResponse? response;
 
-  ChangePasswordSuccessState({this.changePassword});
+  ChangePasswordSuccessState({this.response});
 }
 
 final class ChangePasswordErrorState extends ChangePasswordState {
