@@ -17,6 +17,7 @@ import 'package:movie_app_route_graduation_project/features/homescreen/MovieDeta
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/screen%20shot%20widegt.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/watch%20widget.dart';
+import 'package:video_player/video_player.dart';
 
 import '../../../core/customized widgets/reusable widgets/Cutomized_Alert_Dialogue.dart';
 import '../../../core/resources/font_manager.dart';
@@ -32,11 +33,16 @@ class Moviedetailsscreen extends StatefulWidget {
 class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
   late MovieDetailsViewModel movieDetailsViewModel;
 
+
+
   @override
   void initState() {
     super.initState();
-    movieDetailsViewModel = getIt<MovieDetailsViewModel>();  // initialize here
+
+    movieDetailsViewModel = getIt<MovieDetailsViewModel>();
+
     movieDetailsViewModel.loadMovieDetailsScreen();
+
   }
 
 
@@ -68,17 +74,17 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
   Widget BuildSuccessState(SuccessState state) {
     print("Movies: ${state.response?.data?.movie}");
     var castlist= state.response?.data?.movie?.cast??[];
+    print("watch: ${state.response?.data?.movie?.url}");
+
+
+
     return Column(
       children: [
         Playwidget(state: state),
             Padding(
               padding:  EdgeInsets.symmetric(horizontal:16.w),
               child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                children: [ CustomeizedElevatedButtom(onpressed: ()  {
-                //todo: add it to watch list
-              }
-                ,text: AppLocalizations.of(context)!.watch,
-                color: AppColors.redColor,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 20),bordercolor:AppColors.redColor ,),
+                children: [
                 Padding(
                   padding: EdgeInsets.only(top: 16.h,bottom: 16.h),
                   child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,6 +156,8 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
       ],),
     );
   }
+
+
 
 
 }

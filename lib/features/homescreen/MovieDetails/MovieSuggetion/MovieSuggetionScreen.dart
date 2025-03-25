@@ -91,7 +91,7 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
       children: [
         Container(padding: EdgeInsets.zero,
           margin:EdgeInsets.zero ,
-          height: 400.h,
+          height: 600.h,
           child: Expanded(
             child: GridView.builder(
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
