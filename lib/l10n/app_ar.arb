@@ -71,5 +71,6 @@
     "deleteAccountAlert": "هل أنت متأكد من أنك تريد حذف حسابك؟",
     "updateAccountAlert": "هل أنت متأكد من أنك تريد تحديث حسابك؟",
     "oldPassword": "كلمة المرور القديمة",
-    "newPassword": "كلمة المرور الجديدة"
+    "newPassword": "كلمة المرور الجديدة",
+    "charactar": "شخصية"
 }

@@ -98,7 +98,8 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
                 crossAxisCount: 2,
 
                 crossAxisSpacing: 10.w,
-                mainAxisSpacing: 10.h
+                mainAxisSpacing: 10.h,
+                mainAxisExtent: 279.h
             
             
               ),

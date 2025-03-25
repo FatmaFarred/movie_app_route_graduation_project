@@ -71,5 +71,7 @@
     "deleteAccountAlert": "Are you sure you want to delete your account?",
     "updateAccountAlert": "Are you sure you want to update your account?",
     "oldPassword": "Old Password",
-    "newPassword": "New Password"
+    "newPassword": "New Password",
+    "charactar": "Character "
+
 }

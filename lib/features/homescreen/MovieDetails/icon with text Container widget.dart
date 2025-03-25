@@ -6,23 +6,24 @@ import 'package:movie_app_route_graduation_project/core/resources/assets_manager
 import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
 
 class iconWithTextContainerWidget  extends StatelessWidget {
-  String imagePath ;
+  String? imagePath ;
   String title ;
+  double? height;
 
-  iconWithTextContainerWidget ({required this.imagePath,required this.title});
+  iconWithTextContainerWidget ({this.imagePath,required this.title, this.height});
 
   @override
   Widget build(BuildContext context) {
-    return  Container(width:122.w ,height: 47.h,
+    return  Container(width:122.w ,height:height?? 47.h,
       decoration: BoxDecoration(borderRadius:BorderRadius.circular(12),
       color: AppColors.darkGrayColor,
 
     ),
       child:Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [SvgPicture.asset(imagePath,height: 28.h,width: 28.w,),
+        mainAxisAlignment:imagePath==null?MainAxisAlignment.center: MainAxisAlignment.spaceEvenly,
+        children: [imagePath==null?SizedBox():SvgPicture.asset(imagePath??null??"",height: 28.h,width: 28.w,),
 
-        Text(title,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24),)], ) ,
+        Text(title,style:imagePath==null?getRegularStyle(color: AppColors.whiteColor,fontSize: 16): getBoldStyle(color: AppColors.whiteColor,fontSize: 24),)], ) ,
     );
   }
 }

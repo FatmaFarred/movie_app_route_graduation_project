@@ -12,6 +12,8 @@ import 'package:movie_app_route_graduation_project/features/homescreen/MovieDeta
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsViewModel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionScreen.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cast%20widget.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/geners%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/screen%20shot%20widegt.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/watch%20widget.dart';
@@ -65,6 +67,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
 
   Widget BuildSuccessState(SuccessState state) {
     print("Movies: ${state.response?.data?.movie}");
+    var castlist= state.response?.data?.movie?.cast??[];
     return Column(
       children: [
         Playwidget(state: state),
@@ -91,6 +94,32 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                   Text(AppLocalizations.of(context)!.similar,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
                   SizedBox(height:9.h ,),
                   MovieSuggetionScreen(),
+                  Padding(
+                    padding:  EdgeInsets.only(top: 16.h,bottom: 16.h),
+                    child: Text(AppLocalizations.of(context)!.summary,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 16.h),
+                    child: Text(state.response?.data?.movie?.descriptionFull??"",style: getRegularStyle(color: AppColors.whiteColor,fontSize: 16,fontFamily:FontConstants.robotoFont ),),
+                  ),
+                  Text(AppLocalizations.of(context)!.cast,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                  Container(height: 450.h,
+
+
+                    child: ListView.builder(itemCount: castlist.length,
+                        physics: NeverScrollableScrollPhysics(),
+
+                        itemBuilder: (context,index){
+                      return   CastWidget(imagePath: castlist![index].urlSmallImage??"", Name: castlist![index].name??"", character: castlist![index].characterName??"");
+
+                    }),
+                  ),
+                  Text(AppLocalizations.of(context)!.genres,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                  GenresWidget(state: state,),
+
+
+
+
 
 
                 ],),
