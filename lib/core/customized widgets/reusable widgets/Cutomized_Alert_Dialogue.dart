@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
+import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
 
 class Customizied_Alert_Dialogue{
 
@@ -36,11 +38,13 @@ class Customizied_Alert_Dialogue{
     List<Widget>actionList=[];
       if (positiveActionButtonName!=null){
        actionList.add(TextButton(onPressed:() {
-         positiveActionButton?.call();
+         positiveActionButton!();
        }, child: Text(positiveActionButtonName)));
       }
     if (NigativeActionButtonName!=null){
-      actionList.add(TextButton(onPressed:NigativeActionButton?.call() , child: Text(NigativeActionButtonName)));
+      actionList.add(TextButton(onPressed:() {
+        positiveActionButton!();
+      }, child: Text(NigativeActionButtonName)));
     }
 
 
@@ -48,7 +52,7 @@ class Customizied_Alert_Dialogue{
         context: context, builder: (context){
       return AlertDialog(
         backgroundColor: backgroundColor,
-        content: Text(message),
+        content: Text(message,style: getRegularStyle(color: AppColors.blackColor),),
         title: Text(title),
         actions: actionList,
 

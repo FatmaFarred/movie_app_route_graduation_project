@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 
@@ -20,22 +21,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        bottomNavigationBar: BottomNavigationBar(
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            type: BottomNavigationBarType.fixed,
-            currentIndex: selectedIndex,
-            backgroundColor: AppColors.darkGrayColor,
-            items: generateBottomNavItems({
-              SvgAssets.icHome: "",
-              SvgAssets.icSearch: "",
-              SvgAssets.icExplore: "",
-              SvgAssets.icProfile: "",
-            })),
-        body: taps[selectedIndex],
+        body: Stack(children: [
+          taps[selectedIndex],
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: 14.h, horizontal: 8.w),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16.r),
+                child: BottomNavigationBar(
+                    showSelectedLabels: false,
+                    showUnselectedLabels: false,
+                    onTap: (index) {
+                      setState(() {
+                        selectedIndex = index;
+                      });
+                    },
+                    type: BottomNavigationBarType.fixed,
+                    currentIndex: selectedIndex,
+                    backgroundColor: AppColors.darkGrayColor,
+                    items: generateBottomNavItems({
+                      SvgAssets.icHome: "",
+                      SvgAssets.icSearch: "",
+                      SvgAssets.icExplore: "",
+                      SvgAssets.icProfile: "",
+                    })),
+              ),
+            ),
+          )
+        ]),
       ),
     );
   }

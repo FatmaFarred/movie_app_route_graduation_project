@@ -1,55 +1,92 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/customized_card_item.dart';
+import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
+import 'package:movie_app_route_graduation_project/features/home_screen/pages/explore_page/cubit/explore_cubit.dart';
 
+import '../../../../Api manager/dependency injection/Di.dart';
+import '../../../../core/customized widgets/reusable widgets/custom_dialog.dart';
+import '../../../../core/customized widgets/reusable widgets/custom_loading.dart';
 import '../../../../core/resources/app_colors.dart';
+import '../../../../l10n/app_translations.dart';
 import 'explore_widgets.dart';
 
 class ExplorePage extends StatelessWidget {
-  const ExplorePage({super.key});
+  ExploreCubit exploreCubit = getIt<ExploreCubit>();
 
   @override
   Widget build(BuildContext context) {
+
+    exploreCubit.getGenre(AppConstants.genresList[0]);
+
     return DefaultTabController(
-      length: 4, // Number of tabs
+      length: AppConstants.genresList.length,
       child: SafeArea(
         child: Scaffold(
-            appBar: AppBar(
-                centerTitle: false,
-                automaticallyImplyLeading: false,
-                title: Padding(
-                  padding: const EdgeInsets.all(8.0),
+          body: NestedScrollView(
+            headerSliverBuilder: (context, innerBoxIsScrolled) => [
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding: EdgeInsets.only(top: 10.h),
                   child: TabBar(
+                    labelPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                    indicatorPadding: EdgeInsets.symmetric(vertical: 8.h),
                     tabAlignment: TabAlignment.start,
                     isScrollable: true,
                     unselectedLabelColor: AppColors.orangeColor,
                     labelColor: AppColors.blackColor,
                     dividerHeight: 0,
                     indicator: BoxDecoration(
-                        borderRadius: BorderRadius.circular(16),
-                        color: AppColors.orangeColor),
-                    tabs: [
-                      tabItem("All"),
-                      tabItem("Action"),
-                      tabItem("Comedy"),
-                      tabItem("Adventure"),
-                      tabItem("Animation"),
-                    ],
+                      borderRadius: BorderRadius.circular(16.r),
+                      color: AppColors.orangeColor,
+                    ),
+                    tabs: AppConstants.genresList
+                        .map((genre) => tabItem(genre))
+                        .toList(),
+                    onTap: (index) {
+                      exploreCubit.getGenre(AppConstants.genresList[index]);
+                    },
                   ),
-                )),
-            body: Container(
-              margin: const EdgeInsets.only(top: 24, left: 8, right: 8),
-              child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: .7,
-                    crossAxisSpacing: 30,
-                    mainAxisSpacing: 5,
-                  ),
-                  itemBuilder: (context, index) {
-                    return SizedBox(
-                        child: FilmCardItem(index: index,));
-                  }),
-            )),
+                ),
+              ),
+            ],
+            body: BlocConsumer<ExploreCubit, ExploreState>(
+              bloc: exploreCubit,
+              listener: (context, state) {
+                if (state is ExploreErrorState) {
+                  CustomDialog.positiveButton(
+                    context: context,
+                    title: getTranslations(context).error,
+                    message: state.error.errorMessage,
+                    positiveOnClick: () {
+                      Navigator.pop(context);
+                    },
+                  );
+                }
+              },
+              builder: (context, state) {
+                if (state is ExploreSuccessState) {
+                  return GridView.builder(
+                    padding: EdgeInsets.only(top: 20.h, bottom: 100.h, right: 8.w, left: 8.w),
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: state.moviesList!.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 189.w / 279.h,
+                      crossAxisSpacing: 16.w,
+                      mainAxisSpacing: 8.h,
+                    ),
+                    itemBuilder: (context, index) {
+                      return CustomizedCardItem(movie: state.moviesList![index]);
+                    },
+                  );
+                }
+                return CustomLoading();
+              },
+            ),
+          ),
+        ),
       ),
     );
   }

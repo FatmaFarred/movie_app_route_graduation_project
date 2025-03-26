@@ -11,15 +11,18 @@ List<BottomNavigationBarItem> generateBottomNavItems(
     Map<String, String> iconMap) {
   return iconMap.entries
       .map((entry) => BottomNavigationBarItem(
-    icon: SvgPicture.asset(entry.key),
-    activeIcon: SvgPicture.asset(entry.key, color: AppColors.orangeColor),
-    backgroundColor: AppColors.darkGrayColor,
-    label: entry.value,))
+            icon: SvgPicture.asset(entry.key),
+            activeIcon:
+                SvgPicture.asset(entry.key, color: AppColors.orangeColor),
+            backgroundColor: AppColors.darkGrayColor,
+            label: entry.value,
+          ))
       .toList();
 }
+
 List<Widget> taps = [
   const HomePage(),
-  const SearchPage(),
-  const ExplorePage(),
+  SearchPage(),
+   ExplorePage(),
   const ProfilePage(),
 ];

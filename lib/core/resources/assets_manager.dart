@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
+
 const String imagePath = "assets/images";
 const String svgPath = "assets/svg_images";
 
 abstract class ImageAssets {
+  static const String languageswitch = "$imagePath/Language Switch.png";
   static const String appLogo = "$imagePath/logo.png";
   static const String routeLogo = "$imagePath/route.png";
   static const String emptyImage = "$imagePath/empty.png";
@@ -25,6 +28,8 @@ abstract class ImageAssets {
 }
 
 abstract class SvgAssets {
+  static const String icgoogle = "$svgPath/google_.svg";
+
   static const String icArrow = "$svgPath/ic_arrow.svg";
   static const String icBookmark = "$svgPath/ic_bookmark.svg";
   static const String icExplore = "$svgPath/ic_explore.svg";
@@ -43,4 +48,5 @@ abstract class SvgAssets {
   static const String icPhone = "$svgPath/ic_phone.svg";
   static const String icUser = "$svgPath/ic_user.svg";
   static const String forgotPasswordImage = "$svgPath/forgot_password.svg";
+
 }

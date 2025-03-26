@@ -4,14 +4,18 @@ import 'package:movie_app_route_graduation_project/core/resources/App_colors.dar
 class CustomeizedElevatedButtom extends StatelessWidget {
   Color? bordercolor;
   Color? color;
-  Widget text;
-  Widget? IconImage;
+  String text;
+  Widget? prefixIcon;
+  Widget? suffixIcon;
+  TextStyle? style;
   Function? onpressed;
   CustomeizedElevatedButtom(
       {this.bordercolor,
       this.color,
       required this.text,
-      this.IconImage,
+      this.prefixIcon,
+      this.suffixIcon,
+      this.style,
       this.onpressed});
   @override
   Widget build(BuildContext context) {
@@ -31,16 +35,22 @@ class CustomeizedElevatedButtom extends StatelessWidget {
           if (onpressed != null) {
             onpressed!();
           }
-
         },
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            IconImage ?? SizedBox(),
+            prefixIcon ?? const SizedBox(),
             SizedBox(
               width: width * 0.01,
             ),
-            text
+            Text(
+              text,
+              style: style,
+            ),
+            SizedBox(
+              width: width * 0.01,
+            ),
+            suffixIcon ?? const SizedBox(),
           ],
         ));
   }

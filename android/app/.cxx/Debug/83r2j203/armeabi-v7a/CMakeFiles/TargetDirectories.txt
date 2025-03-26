@@ -1,0 +1,2 @@
+D:/android projects/movie_app_route_graduation_project/movie_app_clone_graduation_project/android/app/.cxx/Debug/83r2j203/armeabi-v7a/CMakeFiles/edit_cache.dir
+D:/android projects/movie_app_route_graduation_project/movie_app_clone_graduation_project/android/app/.cxx/Debug/83r2j203/armeabi-v7a/CMakeFiles/rebuild_cache.dir

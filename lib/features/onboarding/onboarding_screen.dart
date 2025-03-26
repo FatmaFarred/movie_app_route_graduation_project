@@ -1,11 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
+import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
+import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/model/onboarding_model.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/widgets/onboarding_widget.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-class OnBoardingScreen extends StatelessWidget {
+class OnBoardingScreen extends StatefulWidget {
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   final PageController _pageController = PageController();
 
   int currentPage = 0;
@@ -65,6 +74,8 @@ class OnBoardingScreen extends StatelessWidget {
   }
 
   void onNextPage(){
+    Shared_preferences.saveData(key: Routes.onBoardingRoute, value: true);
+
     if (currentPage < onBoardingList.length - 1){
       _pageController.nextPage(
         duration: const Duration(milliseconds: 500),
@@ -79,5 +90,6 @@ class OnBoardingScreen extends StatelessWidget {
         curve: Curves.fastEaseInToSlowEaseOut,);
     }
   }
+
 
 }
