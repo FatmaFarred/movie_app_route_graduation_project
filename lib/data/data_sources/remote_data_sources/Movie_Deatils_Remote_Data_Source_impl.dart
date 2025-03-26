@@ -1,16 +1,14 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
-
+import 'package:injectable/injectable.dart';
 import '../../../Api manager/Api_constant.dart';
 import '../../../Api manager/Api_manager.dart';
 import '../../../Api manager/end_points.dart';
 import '../../../Api manager/errors/failure.dart';
-import '../../../domain/entities/MovieDetailsResponseEntity.dart';
-import '../../../domain/entities/MovieSuggetionResponseEntity.dart';
 import '../../../domain/repositries/data_sources/remote_data_sources/Movie _Details_data_source.dart';
 import '../../model/MovieDetailsResponseDm.dart';
 import '../../model/MovieSuggetionResponseDm.dart' show MovieSuggetionResponseDm;
-
+@Injectable(as: MovieDetailsDataSource)
 class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
    ApiManager apiManager;
 
@@ -32,6 +30,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
             "with_images": true,
           },
         );
+        print ("the uri is ${ApiConstant.baseMovieUrl+EndPoints.MovieDetails}?movie_id=$id");
         var movieDetailsResponse = MovieDetailsResponseDm.fromJson(response.data);
 
 
@@ -65,6 +64,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
 
           },
         );
+
         var movieSuggetionResponse = MovieSuggetionResponseDm.fromJson(response.data);
 
 

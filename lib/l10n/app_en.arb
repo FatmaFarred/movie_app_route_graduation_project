@@ -34,7 +34,7 @@
     "verifyEmail" : "Verify Email",
     "seeMore" : "See More",
     "watch" : "Watch",
-    "screenShots" : "ScreenShots",
+    "screenShots" : "Screen Shots",
     "similar" : "Similar",
     "summary" : "Summary",
     "cast" : "Cast",
@@ -72,6 +72,8 @@
     "updateAccountAlert": "Are you sure you want to update your account?",
     "oldPassword": "Old Password",
     "newPassword": "New Password",
-    "confirmLogout": "Are you sure you want to logout?",
-    "emptySearch": "Please enter a movie name to search."
+    "charactar": "Character",
+    "newPassword": "New Password",
+    "confirmLogout": "Confirm Logout؟?",
+    "emptySearch": "Empty Search."
 }
