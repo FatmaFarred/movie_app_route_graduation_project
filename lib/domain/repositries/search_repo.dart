@@ -1,5 +1,5 @@
-import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
+import '../../data/model/movies/movies_response.dart';
 
 abstract class SearchRepo{
-  Future<List<MovieModel>?> searchMovie(String search);
+  Future<MoviesResponse?> searchMovie(String search, int page);
 }

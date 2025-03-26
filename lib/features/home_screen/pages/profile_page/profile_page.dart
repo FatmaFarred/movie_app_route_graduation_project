@@ -139,9 +139,7 @@ class _ProfilePageState extends State<ProfilePage> {
           body: TabBarView(
             children: [
               TabPage(movieList: state.favoritesList),
-              TabPage(
-                movieList: state.historyList,
-              ),
+              TabPage(movieList: state.historyList),
             ],
           ),
         ),

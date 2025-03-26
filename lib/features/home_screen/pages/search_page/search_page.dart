@@ -20,6 +20,8 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   SearchCubit searchCubit = getIt<SearchCubit>();
 
+  String currentSearchText = "";
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,6 +41,7 @@ class _SearchPageState extends State<SearchPage> {
                           onFieldSubmitted: (search) {
                             if (search != null && search.trim().isNotEmpty) {
                               searchCubit.searchMovie(search);
+                              currentSearchText = search;
                             }
                           },
                         ),
@@ -60,21 +63,35 @@ class _SearchPageState extends State<SearchPage> {
                 },
                 builder: (context, state) {
                   if (state is SearchSuccessState) {
-                    return GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        padding: EdgeInsets.only(
-                            top: 21.h, bottom: 100.h, right: 16.w, left: 16.w),
-                        itemCount: state.searchList!.length,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            childAspectRatio: 191.w / 279.h,
-                            mainAxisSpacing: 8.h,
-                            crossAxisSpacing: 16.w),
-                        itemBuilder: (context, index) {
-                          return CustomizedCardItem(
-                            movie: state.searchList![index],
-                          );
-                        });
+                    return NotificationListener<ScrollNotification>(
+                      onNotification: (ScrollNotification scrollInfo) {
+                        if (scrollInfo.metrics.pixels ==
+                            scrollInfo.metrics.maxScrollExtent) {
+                          searchCubit.searchMovie(currentSearchText,
+                              isLoadMore: true);
+                        }
+                        return true;
+                      },
+                      child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          padding: EdgeInsets.only(
+                              top: 21.h,
+                              bottom: 100.h,
+                              right: 16.w,
+                              left: 16.w),
+                          itemCount: state.searchList!.length,
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 2,
+                                  childAspectRatio: 191.w / 279.h,
+                                  mainAxisSpacing: 8.h,
+                                  crossAxisSpacing: 16.w),
+                          itemBuilder: (context, index) {
+                            return CustomizedCardItem(
+                              movie: state.searchList![index],
+                            );
+                          }),
+                    );
                   }
                   if (state is SearchLoadingState) {
                     return Center(child: CustomLoading());
