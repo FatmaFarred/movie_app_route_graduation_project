@@ -1,11 +1,11 @@
-import 'search_dto.dart';
+import 'movies_dto.dart';
 
 class Data {
   Data({
       num? movieCount, 
       num? limit, 
       num? pageNumber, 
-      List<SearchDTO>? movies,}){
+      List<MoviesDTO>? movies,}){
     _movieCount = movieCount;
     _limit = limit;
     _pageNumber = pageNumber;
@@ -19,18 +19,18 @@ class Data {
     if (json['movies'] != null) {
       _movies = [];
       json['movies'].forEach((v) {
-        _movies?.add(SearchDTO.fromJson(v));
+        _movies?.add(MoviesDTO.fromJson(v));
       });
     }
   }
   num? _movieCount;
   num? _limit;
   num? _pageNumber;
-  List<SearchDTO>? _movies;
+  List<MoviesDTO>? _movies;
 Data copyWith({  num? movieCount,
   num? limit,
   num? pageNumber,
-  List<SearchDTO>? movies,
+  List<MoviesDTO>? movies,
 }) => Data(  movieCount: movieCount ?? _movieCount,
   limit: limit ?? _limit,
   pageNumber: pageNumber ?? _pageNumber,
@@ -39,7 +39,7 @@ Data copyWith({  num? movieCount,
   num? get movieCount => _movieCount;
   num? get limit => _limit;
   num? get pageNumber => _pageNumber;
-  List<SearchDTO>? get movies => _movies;
+  List<MoviesDTO>? get movies => _movies;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};

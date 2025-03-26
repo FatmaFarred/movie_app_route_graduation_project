@@ -1,6 +1,7 @@
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
 import 'package:movie_app_route_graduation_project/domain/repositries/search_repo.dart';
+
+import '../../data/model/movies/movies_response.dart';
 
 
 @injectable
@@ -9,7 +10,7 @@ class GetSearchUseCase {
 
   GetSearchUseCase(this._searchRepo);
 
-  Future<List<MovieModel>?> call(String search) {
-    return _searchRepo.searchMovie(search);
+  Future<MoviesResponse?> call(String search, int page) {
+    return _searchRepo.searchMovie(search, page);
   }
 }

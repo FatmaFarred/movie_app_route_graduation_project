@@ -1,9 +1,9 @@
 import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
 
-import 'Torrents.dart';
+import 'torrents.dart';
 
-class SearchDTO {
-  SearchDTO({
+class MoviesDTO {
+  MoviesDTO({
     num? id,
     String? url,
     String? imdbCode,
@@ -59,7 +59,7 @@ class SearchDTO {
     _dateUploadedUnix = dateUploadedUnix;
   }
 
-  SearchDTO.fromJson(dynamic json) {
+  MoviesDTO.fromJson(dynamic json) {
     _id = json['id'];
     _url = json['url'];
     _imdbCode = json['imdb_code'];
@@ -118,7 +118,7 @@ class SearchDTO {
   List<Torrents>? _torrents;
   String? _dateUploaded;
   num? _dateUploadedUnix;
-  SearchDTO copyWith({
+  MoviesDTO copyWith({
     num? id,
     String? url,
     String? imdbCode,
@@ -146,7 +146,7 @@ class SearchDTO {
     String? dateUploaded,
     num? dateUploadedUnix,
   }) =>
-      SearchDTO(
+      MoviesDTO(
         id: id ?? _id,
         url: url ?? _url,
         imdbCode: imdbCode ?? _imdbCode,
