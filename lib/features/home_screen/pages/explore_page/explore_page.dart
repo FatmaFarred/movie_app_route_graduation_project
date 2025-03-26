@@ -12,14 +12,24 @@ import '../../../../core/resources/app_colors.dart';
 import '../../../../l10n/app_translations.dart';
 import 'explore_widgets.dart';
 
-class ExplorePage extends StatelessWidget {
+class ExplorePage extends StatefulWidget {
+  @override
+  State<ExplorePage> createState() => _ExplorePageState();
+}
+
+class _ExplorePageState extends State<ExplorePage> {
   ExploreCubit exploreCubit = getIt<ExploreCubit>();
+
+  int genreIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    exploreCubit.getGenre(AppConstants.genresList[genreIndex]);
+  }
 
   @override
   Widget build(BuildContext context) {
-
-    exploreCubit.getGenre(AppConstants.genresList[0]);
-
     return DefaultTabController(
       length: AppConstants.genresList.length,
       child: SafeArea(
@@ -30,7 +40,8 @@ class ExplorePage extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.only(top: 10.h),
                   child: TabBar(
-                    labelPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
+                    labelPadding:
+                        EdgeInsets.symmetric(horizontal: 8.w, vertical: 8.h),
                     indicatorPadding: EdgeInsets.symmetric(vertical: 8.h),
                     tabAlignment: TabAlignment.start,
                     isScrollable: true,
@@ -45,6 +56,7 @@ class ExplorePage extends StatelessWidget {
                         .map((genre) => tabItem(genre))
                         .toList(),
                     onTap: (index) {
+                      genreIndex = index;
                       exploreCubit.getGenre(AppConstants.genresList[index]);
                     },
                   ),
@@ -67,19 +79,31 @@ class ExplorePage extends StatelessWidget {
               },
               builder: (context, state) {
                 if (state is ExploreSuccessState) {
-                  return GridView.builder(
-                    padding: EdgeInsets.only(top: 20.h, bottom: 100.h, right: 8.w, left: 8.w),
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: state.moviesList!.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      childAspectRatio: 189.w / 279.h,
-                      crossAxisSpacing: 16.w,
-                      mainAxisSpacing: 8.h,
-                    ),
-                    itemBuilder: (context, index) {
-                      return CustomizedCardItem(movie: state.moviesList![index]);
+                  return NotificationListener<ScrollNotification>(
+                    onNotification: (ScrollNotification scrollInfo) {
+                      if (scrollInfo.metrics.pixels ==
+                          scrollInfo.metrics.maxScrollExtent) {
+                        exploreCubit.getGenre(AppConstants.genresList[genreIndex],
+                            isLoadMore: true);
+                      }
+                      return true;
                     },
+                    child: GridView.builder(
+                      padding: EdgeInsets.only(
+                          top: 20.h, bottom: 100.h, right: 8.w, left: 8.w),
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: state.moviesList!.length,
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        childAspectRatio: 189.w / 279.h,
+                        crossAxisSpacing: 16.w,
+                        mainAxisSpacing: 8.h,
+                      ),
+                      itemBuilder: (context, index) {
+                        return CustomizedCardItem(
+                            movie: state.moviesList![index]);
+                      },
+                    ),
                   );
                 }
                 return CustomLoading();

@@ -1,5 +1,5 @@
-import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
+import '../../data/model/movies/movies_response.dart';
 
 abstract class GenreRepo{
-  Future<List<MovieModel>?> getGenre(String genre);
+  Future<MoviesResponse?> getGenre(String genre, int page);
 }

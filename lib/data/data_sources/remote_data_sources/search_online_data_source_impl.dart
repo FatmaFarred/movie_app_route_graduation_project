@@ -1,7 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/data/data_sources/search_online_data_source.dart';
-import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
 
 import '../../../Api manager/Api_constant.dart';
 import '../../../Api manager/Api_manager.dart';
@@ -16,7 +15,7 @@ class SearchOnlineDataSourceImpl implements SearchOnlineDataSource {
   SearchOnlineDataSourceImpl(this._apiManager);
 
   @override
-  Future<List<MovieModel>?> searchMovie(String search) async {
+  Future<MoviesResponse?> searchMovie(String search, int page) async {
     final List<ConnectivityResult> connectivityResult =
         await Connectivity().checkConnectivity();
     if (connectivityResult.contains(ConnectivityResult.wifi) ||
@@ -24,12 +23,10 @@ class SearchOnlineDataSourceImpl implements SearchOnlineDataSource {
       var response = await _apiManager.getData(
           url: ApiConstant.baseMovieUrl,
           endPoint: EndPoints.movieListApi,
-          queryParameters: {"query_term": search});
+          queryParameters: {"query_term": search, "page": page});
       var searchResponse = MoviesResponse.fromJson(response.data);
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
-        return searchResponse.data?.movies
-            ?.map((searchDto) => searchDto.toMovieModel())
-            .toList();
+        return searchResponse;
       } else {
         throw serverError(errorMessage: searchResponse.statusMessage);
       }

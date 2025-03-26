@@ -1,5 +1,5 @@
-import '../model/movie/movie_model.dart';
+import '../model/movies/movies_response.dart';
 
 abstract class GenreOnlineDataSource{
-  Future<List<MovieModel>?> getGenre(String genre);
+  Future<MoviesResponse?> getGenre(String genre, int page);
 }
