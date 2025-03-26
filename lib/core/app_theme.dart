@@ -30,28 +30,7 @@ class AppTheme {
             fontWeight: FontWeightManager.regular,
             fontSize: FontSize.s20,
             color: AppColors.whiteColor),
-      ));
-    scaffoldBackgroundColor: AppColors.blackColor,
-    appBarTheme: const AppBarTheme(
-        centerTitle: true,
-        backgroundColor: AppColors.blackColor,
-        iconTheme: IconThemeData(color: AppColors.orangeColor)),
-    textTheme: const TextTheme(
-        bodyLarge: TextStyle(
-            fontFamily: FontConstants.interFont,
-            fontWeight: FontWeightManager.medium,
-            fontSize: FontSize.s36,
-            color: AppColors.whiteColor),
-        bodyMedium: TextStyle(
-            fontFamily: FontConstants.interFont,
-            fontWeight: FontWeightManager.bold,
-            fontSize: FontSize.s24,
-            color: AppColors.whiteColor),
-        bodySmall: TextStyle(
-            fontFamily: FontConstants.interFont,
-            fontWeight: FontWeightManager.regular,
-            fontSize: FontSize.s20,
-            color: AppColors.whiteColor)),
+      ),
     inputDecorationTheme: InputDecorationTheme(
       prefixIconColor: AppColors.whiteColor,
       suffixIconColor: AppColors.whiteColor,
