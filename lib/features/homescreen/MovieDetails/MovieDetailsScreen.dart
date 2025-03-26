@@ -12,6 +12,7 @@ import 'package:movie_app_route_graduation_project/features/homescreen/MovieDeta
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsViewModel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionScreen.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/Textwidget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cast%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/geners%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
@@ -92,12 +93,13 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                     iconWithTextContainerWidget(imagePath: SvgAssets.icRuntime, title: "${state?.response?.data?.movie?.runtime ?? ""}"),
                     iconWithTextContainerWidget(imagePath: SvgAssets.icRate, title: "${state?.response?.data?.movie?.rating ?? ""}")],),
                 ),
-                Text(AppLocalizations.of(context)!.screenShots,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                Text(AppLocalizations.of(context)!.screenShots,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont )),
                   ScreenShotWidget(imagePath: state?.response?.data?.movie?.mediumScreenshotImage1??"",height:166.h ,),
                   ScreenShotWidget(imagePath: state?.response?.data?.movie?.mediumScreenshotImage2??"",height:166.h),
                   ScreenShotWidget(imagePath: state?.response?.data?.movie?.mediumScreenshotImage3??"",height:166.h),
                   SizedBox(height:9.h ,),
-                  Text(AppLocalizations.of(context)!.similar,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont ),),
+                  TextWidget(text: AppLocalizations.of(context)!.similar,style: getBoldStyle(color: AppColors.whiteColor,fontSize: 24,fontFamily:FontConstants.robotoFont )),
+
                   SizedBox(height:9.h ,),
                   MovieSuggetionScreen(),
                   Padding(
