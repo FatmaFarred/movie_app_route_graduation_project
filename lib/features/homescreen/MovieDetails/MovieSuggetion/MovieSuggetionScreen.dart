@@ -128,10 +128,8 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
     );
   }
 
-  /*void OnErrorPressed() {
-    final movieId = ModalRoute.of(context)?.settings.arguments ;
-    if (movieId != null) {
-      movieSuggetionViewModel.loadMovieSuggetion(movieId); // Retry the method
-    }
-  }*/
+  void OnErrorPressed() {
+      movieSuggetionViewModel.loadMovieSuggetion(widget.movieId); // Retry the method
+
+  }
 }

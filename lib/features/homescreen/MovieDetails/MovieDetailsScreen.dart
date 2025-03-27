@@ -221,15 +221,13 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
   }
 
   // Retry logic
-  /*void OnErrorPressed() {
-    final movieId = ModalRoute.of(context)?.settings.arguments ;
-    if (movieId != null) {
-      movieDetailsViewModel.loadMovieDetailsScreen(movieId);  // Re-call the load method
-    }
-  }*/
+  void OnErrorPressed() {
+
+      movieDetailsViewModel.loadMovieDetailsScreen(widget.movieId);  // Re-call the load method
+
+  }
 
   void OnWatchClick(SuccessState state) async {
-    // Navigate to the Movie WebView with the URL
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) =>
           MovieWebView(
