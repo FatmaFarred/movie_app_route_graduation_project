@@ -7,6 +7,7 @@ import 'home_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "home";
+  static final GlobalKey<_HomeScreenState> homeScreenKey = GlobalKey();
 
   const HomeScreen({super.key});
 
@@ -16,6 +17,12 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   int selectedIndex = 0;
+
+  void changeTab(int index) {
+    setState(() {
+      selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     showSelectedLabels: false,
                     showUnselectedLabels: false,
                     onTap: (index) {
-                      setState(() {
-                        selectedIndex = index;
-                      });
+                      changeTab(index);
                     },
                     type: BottomNavigationBarType.fixed,
                     currentIndex: selectedIndex,
