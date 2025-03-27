@@ -8,7 +8,7 @@ import '../repositries/reposotries/movie_details_repositry.dart';
 class MovieDetailsUseCase {
   MovieDetailsRepositry  movieDetailsRepositry ;
   MovieDetailsUseCase ({required this.movieDetailsRepositry});
-  Future <Either<Failure,MovieDetailsResponseEntity>> Invoke (int id ){
+  Future <Either<Failure,MovieDetailsResponseEntity>> Invoke (String id ){
      return movieDetailsRepositry.getMovieDeatials(id);
   }
 

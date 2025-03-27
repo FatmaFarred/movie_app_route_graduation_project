@@ -1,6 +1,6 @@
 class MovieModel {
   MovieModel({
-    int? movieId,
+    String? movieId,
     String? name,
     double? rating,
     String? imageURL,
@@ -14,21 +14,19 @@ class MovieModel {
   }
 
   MovieModel.fromJson(dynamic json) {
-    _movieId = json['movieId'] is String ? int.tryParse(json['movieId']) : json['movieId'];
+    _movieId = json['movieId'];
     _name = json['name'];
     _rating = json['rating'];
     _imageURL = json['imageURL'];
     _year = json['year'];
   }
-
-  int? _movieId;
+  String? _movieId;
   String? _name;
   double? _rating;
   String? _imageURL;
   String? _year;
-
   MovieModel copyWith({
-    int? movieId,
+    String? movieId,
     String? name,
     double? rating,
     String? imageURL,
@@ -41,8 +39,7 @@ class MovieModel {
         imageURL: imageURL ?? _imageURL,
         year: year ?? _year,
       );
-
-  int? get movieId => _movieId;
+  String? get movieId => _movieId;
   String? get name => _name;
   double? get rating => _rating;
   String? get imageURL => _imageURL;
@@ -57,4 +54,4 @@ class MovieModel {
     map['year'] = _year;
     return map;
   }
-} 
+}

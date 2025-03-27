@@ -183,7 +183,6 @@ class _PlaywidgetState extends State<Playwidget> {
   }
 
   void OnWatchBotton1() async {
-    // Navigate to the Movie WebView with the URL
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) =>
           MovieWebView(
@@ -194,7 +193,6 @@ class _PlaywidgetState extends State<Playwidget> {
     var movie = widget.state?.response?.data?.movie;
 
     if (movie != null) {
-      // Convert the movie entity to a MovieModel
       var historyMovie = movie.toMovieModel();
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String movieJson = jsonEncode(historyMovie.toJson());

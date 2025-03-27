@@ -176,6 +176,11 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i90.RemoveFromFavoriteUseCase(gh<_i414.FavoritesRepo>()));
     gh.factory<_i838.ChangePasswordUseCase>(
         () => _i838.ChangePasswordUseCase(gh<_i874.ChangePasswordRepo>()));
+    gh.factory<_i334.MovieDetailsViewModel>(() => _i334.MovieDetailsViewModel(
+          movieDetailsUseCase: gh<_i729.MovieDetailsUseCase>(),
+          addToHistoryUseCase: gh<_i889.AddToHistoryUseCase>(),
+          getMovieFromHistoryUseCase: gh<_i538.GetMovieFromHistoryUseCase>(),
+        ));
     gh.factory<_i301.LoginViewModel>(
         () => _i301.LoginViewModel(useCase: gh<_i467.LoginUseCase>()));
     gh.factory<_i291.MovieSuggetionViewModel>(() =>
@@ -194,10 +199,6 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1063.ChangePasswordCubit>(
         () => _i1063.ChangePasswordCubit(gh<_i838.ChangePasswordUseCase>()));
-    gh.factory<_i334.MovieDetailsViewModel>(() => _i334.MovieDetailsViewModel(
-          movieDetailsUseCase: gh<_i729.MovieDetailsUseCase>(),
-          addToHistoryUseCase: gh<_i889.AddToHistoryUseCase>(),
-        ));
     gh.factory<_i978.ProfileCubit>(() => _i978.ProfileCubit(
           gh<_i305.GetProfileUseCase>(),
           gh<_i847.GetAllFavoritesUseCase>(),

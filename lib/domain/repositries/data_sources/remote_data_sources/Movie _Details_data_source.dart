@@ -6,8 +6,8 @@ import '../../../entities/MovieSuggetionResponseEntity.dart';
 
 abstract class MovieDetailsDataSource {
 
-  Future <Either<Failure,MovieDetailsResponseEntity>> getMovieDeatials(int id );
+  Future <Either<Failure,MovieDetailsResponseEntity>> getMovieDeatials(String id );
 
-  Future <Either<Failure,MovieSuggetionResponseEntity>> getMovieSuggetion(int id );
+  Future <Either<Failure,MovieSuggetionResponseEntity>> getMovieSuggetion(String id );
 
 }

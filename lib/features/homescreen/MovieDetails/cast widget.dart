@@ -41,20 +41,17 @@ class CastWidget extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   height: 70.h,
-                  width: 70.h,
+                  width:70.h ,
+
                   imageUrl: imagePath,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(color: AppColors.whiteColor),
-                  errorWidget: (context, url, error) => Icon(
-                    Icons.error,
-                    color: AppColors.whiteColor,
-                  ),
-                  // You can use a placeholder image here as a fallback
-                  placeholder: (context, url) =>
-                      Image.asset(SvgAssets.placeholderImage),
+                      CircularProgressIndicator(color:AppColors.whiteColor),
+                  errorWidget: (context, url, error) => Icon(Icons.error,color:AppColors.whiteColor),
                 ),
               ),
-            ),
+      ),
+
+
             SizedBox(width: 15.w), // Added space between image and text
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +68,6 @@ class CastWidget extends StatelessWidget {
     );
   }
 
-  // Extracted a reusable method to handle text widget styling
   Widget _buildText(BuildContext context, String text) {
     return DefaultTextStyle(
       style: getRegularStyle(

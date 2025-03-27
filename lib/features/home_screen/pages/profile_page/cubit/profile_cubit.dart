@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:hive/hive.dart';
 import 'package:injectable/injectable.dart';
 
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_all_favorites_use_case.dart';
@@ -34,10 +35,15 @@ class ProfileCubit extends Cubit<ProfileState> {
   Future<void> loadProfile() async {
     emit(ProfileLoadingState());
     String myToken = await Shared_preferences.getData(key: "token") ?? "";
+
+
+
+
+
     try {
       var profileResponse = await _getProfileUseCase(token);
       var favoritesResponse = await _getAllFavoritesUseCase(token);
-      var historyResponse = await _getMovieFromHistoryUseCase();
+      var historyResponse   =await getMovieFromHistory();
       emit(ProfileSuccessState(
           profileData: profileResponse,
           favoritesList: favoritesResponse,
@@ -53,5 +59,17 @@ class ProfileCubit extends Cubit<ProfileState> {
 
   Future<void> logout(BuildContext context) async {
     await Shared_preferences.removeData(key: "token");
+  }
+
+  Future<List<MovieModel>?> getMovieFromHistory() async {
+    var box = await Hive.openBox("MovieBox");
+
+    List<MovieModel> historyMovies = [];
+    for (var movie in box.values) {
+      if (movie is MovieModel) {
+        historyMovies.add(movie);
+      }
+    }
+    return historyMovies ;
   }
 }

@@ -5,9 +5,9 @@ import 'package:movie_app_route_graduation_project/domain/entities/MovieSuggetio
 
 abstract class MovieDetailsRepositry {
 
-Future <Either<Failure,MovieDetailsResponseEntity>> getMovieDeatials(int id );
+Future <Either<Failure,MovieDetailsResponseEntity>> getMovieDeatials(String id );
 
-Future <Either<Failure,MovieSuggetionResponseEntity>> getMovieSuggetion(int id );
+Future <Either<Failure,MovieSuggetionResponseEntity>> getMovieSuggetion(String id );
 
 }
 

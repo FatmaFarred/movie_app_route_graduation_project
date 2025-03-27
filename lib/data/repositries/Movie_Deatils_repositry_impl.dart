@@ -11,14 +11,14 @@ class MovieDetailsRepositryImpl implements MovieDetailsRepositry{
   MovieDetailsRepositryImpl ({required this.movieDetailsDataSource});
 
   @override
-  Future<Either<Failure, MovieDetailsResponseEntity>> getMovieDeatials(int id)async {
+  Future<Either<Failure, MovieDetailsResponseEntity>> getMovieDeatials(String id)async {
    var either = await movieDetailsDataSource.getMovieDeatials(id);
     return either.fold((error)=>left(error), (response)=>right(response));
   }
 
 
   @override
-  Future<Either<Failure, MovieSuggetionResponseEntity>> getMovieSuggetion(int id)async {
+  Future<Either<Failure, MovieSuggetionResponseEntity>> getMovieSuggetion(String id)async {
     var either = await movieDetailsDataSource.getMovieSuggetion(id);
     return either.fold((error)=>left(error), (response)=>right(response));
 

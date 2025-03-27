@@ -15,7 +15,7 @@ import '../../../../core/resources/style manager.dart';
 import '../screen shot widegt.dart';
 
 class MovieSuggetionScreen extends StatefulWidget {
-  final int movieId;
+  final String movieId;
   MovieSuggetionScreen ({required this.movieId});
   @override
   State<MovieSuggetionScreen> createState() => _MovieSuggetionScreenState();
@@ -117,7 +117,7 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
             itemCount: suggetionlist.length,
             itemBuilder: (context, index) {
               return Moviesuggetionwidget(
-                movieid:suggetionlist[index]?.id?.toInt() ?? 0 ,
+                movieid:"${suggetionlist[index].id??""}" ,
                 imagePath: suggetionlist[index]?.mediumCoverImage ?? "",
                 title: "${suggetionlist[index]?.rating ?? ""}",
               );

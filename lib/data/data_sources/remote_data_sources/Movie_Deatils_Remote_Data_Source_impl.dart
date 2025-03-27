@@ -16,7 +16,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
 
 
   @override
-  Future<Either<Failure, MovieDetailsResponseDm>> getMovieDeatials(int id) async{
+  Future<Either<Failure, MovieDetailsResponseDm>> getMovieDeatials(String id) async{
     try {
       final List<ConnectivityResult> connectivityResult = await Connectivity().checkConnectivity();
       if (connectivityResult.contains(ConnectivityResult.wifi) ||
@@ -50,7 +50,7 @@ class MovieDetailsRemoteDataSourceImpl implements MovieDetailsDataSource {
   }
 
   @override
-  Future<Either<Failure, MovieSuggetionResponseDm>> getMovieSuggetion(int id) async {
+  Future<Either<Failure, MovieSuggetionResponseDm>> getMovieSuggetion(String id) async {
     try {
       final List<ConnectivityResult> connectivityResult = await Connectivity().checkConnectivity();
       if (connectivityResult.contains(ConnectivityResult.wifi) ||

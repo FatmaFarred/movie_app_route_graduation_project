@@ -152,7 +152,7 @@ class MovieEntity {
 
   MovieModel toMovieModel() {
     return MovieModel(
-        movieId: id?.toInt(),
+        movieId: "$id",
         name: title,
         rating: rating?.toDouble(),
         imageURL: mediumCoverImage,

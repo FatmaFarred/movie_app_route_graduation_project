@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hive/hive.dart';
 import 'package:movie_app_route_graduation_project/Api%20manager/dependency%20injection/Di.dart';
 import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/Customized%20Elevated%20bottom.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
@@ -29,7 +30,7 @@ import '../../../core/customized widgets/reusable widgets/Cutomized_Alert_Dialog
 import '../../../core/resources/font_manager.dart';
 
 class Moviedetailsscreen extends StatefulWidget {
-  final int movieId;
+  final String movieId;
   Moviedetailsscreen ({required this.movieId});
 
   @override
@@ -166,7 +167,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                     itemBuilder: (context, index) {
                       return CastWidget(
                         imagePath: castlist![index].urlSmallImage ?? "",
-                        Name: castlist![index].name ?? "",
+                        name: castlist![index].name ?? "",
                         character: castlist![index].characterName ?? "",
                       );
                     }),
@@ -239,15 +240,21 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
     var movie = state?.response?.data?.movie;
 
     if (movie != null) {
-      // Convert the movie entity to a MovieModel
+
       var historyMovie = movie.toMovieModel();
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+
       String movieJson = jsonEncode(historyMovie.toJson());
 
-      await prefs.setString('movie', movieJson);
-      print("Movie saved to SharedPreferences");
-      var result = prefs.get('movie');
-      print("ssssssssssssssss$result");
+      movieDetailsViewModel.addToHistory(historyMovie);
     }
-  }
-}
+
+
+      print("Movie saved to SharedPreferences");
+
+    }
+
+
+
+    }
+
+

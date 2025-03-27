@@ -80,7 +80,7 @@ class _CustomizedCardItemState extends State<CustomizedCardItem> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Moviedetailsscreen(movieId: widget.movie.movieId??0),
+        builder: (context) => Moviedetailsscreen(movieId: widget.movie.movieId??""),
       ),
     );
 

@@ -12,7 +12,7 @@ import '../Textwidget.dart';
 class Moviesuggetionwidget extends StatelessWidget {
   String imagePath;
   String title;
-  final int movieid;
+  final String movieid;
 
   Moviesuggetionwidget({required this.imagePath, required this.title, required this.movieid});
 

@@ -9,7 +9,7 @@ import '../repositries/reposotries/movie_details_repositry.dart';
 class MovieSuggetionUseCaseUseCase {
   MovieDetailsRepositry  movieDetailsRepositry ;
   MovieSuggetionUseCaseUseCase ({required this.movieDetailsRepositry});
-  Future <Either<Failure,MovieSuggetionResponseEntity>> Invoke (int id ){
+  Future <Either<Failure,MovieSuggetionResponseEntity>> Invoke (String id ){
     return movieDetailsRepositry.getMovieSuggetion(id);
   }
 
