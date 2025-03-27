@@ -94,7 +94,7 @@ class DataDm extends DataEntity  {
 /// date_uploaded : "2015-10-31 20:47:35"
 /// date_uploaded_unix : 1446320855
 
-class MovieDm extends  MovieEntity {
+class MovieDm extends MovieEntity {
   MovieDm({
     super.id,
     super.url,
@@ -125,9 +125,9 @@ class MovieDm extends  MovieEntity {
     super.largeScreenshotImage2,
     super.largeScreenshotImage3,
     super.cast,
-    super.torrents,
     super.dateUploaded,
-    super.dateUploadedUnix,});
+    super.dateUploadedUnix,
+  });
 
   MovieDm.fromJson(dynamic json) {
     id = json['id'];
@@ -164,12 +164,7 @@ class MovieDm extends  MovieEntity {
         cast?.add(CastDm.fromJson(v));
       });
     }
-    if (json['torrents'] != null) {
-      torrents = [];
-      json['torrents'].forEach((v) {
-        torrents?.add(TorrentsDm.fromJson(v));
-      });
-    }
+
     dateUploaded = json['date_uploaded'];
     dateUploadedUnix = json['date_uploaded_unix'];
   }
@@ -183,7 +178,45 @@ class MovieDm extends  MovieEntity {
         year: "$year"
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'url': url,
+      'imdb_code': imdbCode,
+      'title': title,
+      'title_english': titleEnglish,
+      'title_long': titleLong,
+      'slug': slug,
+      'year': year,
+      'rating': rating,
+      'runtime': runtime,
+      'genres': genres,
+      'like_count': likeCount,
+      'description_intro': descriptionIntro,
+      'description_full': descriptionFull,
+      'yt_trailer_code': ytTrailerCode,
+      'language': language,
+      'mpa_rating': mpaRating,
+      'background_image': backgroundImage,
+      'background_image_original': backgroundImageOriginal,
+      'small_cover_image': smallCoverImage,
+      'medium_cover_image': mediumCoverImage,
+      'large_cover_image': largeCoverImage,
+      'medium_screenshot_image1': mediumScreenshotImage1,
+      'medium_screenshot_image2': mediumScreenshotImage2,
+      'medium_screenshot_image3': mediumScreenshotImage3,
+      'large_screenshot_image1': largeScreenshotImage1,
+      'large_screenshot_image2': largeScreenshotImage2,
+      'large_screenshot_image3': largeScreenshotImage3,
+      'date_uploaded': dateUploaded,
+      'date_uploaded_unix': dateUploadedUnix,
+    };
+  }
 }
+
+
+
 
 /// url : "https://yts.mx/torrent/download/8619B57A3F39F1B49A1A698EA5400A883928C0A2"
 /// hash : "8619B57A3F39F1B49A1A698EA5400A883928C0A2"

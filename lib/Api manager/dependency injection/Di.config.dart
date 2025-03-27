@@ -156,8 +156,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i467.LoginUseCase(loginRepositry: gh<_i699.LoginRepositry>()));
     gh.factory<_i1021.SearchRepo>(
         () => _i61.SearchRepoImpl(gh<_i456.SearchOnlineDataSource>()));
-    gh.factory<_i334.MovieDetailsViewModel>(() => _i334.MovieDetailsViewModel(
-        movieDetailsUseCase: gh<_i729.MovieDetailsUseCase>()));
     gh.factory<_i1005.ExploreCubit>(
         () => _i1005.ExploreCubit(gh<_i486.GetGenreUseCase>()));
     gh.factory<_i225.RegisterViewModel>(() =>
@@ -196,6 +194,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i1063.ChangePasswordCubit>(
         () => _i1063.ChangePasswordCubit(gh<_i838.ChangePasswordUseCase>()));
+    gh.factory<_i334.MovieDetailsViewModel>(() => _i334.MovieDetailsViewModel(
+          movieDetailsUseCase: gh<_i729.MovieDetailsUseCase>(),
+          addToHistoryUseCase: gh<_i889.AddToHistoryUseCase>(),
+        ));
     gh.factory<_i978.ProfileCubit>(() => _i978.ProfileCubit(
           gh<_i305.GetProfileUseCase>(),
           gh<_i847.GetAllFavoritesUseCase>(),

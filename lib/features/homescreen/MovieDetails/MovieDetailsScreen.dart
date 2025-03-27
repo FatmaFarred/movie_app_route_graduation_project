@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,6 +21,8 @@ import 'package:movie_app_route_graduation_project/features/homescreen/MovieDeta
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/screen%20shot%20widegt.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/watch%20widget.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/webViewWidgetViewer.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:video_player/video_player.dart';
 
 import '../../../core/customized widgets/reusable widgets/Cutomized_Alert_Dialogue.dart';
@@ -77,7 +81,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
 
     return Column(
       children: [
-        Playwidget(state: state),
+        Playwidget(state: state,OnWatchClick:OnWatchClick ,),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: Column(
@@ -222,4 +226,28 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
       movieDetailsViewModel.loadMovieDetailsScreen(movieId);  // Re-call the load method
     }
   }*/
+
+  void OnWatchClick(SuccessState state) async {
+    // Navigate to the Movie WebView with the URL
+    Navigator.of(context).push(MaterialPageRoute(
+      builder: (context) =>
+          MovieWebView(
+            movieUrl: state?.response?.data?.movie?.url ?? "",
+          ),
+    ));
+
+    var movie = state?.response?.data?.movie;
+
+    if (movie != null) {
+      // Convert the movie entity to a MovieModel
+      var historyMovie = movie.toMovieModel();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String movieJson = jsonEncode(historyMovie.toJson());
+
+      await prefs.setString('movie', movieJson);
+      print("Movie saved to SharedPreferences");
+      var result = prefs.get('movie');
+      print("ssssssssssssssss$result");
+    }
+  }
 }

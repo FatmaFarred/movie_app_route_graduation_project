@@ -57,4 +57,4 @@ class MovieModel {
     map['year'] = _year;
     return map;
   }
-}
+} 

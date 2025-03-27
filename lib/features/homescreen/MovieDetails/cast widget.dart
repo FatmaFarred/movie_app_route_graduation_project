@@ -17,7 +17,7 @@ class CastWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Material(
-      color: AppColors.darkBlackColor,
+      color: AppColors.darkBlackColor ,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5.h),
         height: 92.h,
@@ -33,7 +33,7 @@ class CastWidget extends StatelessWidget {
                 fit: BoxFit.fill,
                 height: 70.h,
                 width:70.h ,
-      
+
                 imageUrl: imagePath,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     CircularProgressIndicator(color:AppColors.whiteColor),
@@ -53,7 +53,7 @@ class CastWidget extends StatelessWidget {
               ),
                 child: Text(
                   "${AppLocalizations.of(context)!.name}: $Name",
-      
+
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
@@ -67,7 +67,7 @@ class CastWidget extends StatelessWidget {
                 ),
                 child: Text(
                   "${AppLocalizations.of(context)!.charactar}: $character",
-      
+
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
