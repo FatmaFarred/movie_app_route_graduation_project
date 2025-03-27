@@ -14,7 +14,7 @@ class MovieModel {
   }
 
   MovieModel.fromJson(dynamic json) {
-    _movieId = json['movieId'] is String ? int.tryParse(json['movieId']) : json['movieId']; // Convert to int if it's a string
+    _movieId = json['movieId'] is String ? int.tryParse(json['movieId']) : json['movieId'];
     _name = json['name'];
     _rating = json['rating'];
     _imageURL = json['imageURL'];

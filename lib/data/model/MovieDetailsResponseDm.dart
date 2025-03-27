@@ -176,7 +176,7 @@ class MovieDm extends  MovieEntity {
 
   MovieModel toMovieModel() {
     return MovieModel(
-        movieId: id?.toInt(),  // Convert num? to int?
+        movieId: id?.toInt(),
         name: title,
         rating: rating?.toDouble(),
         imageURL: mediumCoverImage,
