@@ -22,7 +22,7 @@ class CastWidget extends StatelessWidget {
         margin: EdgeInsets.symmetric(vertical: 5.h),
         height: 92.h,
        width: 398.w,
-       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),color: AppColors.darkGrayColor),
+       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: AppColors.darkGrayColor),
         child: Row(crossAxisAlignment: CrossAxisAlignment.center,
           children: [
           Padding(
