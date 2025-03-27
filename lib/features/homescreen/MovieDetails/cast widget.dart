@@ -9,74 +9,79 @@ import '../../../core/resources/assets_manager.dart';
 import '../../../core/resources/font_manager.dart';
 
 class CastWidget extends StatelessWidget {
-  String imagePath ;
-  String Name;
-  String character ;
+  final String imagePath;
+  final String name;
+  final String character;
 
-  CastWidget ({required this.imagePath, required this.Name, required this.character});
+  CastWidget({
+    required this.imagePath,
+    required this.name,
+    required this.character,
+  });
+
   @override
   Widget build(BuildContext context) {
-    return  Material(
-      color: AppColors.darkBlackColor ,
+    return Material(
+      color: AppColors.darkBlackColor,
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 5.h),
         height: 92.h,
-       width: 398.w,
-       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15),color: AppColors.darkGrayColor),
-        child: Row(crossAxisAlignment: CrossAxisAlignment.center,
+        width: 398.w,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: AppColors.darkGrayColor,
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-          Padding(
-            padding:  EdgeInsets.symmetric(horizontal:15.w ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: CachedNetworkImage(
-                fit: BoxFit.fill,
-                height: 70.h,
-                width:70.h ,
-
-                imageUrl: imagePath,
-                progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(color:AppColors.whiteColor),
-                errorWidget: (context, url, error) => Icon(Icons.error,color:AppColors.whiteColor),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15.w),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: CachedNetworkImage(
+                  fit: BoxFit.fill,
+                  height: 70.h,
+                  width: 70.h,
+                  imageUrl: imagePath,
+                  progressIndicatorBuilder: (context, url, downloadProgress) =>
+                      CircularProgressIndicator(color: AppColors.whiteColor),
+                  errorWidget: (context, url, error) => Icon(
+                    Icons.error,
+                    color: AppColors.whiteColor,
+                  ),
+                  // You can use a placeholder image here as a fallback
+                  placeholder: (context, url) =>
+                      Image.asset(SvgAssets.placeholderImage),
+                ),
               ),
             ),
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              DefaultTextStyle(
-                style: getRegularStyle(
-            color: AppColors.whiteColor,
-            fontSize: 16,
-             fontFamily: FontConstants.robotoFont,
-              ),
-                child: Text(
-                  "${AppLocalizations.of(context)!.name}: $Name",
-
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-              SizedBox(height: 5.h),
-              DefaultTextStyle(
-                style: getRegularStyle(
-                  color: AppColors.whiteColor,
-                  fontSize: 16,
-                  fontFamily: FontConstants.robotoFont,
-                ),
-                child: Text(
-                  "${AppLocalizations.of(context)!.charactar}: $character",
-
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ),
-            ],
-          ),
-        ],
+            SizedBox(width: 15.w), // Added space between image and text
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildText(context, "${AppLocalizations.of(context)!.name}: $name"),
+                SizedBox(height: 5.h),
+                _buildText(context, "${AppLocalizations.of(context)!.charactar}: $character"),
+              ],
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  // Extracted a reusable method to handle text widget styling
+  Widget _buildText(BuildContext context, String text) {
+    return DefaultTextStyle(
+      style: getRegularStyle(
+        color: AppColors.whiteColor,
+        fontSize: 16,
+        fontFamily: FontConstants.robotoFont,
+      ),
+      maxLines: 1,
+      overflow: TextOverflow.ellipsis,
+      child: Text(text),
     );
   }
 }
