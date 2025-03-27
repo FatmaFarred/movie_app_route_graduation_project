@@ -30,5 +30,47 @@ class AppTheme {
             fontWeight: FontWeightManager.regular,
             fontSize: FontSize.s20,
             color: AppColors.whiteColor),
-      ));
+      ),
+    inputDecorationTheme: InputDecorationTheme(
+      prefixIconColor: AppColors.whiteColor,
+      suffixIconColor: AppColors.whiteColor,
+      fillColor: AppColors.darkGrayColor,
+      filled: true,
+      contentPadding: const EdgeInsets.all(16),
+      hintStyle: const TextStyle(
+          fontSize: 16,
+          color: AppColors.whiteColor,
+          fontWeight: FontWeight.w500),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkGrayColor, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkGrayColor, width: 1),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkGrayColor, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.redColor, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.redColor, width: 1),
+      ),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: AppColors.orangeColor,
+        foregroundColor: AppColors.blackColor,
+        padding: const EdgeInsets.all(16),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16),
+        ),
+      ),
+    ),
+  );
 }

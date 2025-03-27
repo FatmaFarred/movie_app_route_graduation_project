@@ -13,6 +13,7 @@ class CustomizedCardItem extends StatefulWidget {
 
   CustomizedCardItem({
     required this.movie,
+    super.key,
   });
 
   @override
@@ -86,6 +87,7 @@ class _CustomizedCardItemState extends State<CustomizedCardItem> {
 
   }
 }
+
 
 
 class FilmCardItem extends StatelessWidget {
