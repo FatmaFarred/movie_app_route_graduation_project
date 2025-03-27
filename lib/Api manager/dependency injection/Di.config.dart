@@ -11,7 +11,7 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 
-import '../../data/data_sources/carousel_online_date_source.dart' as _iXYZ;
+import '../../data/data_sources/carousel_online_date_source.dart' as _i997;
 import '../../data/data_sources/change_password_online_data_source.dart'
     as _i222;
 import '../../data/data_sources/favorites_online_data_source.dart' as _i908;
@@ -20,7 +20,8 @@ import '../../data/data_sources/history_offline_data_source.dart' as _i78;
 import '../../data/data_sources/offline_data_source/history_offline_data_source_impl.dart'
     as _i584;
 import '../../data/data_sources/profile_online_data_source.dart' as _i525;
-import '../../data/data_sources/remote_data_sources/carousel_movies_online_data_source_impl.dart' as _iABC;
+import '../../data/data_sources/remote_data_sources/carousel_movies_online_data_source_impl.dart'
+    as _i274;
 import '../../data/data_sources/remote_data_sources/change_password_online_data_source_impl.dart'
     as _i557;
 import '../../data/data_sources/remote_data_sources/favorites_online_data_source_impl.dart'
@@ -38,7 +39,7 @@ import '../../data/data_sources/remote_data_sources/Register_remote_datasource_i
 import '../../data/data_sources/remote_data_sources/search_online_data_source_impl.dart'
     as _i278;
 import '../../data/data_sources/search_online_data_source.dart' as _i456;
-import '../../data/repositries/carousel_repo_impl.dart' as _iABC;
+import '../../data/repositries/carousel_repo_impl.dart' as _i214;
 import '../../data/repositries/change_password_repo_impl.dart' as _i667;
 import '../../data/repositries/favorites_repo_impl.dart' as _i509;
 import '../../data/repositries/genre_repo_impl.dart' as _i851;
@@ -48,7 +49,7 @@ import '../../data/repositries/Movie_Deatils_repositry_impl.dart' as _i329;
 import '../../data/repositries/profile_repo_impl.dart' as _i688;
 import '../../data/repositries/Register_Repositry_impl.dart' as _i713;
 import '../../data/repositries/search_repo_impl.dart' as _i61;
-import '../../domain/repositries/carousel_repo.dart' as _iXYZ;
+import '../../domain/repositries/carousel_repo.dart' as _i31;
 import '../../domain/repositries/change_password_repo.dart' as _i874;
 import '../../domain/repositries/data_sources/remote_data_sources/Login_remote_datasource.dart'
     as _i965;
@@ -73,7 +74,7 @@ import '../../domain/use_cases/get_all_favorites_use_case.dart' as _i847;
 import '../../domain/use_cases/get_genre_use_case.dart' as _i486;
 import '../../domain/use_cases/get_movie_from_history_use_case.dart' as _i538;
 import '../../domain/use_cases/get_movie_is_favorite_use_case.dart' as _i802;
-import '../../domain/use_cases/get_movies_carousel_use_case.dart' as _iXYZ;
+import '../../domain/use_cases/get_movies_carousel_use_case.dart' as _i94;
 import '../../domain/use_cases/get_profile_use_case.dart' as _i305;
 import '../../domain/use_cases/get_search_use_case.dart' as _i659;
 import '../../domain/use_cases/Login_useCase.dart' as _i467;
@@ -88,7 +89,8 @@ import '../../features/auth/Reigster/Register_cubit/register_view_model.dart'
     as _i225;
 import '../../features/home_screen/pages/explore_page/cubit/explore_cubit.dart'
     as _i1005;
-import '../../features/home_screen/pages/home_page/cubit/home_cubit.dart' as _iXYZ;
+import '../../features/home_screen/pages/home_page/cubit/home_cubit.dart'
+    as _i249;
 import '../../features/home_screen/pages/profile_page/cubit/profile_cubit.dart'
     as _i978;
 import '../../features/home_screen/pages/search_page/cubit/search_cubit.dart'
@@ -137,6 +139,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i870.HistoryRepoImpl(gh<_i78.HistoryOfflineDataSource>()));
     gh.factory<_i414.FavoritesRepo>(
         () => _i509.FavoritesRepoImpl(gh<_i908.FavoritesOnlineDataSource>()));
+    gh.factory<_i997.CarouselOnlineDataSource>(
+        () => _i274.CarouselOnlineDataSourceImpl(gh<_i681.ApiManager>()));
     gh.factory<_i995.GenreOnlineDataSource>(
         () => _i396.GenreOnlineDataSourceImpl(gh<_i681.ApiManager>()));
     gh.factory<_i525.ProfileOnlineDataSource>(
@@ -160,6 +164,8 @@ extension GetItInjectableX on _i174.GetIt {
         registerRepositry: gh<_i1048.RegisterRepositry>()));
     gh.factory<_i467.LoginUseCase>(
         () => _i467.LoginUseCase(loginRepositry: gh<_i699.LoginRepositry>()));
+    gh.factory<_i31.CarouselRepo>(
+        () => _i214.CarouselRepoImpl(gh<_i997.CarouselOnlineDataSource>()));
     gh.factory<_i1021.SearchRepo>(
         () => _i61.SearchRepoImpl(gh<_i456.SearchOnlineDataSource>()));
     gh.factory<_i1005.ExploreCubit>(
@@ -189,6 +195,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i301.LoginViewModel>(
         () => _i301.LoginViewModel(useCase: gh<_i467.LoginUseCase>()));
+    gh.factory<_i94.GetCarouselMoviesUseCase>(
+        () => _i94.GetCarouselMoviesUseCase(gh<_i31.CarouselRepo>()));
     gh.factory<_i291.MovieSuggetionViewModel>(() =>
         _i291.MovieSuggetionViewModel(
             movieSuggetionUseCase: gh<_i768.MovieSuggetionUseCaseUseCase>()));
@@ -212,18 +220,10 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i91.SearchCubit>(
         () => _i91.SearchCubit(gh<_i659.GetSearchUseCase>()));
-
-    gh.factory<_iXYZ.CarouselOnlineDataSource>(
-            () => _iABC.CarouselOnlineDataSourceImpl(gh<_i681.ApiManager>()));
-
-    gh.factory<_iXYZ.CarouselRepo>(
-            () => _iABC.CarouselRepoImpl(gh<_iXYZ.CarouselOnlineDataSource>()));
-
-    gh.factory<_iXYZ.GetCarouselMoviesUseCase>(
-            () => _iXYZ.GetCarouselMoviesUseCase(gh<_iXYZ.CarouselRepo>()));
-
-    gh.factory<_iXYZ.HomeCubit>(
-            () => _iXYZ.HomeCubit(gh<_iXYZ.GetCarouselMoviesUseCase>(), gh<_i486.GetGenreUseCase>()));
+    gh.factory<_i249.HomeCubit>(() => _i249.HomeCubit(
+          gh<_i94.GetCarouselMoviesUseCase>(),
+          gh<_i486.GetGenreUseCase>(),
+        ));
     return this;
   }
 }
