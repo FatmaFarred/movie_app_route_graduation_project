@@ -14,8 +14,8 @@ MovieSuggetionViewModel ({ required this.movieSuggetionUseCase}):super (InitialS
 
 
 
-void loadMovieSuggetion ()async{
-  var either = await movieSuggetionUseCase.Invoke(15);
+void loadMovieSuggetion (movieid)async{
+  var either = await movieSuggetionUseCase.Invoke(movieid);
   either.fold((error){
     emit(ErrorSuggetionState(error: error));
   },

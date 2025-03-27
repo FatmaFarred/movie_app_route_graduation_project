@@ -16,59 +16,66 @@ class CastWidget extends StatelessWidget {
   CastWidget ({required this.imagePath, required this.Name, required this.character});
   @override
   Widget build(BuildContext context) {
-    return  Container(
-      margin: EdgeInsets.symmetric(vertical: 5.h),
-      height: 92.h,
-     width: 398.w,
-     decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),color: AppColors.darkGrayColor),
-      child: Row(crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-        Padding(
-          padding:  EdgeInsets.symmetric(horizontal:15.w ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: CachedNetworkImage(
-              fit: BoxFit.fill,
-              height: 70.h,
-              width:70.h ,
-
-              imageUrl: imagePath,
-              progressIndicatorBuilder: (context, url, downloadProgress) =>
-                  CircularProgressIndicator(color:AppColors.whiteColor),
-              errorWidget: (context, url, error) => Icon(Icons.error,color:AppColors.whiteColor),
+    return  Material(
+      color: AppColors.darkBlackColor,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: 5.h),
+        height: 92.h,
+       width: 398.w,
+       decoration: BoxDecoration(borderRadius: BorderRadius.circular(16),color: AppColors.darkGrayColor),
+        child: Row(crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+          Padding(
+            padding:  EdgeInsets.symmetric(horizontal:15.w ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: CachedNetworkImage(
+                fit: BoxFit.fill,
+                height: 70.h,
+                width:70.h ,
+      
+                imageUrl: imagePath,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(color:AppColors.whiteColor),
+                errorWidget: (context, url, error) => Icon(Icons.error,color:AppColors.whiteColor),
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                "${AppLocalizations.of(context)!.name}: $Name",
+              DefaultTextStyle(
                 style: getRegularStyle(
-                  color: AppColors.whiteColor,
-                  fontSize: 16,
-                  fontFamily: FontConstants.robotoFont,
+            color: AppColors.whiteColor,
+            fontSize: 16,
+             fontFamily: FontConstants.robotoFont,
+              ),
+                child: Text(
+                  "${AppLocalizations.of(context)!.name}: $Name",
+      
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
               ),
               SizedBox(height: 5.h),
-              Text(
-                "${AppLocalizations.of(context)!.charactar}: $character",
+              DefaultTextStyle(
                 style: getRegularStyle(
                   color: AppColors.whiteColor,
                   fontSize: 16,
                   fontFamily: FontConstants.robotoFont,
                 ),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
+                child: Text(
+                  "${AppLocalizations.of(context)!.charactar}: $character",
+      
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ],
           ),
+        ],
         ),
-      ],
       ),
     );
   }

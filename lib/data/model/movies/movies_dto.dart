@@ -92,6 +92,7 @@ class MoviesDTO {
     _dateUploaded = json['date_uploaded'];
     _dateUploadedUnix = json['date_uploaded_unix'];
   }
+
   num? _id;
   String? _url;
   String? _imdbCode;
@@ -118,6 +119,7 @@ class MoviesDTO {
   List<Torrents>? _torrents;
   String? _dateUploaded;
   num? _dateUploadedUnix;
+
   MoviesDTO copyWith({
     num? id,
     String? url,
@@ -166,7 +168,7 @@ class MoviesDTO {
         mpaRating: mpaRating ?? _mpaRating,
         backgroundImage: backgroundImage ?? _backgroundImage,
         backgroundImageOriginal:
-            backgroundImageOriginal ?? _backgroundImageOriginal,
+        backgroundImageOriginal ?? _backgroundImageOriginal,
         smallCoverImage: smallCoverImage ?? _smallCoverImage,
         mediumCoverImage: mediumCoverImage ?? _mediumCoverImage,
         largeCoverImage: largeCoverImage ?? _largeCoverImage,
@@ -175,31 +177,57 @@ class MoviesDTO {
         dateUploaded: dateUploaded ?? _dateUploaded,
         dateUploadedUnix: dateUploadedUnix ?? _dateUploadedUnix,
       );
+
   num? get id => _id;
+
   String? get url => _url;
+
   String? get imdbCode => _imdbCode;
+
   String? get title => _title;
+
   String? get titleEnglish => _titleEnglish;
+
   String? get titleLong => _titleLong;
+
   String? get slug => _slug;
+
   num? get year => _year;
+
   num? get rating => _rating;
+
   num? get runtime => _runtime;
+
   List<String>? get genres => _genres;
+
   String? get summary => _summary;
+
   String? get descriptionFull => _descriptionFull;
+
   String? get synopsis => _synopsis;
+
   String? get ytTrailerCode => _ytTrailerCode;
+
   String? get language => _language;
+
   String? get mpaRating => _mpaRating;
+
   String? get backgroundImage => _backgroundImage;
+
   String? get backgroundImageOriginal => _backgroundImageOriginal;
+
   String? get smallCoverImage => _smallCoverImage;
+
   String? get mediumCoverImage => _mediumCoverImage;
+
   String? get largeCoverImage => _largeCoverImage;
+
   String? get state => _state;
+
   List<Torrents>? get torrents => _torrents;
+
   String? get dateUploaded => _dateUploaded;
+
   num? get dateUploadedUnix => _dateUploadedUnix;
 
   Map<String, dynamic> toJson() {
@@ -237,10 +265,12 @@ class MoviesDTO {
 
   MovieModel toMovieModel() {
     return MovieModel(
-        movieId: "$id",
-        name: title,
-        rating: rating?.toDouble(),
-        imageURL: mediumCoverImage,
-        year: "$year");
+      movieId: _id is int ? _id as int : (_id as double?)?.toInt(),
+      name: _title,
+      rating: _rating?.toDouble(),
+      imageURL: _mediumCoverImage,
+      year: _year?.toString(),
+    );
   }
+
 }

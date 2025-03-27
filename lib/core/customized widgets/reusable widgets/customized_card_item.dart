@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
+import 'package:movie_app_route_graduation_project/domain/entities/MovieDetailsResponseEntity.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreen.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/assets_manager.dart';
@@ -75,10 +77,13 @@ class _CustomizedCardItemState extends State<CustomizedCardItem> {
   }
 
   void onMovieClick (){
-    Navigator.of(context).pushNamed(Routes.movieDetailsRoute,
-        arguments: widget.movie
-
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => Moviedetailsscreen(movieId: widget.movie.movieId??0),
+      ),
     );
+
   }
 }
 

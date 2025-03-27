@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionWidget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/Moviesuggetion%20States.dart';
@@ -14,24 +15,26 @@ import '../../../../core/resources/style manager.dart';
 import '../screen shot widegt.dart';
 
 class MovieSuggetionScreen extends StatefulWidget {
-
+  final int movieId;
+  MovieSuggetionScreen ({required this.movieId});
   @override
   State<MovieSuggetionScreen> createState() => _MovieSuggetionScreenState();
 }
 
 class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
   late MovieSuggetionViewModel movieSuggetionViewModel;
-
+  @override
   void initState() {
     super.initState();
-    movieSuggetionViewModel =
-        getIt<MovieSuggetionViewModel>(); // initialize here
-    movieSuggetionViewModel.loadMovieSuggetion();
+    movieSuggetionViewModel = getIt<MovieSuggetionViewModel>();
+    movieSuggetionViewModel.loadMovieSuggetion(widget.movieId);
   }
-
 
   @override
   Widget build(BuildContext context) {
+
+
+
     return SingleChildScrollView(
       child: BlocBuilder<MovieSuggetionViewModel, MovieSuggetionState>(
         bloc: movieSuggetionViewModel,
@@ -55,27 +58,35 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
   }
 
   Widget BuildLoadingState(LoadingSuggetionState state) {
-    return Container(height: 200.h,
-      child: Row(mainAxisAlignment: MainAxisAlignment.center,
-        children: [CircularProgressIndicator(),
+    return Container(
+      height: 200.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CircularProgressIndicator(),
           Text("Loading")
-        ],),
+        ],
+      ),
     );
   }
 
   Widget BuildErrorState(ErrorSuggetionState state) {
-    return Container(height: 500.h,
-
+    return Container(
+      height: 500.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(state.error.errorMessage ?? ""),
           TextButton(
-              onPressed: () => movieSuggetionViewModel.loadMovieSuggetion(),
-              child: Text("Try again",
-                style: getBoldStyle(color: AppColors.orangeColor),))
-        ],),
+            onPressed: (){}, // Retry logic
+            child: Text(
+              "Try again",
+              style: getBoldStyle(color: AppColors.orangeColor),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
@@ -89,37 +100,38 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
 
     return Column(
       children: [
-        Container(padding: EdgeInsets.zero,
-          margin:EdgeInsets.zero ,
+        Container(
+          padding: EdgeInsets.zero,
+          margin: EdgeInsets.zero,
           height: 600.h,
-          child: Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-
-                crossAxisSpacing: 10.w,
-                mainAxisSpacing: 10.h,
-                mainAxisExtent: 279.h
-            
-            
-              ),
-              shrinkWrap: false,
-              padding: EdgeInsets.zero,
-            
-            
-              physics: NeverScrollableScrollPhysics(),
-              itemCount: suggetionlist.length,
-              itemBuilder: (context, index) {
-                return Moviesuggetionwidget(imagePath:suggetionlist[index]?.mediumCoverImage??"" , title: "${suggetionlist[index]?.rating ?? ""}");
-              },
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10.w,
+              mainAxisSpacing: 10.h,
+              mainAxisExtent: 279.h,
             ),
+            shrinkWrap: false,
+            padding: EdgeInsets.zero,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: suggetionlist.length,
+            itemBuilder: (context, index) {
+              return Moviesuggetionwidget(
+                movieid:suggetionlist[index]?.id?.toInt() ?? 0 ,
+                imagePath: suggetionlist[index]?.mediumCoverImage ?? "",
+                title: "${suggetionlist[index]?.rating ?? ""}",
+              );
+            },
           ),
         ),
       ],
     );
   }
 
-
-
-
+  /*void OnErrorPressed() {
+    final movieId = ModalRoute.of(context)?.settings.arguments ;
+    if (movieId != null) {
+      movieSuggetionViewModel.loadMovieSuggetion(movieId); // Retry the method
+    }
+  }*/
 }

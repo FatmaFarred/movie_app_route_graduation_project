@@ -37,8 +37,7 @@ class RouteGenerator {
 
         case Routes.loginRoute:
           return MaterialPageRoute(builder: (_) => LoginView());
-      case Routes.movieDetailsRoute:
-        return MaterialPageRoute(builder: (_) => Moviedetailsscreen());
+
 
       default:
         return unDefinedRoute();

@@ -174,10 +174,15 @@ class MovieDm extends  MovieEntity {
     dateUploadedUnix = json['date_uploaded_unix'];
   }
 
-  MovieModel toMovieModel(){
-    return MovieModel(movieId: "$id", name: title, rating: rating?.toDouble(), imageURL: mediumCoverImage, year: "$year");
+  MovieModel toMovieModel() {
+    return MovieModel(
+        movieId: id?.toInt(),  // Convert num? to int?
+        name: title,
+        rating: rating?.toDouble(),
+        imageURL: mediumCoverImage,
+        year: "$year"
+    );
   }
-
 }
 
 /// url : "https://yts.mx/torrent/download/8619B57A3F39F1B49A1A698EA5400A883928C0A2"

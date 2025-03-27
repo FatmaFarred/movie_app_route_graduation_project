@@ -7,10 +7,9 @@ import 'package:movie_app_route_graduation_project/features/homescreen/MovieDeta
 class MovieDetailsViewModel extends Cubit<MovieDetailsScreenState>{
 MovieDetailsUseCase movieDetailsUseCase;
 
-
   MovieDetailsViewModel ({required this.movieDetailsUseCase}):super (InitialState());
-  void loadMovieDetailsScreen  () async{
-    var either = await movieDetailsUseCase.Invoke(15);
+  void loadMovieDetailsScreen  (movieid ) async{
+    var either = await movieDetailsUseCase.Invoke(movieid);
     either.fold((error){
       emit(ErrorState(error: error));
     },

@@ -5,7 +5,7 @@ class MovieAdapter extends TypeAdapter<MovieModel> {
   @override
   MovieModel read(BinaryReader reader) {
     return MovieModel(
-        movieId: reader.readString(),
+        movieId: reader.readInt(),
         name: reader.readString(),
         rating: reader.readDouble(),
         imageURL: reader.readString(),
@@ -17,7 +17,7 @@ class MovieAdapter extends TypeAdapter<MovieModel> {
 
   @override
   void write(BinaryWriter writer, MovieModel obj) {
-    writer.writeString(obj.movieId ?? "");
+    writer.writeInt(obj.movieId ?? 0);
     writer.writeString(obj.name ?? "");
     writer.writeDouble(obj.rating ?? 0);
     writer.writeString(obj.imageURL ?? "");
