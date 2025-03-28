@@ -14,14 +14,22 @@ class HomePageLoadingGenreState extends HomePageState {}
 
 class HomePageSuccessState extends HomePageState {
   final List<MovieModel> carouselMovies;
-  final List<MovieModel> genreActionMovies;
-  final List<MovieModel> genreComedyMovies;
+  final List<List<MovieModel>> genresLists;
 
   HomePageSuccessState({
     this.carouselMovies = const [],
-    this.genreActionMovies = const [],
-    this.genreComedyMovies = const [],
+    this.genresLists = const [],
   });
+
+  HomePageSuccessState copyWith({
+    List<MovieModel>? carouselMovies,
+    List<List<MovieModel>>? genresLists,
+  }) {
+    return HomePageSuccessState(
+      carouselMovies: carouselMovies ?? this.carouselMovies,
+      genresLists: genresLists ?? this.genresLists,
+    );
+  }
 }
 
 class HomePageErrorState extends HomePageState {

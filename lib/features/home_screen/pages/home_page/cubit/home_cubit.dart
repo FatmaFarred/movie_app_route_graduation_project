@@ -1,6 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
 import '../../../../../api/errors/failure.dart';
+import '../../../../../data/model/movie/movie_model.dart';
 import '../../../../../domain/use_cases/get_genre_use_case.dart';
 import '../../../../../domain/use_cases/get_movies_carousel_use_case.dart';
 import 'home_page_state.dart';
@@ -9,6 +11,7 @@ import 'home_page_state.dart';
 class HomeCubit extends Cubit<HomePageState> {
   final GetCarouselMoviesUseCase _getCarouselMoviesUseCase;
   final GetGenreUseCase _getGenreUseCase;
+  List<List<MovieModel>> genresLists = [];
 
   HomeCubit(this._getCarouselMoviesUseCase, this._getGenreUseCase)
       : super(HomePageInitialState());
@@ -19,12 +22,7 @@ class HomeCubit extends Cubit<HomePageState> {
       var response = await _getCarouselMoviesUseCase.execute();
       emit(HomePageSuccessState(
         carouselMovies: response ?? [],
-        genreActionMovies: state is HomePageSuccessState
-            ? (state as HomePageSuccessState).genreActionMovies
-            : [],
-        genreComedyMovies: state is HomePageSuccessState
-            ? (state as HomePageSuccessState).genreComedyMovies
-            : [],
+        genresLists: genresLists,
       ));
     } catch (e) {
       if (e is Failure) {
@@ -35,46 +33,28 @@ class HomeCubit extends Cubit<HomePageState> {
     }
   }
 
-  Future<void> getActionGenre(String genre) async {
-    emit(HomePageLoadingGenreState());
+  Future<void> getGenres() async {
     try {
-      var response = await _getGenreUseCase(genre, 1);
-      emit(HomePageSuccessState(
-        carouselMovies: state is HomePageSuccessState
-            ? (state as HomePageSuccessState).carouselMovies
-            : [],
-        genreActionMovies: response?.data?.movies?.map((moviesDto) => moviesDto.toMovieModel()).toList() ?? [],
-        genreComedyMovies: state is HomePageSuccessState
-            ? (state as HomePageSuccessState).genreComedyMovies
-            : [], // Preserve existing Comedy movies
-      ));
-    } catch (e) {
-      if (e is Failure) {
-        emit(HomePageErrorState(error: e));
-      } else {
-        emit(HomePageErrorState(error: ServerError(errorMessage: e.toString())));
-      }
-    }
-  }
+      for (var genre in AppConstants.genresList) {
+        var response = await _getGenreUseCase(genre, 1);
+        genresLists.add(response?.data?.movies
+            ?.map((moviesDto) => moviesDto.toMovieModel())
+            .toList() ??
+            []);
 
-  Future<void> getComedyGenre(String genre) async {
-    emit(HomePageLoadingGenreState());
-    try {
-      var response = await _getGenreUseCase(genre, 1);
-      emit(HomePageSuccessState(
-        carouselMovies: state is HomePageSuccessState
-            ? (state as HomePageSuccessState).carouselMovies
-            : [],
-        genreActionMovies: state is HomePageSuccessState
-            ? (state as HomePageSuccessState).genreActionMovies
-            : [], // Preserve existing Action movies
-        genreComedyMovies: response?.data?.movies?.map((moviesDto) => moviesDto.toMovieModel()).toList() ?? [],
-      ));
+        var currentState = state;
+        if (currentState is HomePageSuccessState) {
+          emit(currentState.copyWith(
+            carouselMovies: currentState.carouselMovies,
+            genresLists: genresLists,
+          ));
+        }
+      }
     } catch (e) {
       if (e is Failure) {
-        emit(HomePageErrorState(error: e));
+        //emit(HomePageErrorState(error: e));
       } else {
-        emit(HomePageErrorState(error: ServerError(errorMessage: e.toString())));
+        //emit(HomePageErrorState(error: ServerError(errorMessage: e.toString())));
       }
     }
   }

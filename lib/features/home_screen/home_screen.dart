@@ -6,7 +6,6 @@ import 'package:movie_app_route_graduation_project/core/resources/assets_manager
 import 'home_widgets.dart';
 
 class HomeScreen extends StatefulWidget {
-  static const String routeName = "home";
   static final GlobalKey<_HomeScreenState> homeScreenKey = GlobalKey();
 
   const HomeScreen({super.key});

@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/api/errors/failure.dart';
@@ -12,8 +10,7 @@ import 'package:movie_app_route_graduation_project/domain/use_cases/get_movie_fr
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_movie_is_favorite_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/movie_deatils_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/remove_from_favorite_use_case.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreenStates.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
 
 @injectable
 class MovieDetailsViewModel extends Cubit<MovieDetailsScreenState> {

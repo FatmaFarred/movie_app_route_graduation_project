@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreenStates.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
 
 class GenresWidget extends StatelessWidget {

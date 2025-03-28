@@ -30,7 +30,7 @@ class RouteGenerator {
       case Routes.changePasswordRoute:
         return MaterialPageRoute(builder: (_) => ChangePasswordScreen());
       case Routes.homeRoute:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => HomeScreen(key: HomeScreen.homeScreenKey));
 
       case Routes.updateProfileRoute:
         return MaterialPageRoute(builder: (_) => UpdateProfileScreen());

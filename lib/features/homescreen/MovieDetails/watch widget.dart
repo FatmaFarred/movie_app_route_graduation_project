@@ -8,7 +8,7 @@ import 'package:movie_app_route_graduation_project/core/customized_widgets/reusa
 
 import 'package:movie_app_route_graduation_project/core/utils/prefs_manager.dart';
 
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreenStates.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/Textwidget.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/webViewWidgetViewer.dart';
@@ -95,6 +95,9 @@ class _PlaywidgetState extends State<Playwidget> {
                 child: IconButton(
                   onPressed: () {
                     widget.onFavoriteClick();
+                    setState(() {
+                      widget.isFavorite = !widget.isFavorite;
+                    });
                   },
                   icon: Icon(
                     widget.isFavorite ? Icons.bookmark_outlined : Icons.bookmark_outline,

@@ -100,7 +100,7 @@ import '../features/home_screen/pages/profile_page/cubit/profile_cubit.dart'
     as _i423;
 import '../features/home_screen/pages/search_page/cubit/search_cubit.dart'
     as _i881;
-import '../features/homescreen/MovieDetails/MovieDetailsViewModel.dart' as _i70;
+import '../features/homescreen/MovieDetails/cubit/MovieDetailsViewModel.dart' as _i70;
 import '../features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
     as _i705;
 import '../features/update_profile/cubit/update_profile_cubit.dart' as _i848;

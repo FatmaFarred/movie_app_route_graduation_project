@@ -2,6 +2,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
+import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
 import '../../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
 import '../../../../core/customized_widgets/reusable_widgets/custom_loading.dart';
@@ -30,8 +32,7 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     homeCubit.getCarouselMovies();
-    homeCubit.getActionGenre("Action");
-    homeCubit.getComedyGenre("Comedy");
+    homeCubit.getGenres();
   }
 
   @override
@@ -43,9 +44,8 @@ class _HomePageState extends State<HomePage> {
           if (state is HomePageErrorState) {
             CustomDialog.positiveButton(
               context: context,
-              title: 'Error',
+              title: getTranslations(context).error,
               message: state.error.errorMessage,
-              positiveOnClick: () => Navigator.pop(context),
             );
           } else if (state is HomePageSuccessState) {
             if (_selectedMovie == null && state.carouselMovies.isNotEmpty) {
@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
         builder: (context, state) {
           if (state is HomePageLoadingCarouselState ||
               state is HomePageLoadingGenreState) {
-            return CustomLoading();
+            return const CustomLoading();
           } else if (state is HomePageSuccessState) {
             return _buildSuccessState(context, state);
           }
@@ -90,17 +90,15 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               _buildCarouselSection(context, state.carouselMovies),
-              Padding(
-                padding: EdgeInsets.all(16.w),
-                child: Column(
-                  children: [
-                    _buildCategoryHeader("Action"),
-                    _buildHorizontalMovieList(state.genreActionMovies),
-                    _buildCategoryHeader("Comedy"),
-                    _buildHorizontalMovieList(state.genreComedyMovies),
+              Column(
+                children: [
+                  for (int i = 0; i < state.genresLists.length; i++)...[
+                    _buildCategoryHeader(AppConstants.genresList[i]),
+                    _buildHorizontalMovieList(state.genresLists[i]),
                     SizedBox(height: 16.h),
                   ],
-                ),
+                  SizedBox(height: 100.h),
+                ],
               ),
             ],
           ),
@@ -111,7 +109,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildCategoryHeader(String title) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 8.h),
+      padding: EdgeInsets.symmetric(vertical: 8.h, horizontal: 16.w),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -122,12 +120,12 @@ class _HomePageState extends State<HomePage> {
               color:AppColors.whiteColor,
             ),
           ),
-            GestureDetector(
+            InkWell(
               onTap: () {
                 HomeScreen.homeScreenKey.currentState?.changeTab(2);
               },
               child: Text(
-                "See More",
+                getTranslations(context).seeMore,
                 style: getRegularStyle(
                   fontSize: 18.sp,
                   color: AppColors.orangeColor,
@@ -145,9 +143,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildCarouselSection(BuildContext context, List<MovieModel> movies) {
     if (movies.isEmpty) {
-      return Center(
-        child: CustomLoading()
-      );
+      return const CustomLoading();
     }
     return Column(
       children: [
@@ -184,11 +180,12 @@ class _HomePageState extends State<HomePage> {
     return SizedBox(
       height: 250.h,
       child: ListView.builder(
+        padding: EdgeInsets.only(left: 16.w),
         scrollDirection: Axis.horizontal,
         itemCount: movies.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: EdgeInsets.only(right: 16.w),
+            padding: EdgeInsets.only(right: 8.w),
             child: SizedBox(
               width: 150.w,
               child: CustomizedCardItem(

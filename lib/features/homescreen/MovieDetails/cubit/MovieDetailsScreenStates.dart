@@ -1,6 +1,6 @@
-import '../../../api/errors/failure.dart';
-import '../../../data/model/movie/movie_model.dart';
-import '../../../domain/entities/movie_details_response_entity.dart';
+import '../../../../api/errors/failure.dart';
+import '../../../../data/model/movie/movie_model.dart';
+import '../../../../domain/entities/movie_details_response_entity.dart';
 
 abstract class MovieDetailsScreenState {}
 

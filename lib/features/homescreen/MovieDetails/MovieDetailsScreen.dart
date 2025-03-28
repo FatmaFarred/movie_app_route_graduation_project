@@ -6,13 +6,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hive/hive.dart';
+import 'package:movie_app_route_graduation_project/core/customized_widgets/reusable_widgets/custom_loading.dart';
 
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 
 import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreenStates.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsViewModel.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
+import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsViewModel.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionScreen.dart';
 import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/Textwidget.dart';
@@ -92,9 +93,6 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                   movieData?.imageURL ?? "",
                   movieData?.year ?? "");
             }
-            setState(() {
-
-            });
           },
         ),
         Padding(
@@ -209,12 +207,9 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
   }
 
   Widget BuildLoadingState(LoadingState state) {
-    return Container(
-      height: 500.h,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [CircularProgressIndicator(), Text("Loading")],
-      ),
+    return SizedBox(
+      height: 932.h,
+      child: const CustomLoading(),
     );
   }
 
