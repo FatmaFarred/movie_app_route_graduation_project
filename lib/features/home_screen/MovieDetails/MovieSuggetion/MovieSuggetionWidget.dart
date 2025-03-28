@@ -4,9 +4,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieDetailsScreen.dart';
 
 import '../../../../core/resources/style_manager.dart';
+import '../MovieDetailsScreen.dart';
 import '../Textwidget.dart';
 
 class Moviesuggetionwidget extends StatelessWidget {
@@ -14,7 +14,7 @@ class Moviesuggetionwidget extends StatelessWidget {
   String title;
   final String movieid;
 
-  Moviesuggetionwidget({required this.imagePath, required this.title, required this.movieid});
+  Moviesuggetionwidget({super.key, required this.imagePath, required this.title, required this.movieid});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +39,8 @@ class Moviesuggetionwidget extends StatelessWidget {
                 imageUrl: imagePath,
                 fit: BoxFit.fill,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(color: AppColors.whiteColor),
-                errorWidget: (context, url, error) => Icon(Icons.error, color: AppColors.whiteColor),
+                    const CircularProgressIndicator(color: AppColors.whiteColor),
+                errorWidget: (context, url, error) => const Icon(Icons.error, color: AppColors.whiteColor),
               ),
             ),
             Container(

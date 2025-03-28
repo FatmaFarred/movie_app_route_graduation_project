@@ -5,7 +5,7 @@ import '../../data/model/movie/movie_model.dart';
 
 @injectable
 class GetAllFavoritesUseCase {
-  FavoritesRepo _favoritesRepo;
+  final FavoritesRepo _favoritesRepo;
 
   GetAllFavoritesUseCase(this._favoritesRepo);
 

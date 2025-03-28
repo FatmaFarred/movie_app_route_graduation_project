@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
+
+import 'cubit/MovieDetailsScreenStates.dart';
+import 'icon with text Container widget.dart';
 
 class GenresWidget extends StatelessWidget {
   final SuccessState state;
-  GenresWidget({required this.state});
+  const GenresWidget({super.key, required this.state});
 
   @override
   Widget build(BuildContext context) {
     var genresList = state.response?.data?.movie?.genres?? [];
 
-    return Container(
+    return SizedBox(
       height: 200.h,
 
       child: GridView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisSpacing: 8.h,
@@ -26,7 +27,7 @@ class GenresWidget extends StatelessWidget {
         itemCount: genresList.length,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          return iconWithTextContainerWidget(
+          return IconWithTextContainerWidget(
             title: genresList[index],
             height: 36.h,
           );

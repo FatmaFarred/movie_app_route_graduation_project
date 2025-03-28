@@ -11,7 +11,7 @@ class LanguageSwitch extends StatelessWidget {
 
   Function onChanged;
 
-  LanguageSwitch({required this.currentLocale, required this.onChanged});
+  LanguageSwitch({super.key, required this.currentLocale, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {

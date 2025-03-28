@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AvatarWidget extends StatelessWidget {
   String avatarPATH;
 
-  AvatarWidget({required this.avatarPATH});
+  AvatarWidget({super.key, required this.avatarPATH});
   @override
   Widget build(BuildContext context) {
     return SizedBox(

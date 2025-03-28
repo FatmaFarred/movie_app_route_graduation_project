@@ -10,7 +10,7 @@ part 'explore_state.dart';
 
 @injectable
 class ExploreCubit extends Cubit<ExploreState> {
-  GetGenreUseCase _getGenreUseCase;
+  final GetGenreUseCase _getGenreUseCase;
 
   int currentPage = 1;
   int pageLimit = 20;

@@ -6,7 +6,7 @@ import '../model/movies/movies_response.dart';
 
 @Injectable(as: SearchRepo)
 class SearchRepoImpl implements SearchRepo{
-  SearchOnlineDataSource _searchOnlineDataSource;
+  final SearchOnlineDataSource _searchOnlineDataSource;
 
   SearchRepoImpl(this._searchOnlineDataSource);
 

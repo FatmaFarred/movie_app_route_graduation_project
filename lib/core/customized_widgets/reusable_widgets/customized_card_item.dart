@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/customized_widgets/reusable_widgets/custom_loading.dart';
-import 'package:movie_app_route_graduation_project/core/resources/font_manager.dart';
 import 'package:movie_app_route_graduation_project/core/resources/style_manager.dart';
 
 import '../../../../core/resources/app_colors.dart';
 import '../../../../core/resources/assets_manager.dart';
 import '../../../data/model/movie/movie_model.dart';
-import '../../../features/homescreen/MovieDetails/MovieDetailsScreen.dart';
+import '../../../features/home_screen/MovieDetails/MovieDetailsScreen.dart';
 
 class CustomizedCardItem extends StatelessWidget {
   MovieModel movie;
@@ -117,7 +116,7 @@ class FilmCardItem extends StatelessWidget {
                   vertical: 4,
                 ),
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.7),
+                  color: Colors.black.withValues(alpha: 0.7),
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: Row(

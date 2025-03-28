@@ -5,7 +5,7 @@ import '../repositries/google_login_repo.dart';
 
 @injectable
 class GoogleLoginUseCase{
-  GoogleLoginRepo _googleLoginRepo;
+  final GoogleLoginRepo _googleLoginRepo;
 
   GoogleLoginUseCase(this._googleLoginRepo);
 

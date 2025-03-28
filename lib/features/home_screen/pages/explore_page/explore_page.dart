@@ -13,6 +13,8 @@ import '../../../../l10n/app_translations.dart';
 import 'explore_widgets.dart';
 
 class ExplorePage extends StatefulWidget {
+  const ExplorePage({super.key});
+
   @override
   State<ExplorePage> createState() => _ExplorePageState();
 }

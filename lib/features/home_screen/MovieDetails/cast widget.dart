@@ -1,10 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-import '../../../core/resources/assets_manager.dart';
 import '../../../core/resources/font_manager.dart';
 import '../../../core/resources/style_manager.dart';
 
@@ -13,7 +12,7 @@ class CastWidget extends StatelessWidget {
   final String name;
   final String character;
 
-  CastWidget({
+  const CastWidget({super.key,
     required this.imagePath,
     required this.name,
     required this.character,
@@ -41,25 +40,26 @@ class CastWidget extends StatelessWidget {
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
                   height: 70.h,
-                  width:70.h ,
-
+                  width: 70.h,
                   imageUrl: imagePath,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
-                      CircularProgressIndicator(color:AppColors.whiteColor),
-                  errorWidget: (context, url, error) => Icon(Icons.error,color:AppColors.whiteColor),
+                      const CircularProgressIndicator(color: AppColors.whiteColor),
+                  errorWidget: (context, url, error) =>
+                      const Icon(Icons.error, color: AppColors.whiteColor),
                 ),
               ),
-      ),
-
+            ),
 
             SizedBox(width: 15.w), // Added space between image and text
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildText(context, "${AppLocalizations.of(context)!.name}: $name"),
+                _buildText(
+                    context, "${AppLocalizations.of(context)!.name}: $name"),
                 SizedBox(height: 5.h),
-                _buildText(context, "${AppLocalizations.of(context)!.charactar}: $character"),
+                _buildText(context,
+                    "${AppLocalizations.of(context)!.charactar}: $character"),
               ],
             ),
           ],

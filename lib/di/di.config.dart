@@ -93,6 +93,10 @@ import '../features/auth/change/cubit/change_password_cubit.dart' as _i108;
 import '../features/auth/login/login_cubit/login_view_model.dart' as _i868;
 import '../features/auth/register/register_cubit/register_view_model.dart'
     as _i102;
+import '../features/home_screen/MovieDetails/cubit/MovieDetailsViewModel.dart'
+    as _i349;
+import '../features/home_screen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
+    as _i346;
 import '../features/home_screen/pages/explore_page/cubit/explore_cubit.dart'
     as _i563;
 import '../features/home_screen/pages/home_page/cubit/home_cubit.dart' as _i324;
@@ -100,9 +104,6 @@ import '../features/home_screen/pages/profile_page/cubit/profile_cubit.dart'
     as _i423;
 import '../features/home_screen/pages/search_page/cubit/search_cubit.dart'
     as _i881;
-import '../features/homescreen/MovieDetails/cubit/MovieDetailsViewModel.dart' as _i70;
-import '../features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
-    as _i705;
 import '../features/update_profile/cubit/update_profile_cubit.dart' as _i848;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -142,8 +143,8 @@ extension GetItInjectableX on _i174.GetIt {
         _i402.ChangePasswordOnlineDataSourceImpl(gh<_i1047.ApiManager>()));
     gh.factory<_i996.SearchOnlineDataSource>(
         () => _i513.SearchOnlineDataSourceImpl(gh<_i1047.ApiManager>()));
-    gh.factory<_i705.MovieSuggetionViewModel>(() =>
-        _i705.MovieSuggetionViewModel(
+    gh.factory<_i346.MovieSuggetionViewModel>(() =>
+        _i346.MovieSuggetionViewModel(
             movieSuggetionUseCase: gh<_i540.MovieSuggestionUseCase>()));
     gh.factory<_i540.HistoryRepo>(
         () => _i325.HistoryRepoImpl(gh<_i964.HistoryOfflineDataSource>()));
@@ -219,7 +220,7 @@ extension GetItInjectableX on _i174.GetIt {
           googleUseCase: gh<_i653.GoogleLoginUseCase>(),
           registerUseCase: gh<_i772.RegisterUseCase>(),
         ));
-    gh.factory<_i70.MovieDetailsViewModel>(() => _i70.MovieDetailsViewModel(
+    gh.factory<_i349.MovieDetailsViewModel>(() => _i349.MovieDetailsViewModel(
           movieDetailsUseCase: gh<_i661.MovieDetailsUseCase>(),
           addToHistoryUseCase: gh<_i895.AddToHistoryUseCase>(),
           getMovieFromHistoryUseCase: gh<_i294.GetMovieFromHistoryUseCase>(),

@@ -6,7 +6,7 @@ import 'package:movie_app_route_graduation_project/domain/repositries/google_log
 @Injectable(as: GoogleLoginRepo)
 class GoogleLoginRepoImpl implements GoogleLoginRepo{
 
-  GoogleLoginOnlineDataSource _googleLoginOnlineDataSource;
+  final GoogleLoginOnlineDataSource _googleLoginOnlineDataSource;
 
   GoogleLoginRepoImpl(this._googleLoginOnlineDataSource);
 

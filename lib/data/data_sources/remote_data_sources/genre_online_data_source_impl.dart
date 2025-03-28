@@ -11,7 +11,7 @@ import '../../model/movies/movies_response.dart';
 
 @Injectable(as: GenreOnlineDataSource)
 class GenreOnlineDataSourceImpl implements GenreOnlineDataSource {
-  ApiManager _apiManager;
+  final ApiManager _apiManager;
 
   GenreOnlineDataSourceImpl(this._apiManager);
 

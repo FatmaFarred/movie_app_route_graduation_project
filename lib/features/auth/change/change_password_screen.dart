@@ -13,6 +13,8 @@ import '../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
 import '../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
+  const ChangePasswordScreen({super.key});
+
   @override
   State<ChangePasswordScreen> createState() => _ChangePasswordScreenState();
 }

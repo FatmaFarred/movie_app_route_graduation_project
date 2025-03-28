@@ -7,7 +7,7 @@ import '../model/movie/movie_model.dart';
 @Injectable(as: HistoryRepo)
 class HistoryRepoImpl implements HistoryRepo{
 
-  HistoryOfflineDataSource _historyOfflineDataSource;
+  final HistoryOfflineDataSource _historyOfflineDataSource;
 
   HistoryRepoImpl(this._historyOfflineDataSource);
 

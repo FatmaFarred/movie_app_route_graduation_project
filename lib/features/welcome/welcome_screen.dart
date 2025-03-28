@@ -10,6 +10,8 @@ import '../../core/resources/app_colors.dart';
 import '../../core/resources/font_manager.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +28,10 @@ class WelcomeScreen extends StatelessWidget {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                AppColors.gradientonboarding1De1,
-                AppColors.gradientonboarding1De2,
-                AppColors.gradientonboarding1De3,
-                AppColors.gradientonboarding1De4
+                AppColors.gradientOnBoarding1De1,
+                AppColors.gradientOnBoarding1De2,
+                AppColors.gradientOnBoarding1De3,
+                AppColors.gradientOnBoarding1De4
               ])),
         ),
         Align(

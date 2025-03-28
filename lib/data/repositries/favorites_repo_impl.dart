@@ -8,7 +8,7 @@ import '../model/movie/movie_model.dart';
 
 @Injectable(as: FavoritesRepo)
 class FavoritesRepoImpl implements FavoritesRepo {
-  FavoritesOnlineDataSource _favoritesOnlineDataSource;
+  final FavoritesOnlineDataSource _favoritesOnlineDataSource;
 
   FavoritesRepoImpl(this._favoritesOnlineDataSource);
 

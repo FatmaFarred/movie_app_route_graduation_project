@@ -25,6 +25,8 @@ import 'login_cubit/login_view_model.dart';
 class LoginView extends StatefulWidget {
   static const String routeName = 'Login_screen';
 
+  const LoginView({super.key});
+
   @override
   State<LoginView> createState() => _LoginViewState();
 }
@@ -62,7 +64,8 @@ class _LoginViewState extends State<LoginView> {
               title: getTranslations(context).success,
               message: state.response.message,
               positiveOnClick: () =>
-                  Navigator.of(context).pushReplacementNamed(Routes.homeRoute));
+                  Navigator.of(context).pushReplacementNamed(Routes.homeRoute),
+          cancelable: false);
         }
       },
       child: SafeArea(

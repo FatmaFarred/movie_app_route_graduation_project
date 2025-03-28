@@ -1,36 +1,30 @@
-import 'dart:convert';
-
-import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:hive/hive.dart';
 import 'package:movie_app_route_graduation_project/core/customized_widgets/reusable_widgets/custom_loading.dart';
-
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
-
-import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsViewModel.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionScreen.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/Textwidget.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cast%20widget.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/geners%20widget.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/icon%20with%20text%20Container%20widget.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/screen%20shot%20widegt.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/watch%20widget.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/webViewWidgetViewer.dart';
+import 'package:movie_app_route_graduation_project/features/home_screen/MovieDetails/screen%20shot%20widegt.dart';
+import 'package:movie_app_route_graduation_project/features/home_screen/MovieDetails/watch%20widget.dart';
+import 'package:movie_app_route_graduation_project/features/home_screen/MovieDetails/webViewWidgetViewer.dart';
 
 import '../../../core/resources/font_manager.dart';
 import '../../../core/resources/style_manager.dart';
 import '../../../di/di.dart';
+import 'MovieSuggetion/MovieSuggetionScreen.dart';
+import 'Textwidget.dart';
+import 'cast widget.dart';
+import 'cubit/MovieDetailsScreenStates.dart';
+import 'cubit/MovieDetailsViewModel.dart';
+import 'geners widget.dart';
+import 'icon with text Container widget.dart';
 
 class Moviedetailsscreen extends StatefulWidget {
   final String movieId;
-  Moviedetailsscreen({required this.movieId});
+
+  const Moviedetailsscreen({super.key, required this.movieId});
 
   @override
   State<Moviedetailsscreen> createState() => _MoviedetailsscreenState();
@@ -53,15 +47,15 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
         bloc: movieDetailsViewModel,
         builder: (context, state) {
           if (state is LoadingState) {
-            return BuildLoadingState(state);
+            return buildLoadingState(state);
           }
 
           if (state is ErrorState) {
-            return BuildErrorState(state);
+            return buildErrorState(state);
           }
 
           if (state is SuccessState) {
-            return BuildSuccessState(state);
+            return buildSuccessState(state);
           }
 
           return Container();
@@ -70,22 +64,27 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
     );
   }
 
-  Widget BuildSuccessState(SuccessState state) {
-    print("Movies: ${state.response?.data?.movie}");
+  Widget buildSuccessState(SuccessState state) {
+    if (kDebugMode) {
+      print("Movies: ${state.response?.data?.movie}");
+    }
     var castlist = state.response?.data?.movie?.cast ?? [];
-    print("watch: ${state.response?.data?.movie?.url}");
+    if (kDebugMode) {
+      print("watch: ${state.response?.data?.movie?.url}");
+    }
 
     return Column(
       children: [
         Playwidget(
           state: state,
-          OnWatchClick: OnWatchClick,
+          onWatchClick: onWatchClick,
           isFavorite: movieDetailsViewModel.isFavorite,
           onFavoriteClick: () {
             var movieData = state.response?.data?.movie?.toMovieModel();
             if (movieDetailsViewModel.isFavorite) {
-              movieDetailsViewModel.removeFromFavorite(movieData?.movieId ?? "");
-            }else{
+              movieDetailsViewModel
+                  .removeFromFavorite(movieData?.movieId ?? "");
+            } else {
               movieDetailsViewModel.addToFavorite(
                   movieData?.movieId ?? "",
                   movieData?.name ?? "",
@@ -105,17 +104,16 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    iconWithTextContainerWidget(
+                    IconWithTextContainerWidget(
                         imagePath: SvgAssets.icFavorite,
                         title:
-                            "${state?.response?.data?.movie?.likeCount ?? ""}"),
-                    iconWithTextContainerWidget(
+                            "${state.response?.data?.movie?.likeCount ?? ""}"),
+                    IconWithTextContainerWidget(
                         imagePath: SvgAssets.icRuntime,
-                        title:
-                            "${state?.response?.data?.movie?.runtime ?? ""}"),
-                    iconWithTextContainerWidget(
+                        title: "${state.response?.data?.movie?.runtime ?? ""}"),
+                    IconWithTextContainerWidget(
                         imagePath: SvgAssets.icRate,
-                        title: "${state?.response?.data?.movie?.rating ?? ""}")
+                        title: "${state.response?.data?.movie?.rating ?? ""}")
                   ],
                 ),
               ),
@@ -127,17 +125,17 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                       fontFamily: FontConstants.robotoFont)),
               ScreenShotWidget(
                 imagePath:
-                    state?.response?.data?.movie?.mediumScreenshotImage1 ?? "",
+                    state.response?.data?.movie?.mediumScreenshotImage1 ?? "",
                 height: 166.h,
               ),
               ScreenShotWidget(
                 imagePath:
-                    state?.response?.data?.movie?.mediumScreenshotImage2 ?? "",
+                    state.response?.data?.movie?.mediumScreenshotImage2 ?? "",
                 height: 166.h,
               ),
               ScreenShotWidget(
                 imagePath:
-                    state?.response?.data?.movie?.mediumScreenshotImage3 ?? "",
+                    state.response?.data?.movie?.mediumScreenshotImage3 ?? "",
                 height: 166.h,
               ),
               SizedBox(height: 9.h),
@@ -178,16 +176,16 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                     fontSize: 24,
                     fontFamily: FontConstants.robotoFont),
               ),
-              Container(
+              SizedBox(
                 height: 450.h,
                 child: ListView.builder(
                     itemCount: castlist.length,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return CastWidget(
-                        imagePath: castlist![index].urlSmallImage ?? "",
-                        name: castlist![index].name ?? "",
-                        character: castlist![index].characterName ?? "",
+                        imagePath: castlist[index].urlSmallImage ?? "",
+                        name: castlist[index].name ?? "",
+                        character: castlist[index].characterName ?? "",
                       );
                     }),
               ),
@@ -206,15 +204,15 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
     );
   }
 
-  Widget BuildLoadingState(LoadingState state) {
+  Widget buildLoadingState(LoadingState state) {
     return SizedBox(
       height: 932.h,
       child: const CustomLoading(),
     );
   }
 
-  Widget BuildErrorState(ErrorState state) {
-    return Container(
+  Widget buildErrorState(ErrorState state) {
+    return SizedBox(
       height: 500.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -234,28 +232,28 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
   }
 
   // Retry logic
-  void OnErrorPressed() {
+  void onErrorPressed() {
     movieDetailsViewModel
         .loadMovieDetailsScreen(widget.movieId); // Re-call the load method
   }
 
-  void OnWatchClick(SuccessState state) async {
+  void onWatchClick(SuccessState state) async {
     Navigator.of(context).push(MaterialPageRoute(
       builder: (context) => MovieWebView(
-        movieUrl: state?.response?.data?.movie?.url ?? "",
+        movieUrl: state.response?.data?.movie?.url ?? "",
       ),
     ));
 
-    var movie = state?.response?.data?.movie;
+    var movie = state.response?.data?.movie;
 
     if (movie != null) {
       var historyMovie = movie.toMovieModel();
 
-      String movieJson = jsonEncode(historyMovie.toJson());
-
       movieDetailsViewModel.addToHistory(historyMovie);
     }
 
-    print("Movie saved to SharedPreferences");
+    if (kDebugMode) {
+      print("Movie saved to SharedPreferences");
+    }
   }
 }

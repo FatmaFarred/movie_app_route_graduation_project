@@ -6,7 +6,7 @@ import '../model/movies/movies_response.dart';
 
 @Injectable(as: GenreRepo)
 class GenreRepoImpl implements GenreRepo{
-  GenreOnlineDataSource _genreOnlineDataSource;
+  final GenreOnlineDataSource _genreOnlineDataSource;
 
   GenreRepoImpl(this._genreOnlineDataSource);
 

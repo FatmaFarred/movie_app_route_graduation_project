@@ -6,7 +6,7 @@ import '../../data/model/movies/movies_response.dart';
 
 @injectable
 class GetSearchUseCase {
-  SearchRepo _searchRepo;
+  final SearchRepo _searchRepo;
 
   GetSearchUseCase(this._searchRepo);
 

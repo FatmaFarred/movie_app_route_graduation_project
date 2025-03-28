@@ -5,7 +5,7 @@ import '../repositries/genre_repo.dart';
 
 @injectable
 class GetGenreUseCase {
-  GenreRepo _genreRepo;
+  final GenreRepo _genreRepo;
 
   GetGenreUseCase(this._genreRepo);
 

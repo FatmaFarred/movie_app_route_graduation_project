@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
-import 'package:meta/meta.dart';
 import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
 import 'package:movie_app_route_graduation_project/core/utils/prefs_manager.dart';
-
 import 'package:movie_app_route_graduation_project/domain/use_cases/delete_profile_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_profile_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/update_profile_use_case.dart';

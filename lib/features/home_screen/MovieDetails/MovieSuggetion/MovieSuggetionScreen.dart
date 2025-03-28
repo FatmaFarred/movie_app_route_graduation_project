@@ -1,18 +1,19 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/MovieSuggetionWidget.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/Moviesuggetion%20States.dart';
 
 import '../../../../core/resources/App_colors.dart';
 import '../../../../core/resources/style_manager.dart';
 import '../../../../di/di.dart';
+import 'MovieSuggetionViewModel.dart';
+import 'MovieSuggetionWidget.dart';
+import 'Moviesuggetion States.dart';
 
 class MovieSuggetionScreen extends StatefulWidget {
   final String movieId;
 
-  MovieSuggetionScreen({required this.movieId});
+  const MovieSuggetionScreen({super.key, required this.movieId});
 
   @override
   State<MovieSuggetionScreen> createState() => _MovieSuggetionScreenState();
@@ -35,15 +36,15 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
         bloc: movieSuggetionViewModel,
         builder: (context, state) {
           if (state is LoadingSuggetionState) {
-            return BuildLoadingState(state);
+            return buildLoadingState(state);
           }
 
           if (state is ErrorSuggetionState) {
-            return BuildErrorState(state);
+            return buildErrorState(state);
           }
 
           if (state is SuccessSuggetionState) {
-            return BuildSuccessState(state);
+            return buildSuccessState(state);
           }
 
           return Container();
@@ -52,18 +53,18 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
     );
   }
 
-  Widget BuildLoadingState(LoadingSuggetionState state) {
-    return Container(
+  Widget buildLoadingState(LoadingSuggetionState state) {
+    return SizedBox(
       height: 200.h,
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [CircularProgressIndicator(), Text("Loading")],
       ),
     );
   }
 
-  Widget BuildErrorState(ErrorSuggetionState state) {
-    return Container(
+  Widget buildErrorState(ErrorSuggetionState state) {
+    return SizedBox(
       height: 500.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -82,12 +83,14 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
     );
   }
 
-  Widget BuildSuccessState(SuccessSuggetionState state) {
+  Widget buildSuccessState(SuccessSuggetionState state) {
     var suggetionlist = state.response?.data?.movies ?? [];
-    print("Movies: $suggetionlist");
+    if (kDebugMode) {
+      print("Movies: $suggetionlist");
+    }
 
     if (suggetionlist.isEmpty) {
-      return Center(child: Text("No movie suggestions available"));
+      return const Center(child: Text("No movie suggestions available"));
     }
 
     return Column(
@@ -105,13 +108,13 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
             ),
             shrinkWrap: false,
             padding: EdgeInsets.zero,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             itemCount: suggetionlist.length,
             itemBuilder: (context, index) {
               return Moviesuggetionwidget(
                 movieid: "${suggetionlist[index].id ?? ""}",
-                imagePath: suggetionlist[index]?.mediumCoverImage ?? "",
-                title: "${suggetionlist[index]?.rating ?? ""}",
+                imagePath: suggetionlist[index].mediumCoverImage ?? "",
+                title: "${suggetionlist[index].rating ?? ""}",
               );
             },
           ),
@@ -120,7 +123,7 @@ class _MovieSuggetionScreenState extends State<MovieSuggetionScreen> {
     );
   }
 
-  void OnErrorPressed() {
+  void onErrorPressed() {
     movieSuggetionViewModel
         .loadMovieSuggetion(widget.movieId); // Retry the method
   }

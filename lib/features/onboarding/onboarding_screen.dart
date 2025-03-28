@@ -9,6 +9,8 @@ import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 import '../../core/utils/prefs_manager.dart';
 
 class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
+
   @override
   State<OnBoardingScreen> createState() => _OnBoardingScreenState();
 }
@@ -26,39 +28,39 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           title: getTranslations(context).onBoardingTitlePage2,
           desc: getTranslations(context).onBoardingDescPage2,
           gradientColors: [
-            AppColors.gradientonboarding2De2,
-            AppColors.gradientonboarding2De3
+            AppColors.gradientOnBoarding2De1,
+            AppColors.gradientOnBoarding2De2
           ]),
       OnBoardingModel(
           background: ImageAssets.onBoarding3,
           title: getTranslations(context).onBoardingTitlePage3,
           desc: getTranslations(context).onBoardingDescPage3,
           gradientColors: [
-            AppColors.gradientonboarding3De1,
-            AppColors.gradientonboarding3De2
+            AppColors.gradientOnBoarding3De1,
+            AppColors.gradientOnBoarding3De2
           ]),
       OnBoardingModel(
           background: ImageAssets.onBoarding4,
           title: getTranslations(context).onBoardingTitlePage4,
           desc: getTranslations(context).onBoardingDescPage4,
           gradientColors: [
-            AppColors.gradientonboarding4De1,
-            AppColors.gradientonboarding4De2
+            AppColors.gradientOnBoarding4De1,
+            AppColors.gradientOnBoarding4De2
           ]),
       OnBoardingModel(
           background: ImageAssets.onBoarding5,
           title: getTranslations(context).onBoardingTitlePage5,
           desc: getTranslations(context).onBoardingDescPage5,
           gradientColors: [
-            AppColors.gradientonboarding5De1,
-            AppColors.gradientonboarding5De2
+            AppColors.gradientOnBoarding5De1,
+            AppColors.gradientOnBoarding5De2
           ]),
       OnBoardingModel(
           background: ImageAssets.onBoarding6,
           title: getTranslations(context).onBoardingTitlePage6,
           gradientColors: [
-            AppColors.gradientonboarding6De1,
-            AppColors.gradientonboarding6De2
+            AppColors.gradientOnBoarding6De1,
+            AppColors.gradientOnBoarding6De2
           ]),
     ];
 

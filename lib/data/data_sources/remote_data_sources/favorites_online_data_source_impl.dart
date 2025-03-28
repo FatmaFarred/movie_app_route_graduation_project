@@ -14,7 +14,7 @@ import '../../model/movie/movie_model.dart';
 
 @Injectable(as: FavoritesOnlineDataSource)
 class FavoritesOnlineDataSourceImpl implements FavoritesOnlineDataSource {
-  ApiManager _apiManager;
+  final ApiManager _apiManager;
 
   FavoritesOnlineDataSourceImpl(this._apiManager);
 

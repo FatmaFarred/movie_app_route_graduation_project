@@ -5,7 +5,7 @@ import '../../data/model/favorites/is_favorite_response.dart';
 
 @injectable
 class GetMovieIsFavoriteUseCase {
-  FavoritesRepo _favoritesRepo;
+  final FavoritesRepo _favoritesRepo;
 
   GetMovieIsFavoriteUseCase(this._favoritesRepo);
 

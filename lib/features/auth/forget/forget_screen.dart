@@ -6,10 +6,10 @@ import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
 import '../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
 import '../../../core/customized_widgets/reusable_widgets/customized_elevated_button.dart';
-import '../../../core/resources/app_colors.dart';
-import '../../../core/resources/font_manager.dart';
 
 class ForgetScreen extends StatelessWidget {
+  const ForgetScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

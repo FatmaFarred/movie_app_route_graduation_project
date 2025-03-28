@@ -8,7 +8,7 @@ import '../../../../../data/model/movie/movie_model.dart';
 class TabPage extends StatelessWidget {
   List<MovieModel>? movieList;
 
-  TabPage({required this.movieList});
+  TabPage({super.key, required this.movieList});
 
   @override
   Widget build(BuildContext context) {

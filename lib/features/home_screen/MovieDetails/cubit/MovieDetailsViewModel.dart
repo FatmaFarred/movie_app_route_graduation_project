@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/api/errors/failure.dart';
@@ -10,7 +11,8 @@ import 'package:movie_app_route_graduation_project/domain/use_cases/get_movie_fr
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_movie_is_favorite_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/movie_deatils_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/remove_from_favorite_use_case.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/cubit/MovieDetailsScreenStates.dart';
+
+import 'MovieDetailsScreenStates.dart';
 
 @injectable
 class MovieDetailsViewModel extends Cubit<MovieDetailsScreenState> {
@@ -54,9 +56,13 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsScreenState> {
       isFavorite = response?.data ?? false;
     }catch(e){
       if (e is Failure) {
-        print(e.errorMessage);
+        if (kDebugMode) {
+          print(e.errorMessage);
+        }
       }else{
-        print(e.toString());
+        if (kDebugMode) {
+          print(e.toString());
+        }
       }
     }
   }
@@ -68,9 +74,13 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsScreenState> {
       isFavorite = true;
     }catch(e){
       if (e is Failure) {
-        print(e.errorMessage);
+        if (kDebugMode) {
+          print(e.errorMessage);
+        }
       }else{
-        print(e.toString());
+        if (kDebugMode) {
+          print(e.toString());
+        }
       }
     }
   }
@@ -81,9 +91,13 @@ class MovieDetailsViewModel extends Cubit<MovieDetailsScreenState> {
       isFavorite = false;
     }catch(e){
       if (e is Failure) {
-        print(e.errorMessage);
+        if (kDebugMode) {
+          print(e.errorMessage);
+        }
       }else{
-        print(e.toString());
+        if (kDebugMode) {
+          print(e.toString());
+        }
       }
     }
   }

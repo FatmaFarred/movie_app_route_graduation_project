@@ -26,6 +26,8 @@ import 'Register_cubit/register_state.dart';
 import 'Register_cubit/register_view_model.dart';
 
 class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
+
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }

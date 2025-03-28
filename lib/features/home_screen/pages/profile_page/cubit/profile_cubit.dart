@@ -18,11 +18,11 @@ part 'profile_state.dart';
 
 @injectable
 class ProfileCubit extends Cubit<ProfileState> {
-  GetProfileUseCase _getProfileUseCase;
+  final GetProfileUseCase _getProfileUseCase;
 
-  GetAllFavoritesUseCase _getAllFavoritesUseCase;
+  final GetAllFavoritesUseCase _getAllFavoritesUseCase;
 
-  GetMovieFromHistoryUseCase _getMovieFromHistoryUseCase;
+  final GetMovieFromHistoryUseCase _getMovieFromHistoryUseCase;
 
   ProfileCubit(this._getProfileUseCase, this._getAllFavoritesUseCase,
       this._getMovieFromHistoryUseCase)

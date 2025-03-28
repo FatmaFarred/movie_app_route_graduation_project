@@ -7,7 +7,7 @@ import '../../../core/resources/style_manager.dart';
 class MovieWebView extends StatelessWidget {
   String movieUrl;
 
-  MovieWebView({required this. movieUrl});
+  MovieWebView({super.key, required this. movieUrl});
 
   @override
   Widget build(BuildContext context) {

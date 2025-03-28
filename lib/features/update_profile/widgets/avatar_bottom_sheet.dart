@@ -15,7 +15,7 @@ class AvatarBottomSheet extends StatefulWidget {
   OnButtonClick onChangeAvatar;
 
   AvatarBottomSheet(
-      {required this.avatarList,
+      {super.key, required this.avatarList,
         required this.selectedAvatar,
         required this.onChangeAvatar});
 

@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_route_graduation_project/features/homescreen/MovieDetails/MovieSuggetion/Moviesuggetion%20States.dart';
 
 import '../../../../domain/use_cases/movie_suggestion_use_case.dart';
+import 'Moviesuggetion States.dart';
 @injectable
 class MovieSuggetionViewModel extends Cubit<MovieSuggetionState>{
 MovieSuggestionUseCase movieSuggetionUseCase ;

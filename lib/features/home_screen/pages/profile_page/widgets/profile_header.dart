@@ -18,7 +18,7 @@ class ProfileHeader extends StatelessWidget {
 
   OnButtonClick onExitButtonClick;
 
-  ProfileHeader({
+  ProfileHeader({super.key,
     required this.name,
     required this.wishListCount,
     required this.historyCount,

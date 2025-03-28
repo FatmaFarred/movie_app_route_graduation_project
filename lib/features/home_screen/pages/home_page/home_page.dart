@@ -80,7 +80,7 @@ class _HomePageState extends State<HomePage> {
                 image: NetworkImage(_selectedMovie!.imageURL ?? ''),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
-                  Colors.black.withOpacity(0.7),
+                  Colors.black.withValues(alpha: 0.7),
                   BlendMode.darken,
                 ),
               ),

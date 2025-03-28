@@ -5,7 +5,7 @@ import '../../data/model/common_response.dart';
 
 @injectable
 class RemoveFromFavoriteUseCase {
-  FavoritesRepo _favoritesRepo;
+  final FavoritesRepo _favoritesRepo;
 
   RemoveFromFavoriteUseCase(this._favoritesRepo);
 

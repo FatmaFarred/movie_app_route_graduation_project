@@ -11,7 +11,7 @@ part 'search_state.dart';
 
 @injectable
 class SearchCubit extends Cubit<SearchState> {
-  GetSearchUseCase _getSearchUseCase;
+  final GetSearchUseCase _getSearchUseCase;
 
   int currentPage = 1;
   int pageLimit = 20;
@@ -39,8 +39,9 @@ class SearchCubit extends Cubit<SearchState> {
       totalPages = (movieCount / pageLimit).ceil();
 
       var searchListResponse = response?.data?.movies
-          ?.map((moviesDto) => moviesDto.toMovieModel())
-          .toList() ?? [];
+              ?.map((moviesDto) => moviesDto.toMovieModel())
+              .toList() ??
+          [];
 
       searchList.addAll(searchListResponse);
 

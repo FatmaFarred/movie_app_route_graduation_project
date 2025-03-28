@@ -12,8 +12,9 @@ List<BottomNavigationBarItem> generateBottomNavItems(
   return iconMap.entries
       .map((entry) => BottomNavigationBarItem(
             icon: SvgPicture.asset(entry.key),
-            activeIcon:
-                SvgPicture.asset(entry.key, color: AppColors.orangeColor),
+            activeIcon: SvgPicture.asset(entry.key,
+                colorFilter: const ColorFilter.mode(
+                    AppColors.orangeColor, BlendMode.srcIn)),
             backgroundColor: AppColors.darkGrayColor,
             label: entry.value,
           ))
@@ -22,7 +23,7 @@ List<BottomNavigationBarItem> generateBottomNavItems(
 
 List<Widget> taps = [
   const HomePage(),
-  SearchPage(),
-   ExplorePage(),
+  const SearchPage(),
+  const ExplorePage(),
   const ProfilePage(),
 ];

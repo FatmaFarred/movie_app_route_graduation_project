@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/data/model/register_response_dm.dart';
 import 'package:movie_app_route_graduation_project/domain/repositries/data_sources/remote_data_sources/register_remote_data_source.dart';
@@ -38,7 +39,9 @@ class RegisterRemoteDataSourceImpl implements RegisterRemoteDataSource {
               "phone": phone,
               "avaterId": avaterId
             });
-        print(response.data);
+        if (kDebugMode) {
+          print(response.data);
+        }
         var registerResponse = RegisterResponseDm.fromJson(response.data);
         if (response.statusCode! >= 200 && response.statusCode! < 300) {
           return Right(registerResponse);

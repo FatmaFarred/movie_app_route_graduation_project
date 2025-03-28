@@ -5,7 +5,7 @@ import '../../data/model/movie/movie_model.dart';
 
 @injectable
 class AddToHistoryUseCase{
-  HistoryRepo _historyRepo;
+  final HistoryRepo _historyRepo;
 
   AddToHistoryUseCase(this._historyRepo);
 

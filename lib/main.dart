@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
   String? myToken;
   LocaleCubit localeCubit;
 
-  MyApp({
+  MyApp({super.key,
     required this.showOnboarding,
     required this.myToken,
     required this.localeCubit,

@@ -18,6 +18,8 @@ import '../../core/resources/font_manager.dart';
 import 'cubit/update_profile_cubit.dart';
 
 class UpdateProfileScreen extends StatefulWidget {
+  const UpdateProfileScreen({super.key});
+
   @override
   State<UpdateProfileScreen> createState() => _UpdateProfileScreenState();
 }

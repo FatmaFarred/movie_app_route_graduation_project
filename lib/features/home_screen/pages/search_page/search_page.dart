@@ -13,6 +13,8 @@ import '../../../../core/resources/assets_manager.dart';
 import 'cubit/search_cubit.dart';
 
 class SearchPage extends StatefulWidget {
+  const SearchPage({super.key});
+
   @override
   State<SearchPage> createState() => _SearchPageState();
 }
@@ -94,7 +96,7 @@ class _SearchPageState extends State<SearchPage> {
                     );
                   }
                   if (state is SearchLoadingState) {
-                    return Center(child: CustomLoading());
+                    return const Center(child: CustomLoading());
                   }
                   return Center(
                     child: Image.asset(

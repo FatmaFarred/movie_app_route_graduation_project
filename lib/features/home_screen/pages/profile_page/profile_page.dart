@@ -71,7 +71,7 @@ class _ProfilePageState extends State<ProfilePage> {
       },
       builder: (context, state) {
         if (state is ProfileInitialState || state is ProfileLoadingState) {
-          return CustomLoading();
+          return const CustomLoading();
         }
         if (state is ProfileSuccessState) {
           return buildProfileSection(state);

@@ -11,7 +11,7 @@ import '../../model/movies/movies_response.dart';
 
 @Injectable(as: SearchOnlineDataSource)
 class SearchOnlineDataSourceImpl implements SearchOnlineDataSource {
-  ApiManager _apiManager;
+  final ApiManager _apiManager;
 
   SearchOnlineDataSourceImpl(this._apiManager);
 

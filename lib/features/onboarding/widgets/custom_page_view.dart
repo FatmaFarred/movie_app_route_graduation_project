@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/resources/font_manager.dart';
 import 'package:movie_app_route_graduation_project/core/resources/style_manager.dart';
-import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
 import 'package:movie_app_route_graduation_project/features/onboarding/model/onboarding_model.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
@@ -69,7 +68,7 @@ class CustomPageView extends StatelessWidget {
                 text: currentPage == pageCount
                     ? getTranslations(context).finish
                     : getTranslations(context).next,
-                onPressed: (){
+                onPressed: () {
                   onNextPage();
                 },
               ),
