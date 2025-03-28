@@ -4,30 +4,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:movie_app_route_graduation_project/core/resources/app_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
 
 import '../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
+import '../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
+import '../../../core/customized_widgets/reusable_widgets/customized_elevated_button.dart';
 import '../../../core/resources/font_manager.dart';
 import '../../../core/resources/style_manager.dart';
 import '../../../core/routes_manager/routes.dart';
 import '../../../core/utils/validation_utils.dart';
 import '../../../di/di.dart';
-
-import '../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
-import '../../../core/customized_widgets/reusable_widgets/customized_elevated_button.dart';
 import '../../../l10n/app_translations.dart';
 import '../../../l10n/cubit/locale_cubit.dart';
 import '../login/widgets/language_switch.dart';
-import 'avatar_widget.dart';
 import 'Register_cubit/register_state.dart';
 import 'Register_cubit/register_view_model.dart';
+import 'avatar_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({super.key});
-
   @override
   State<RegisterScreen> createState() => _RegisterScreenState();
 }

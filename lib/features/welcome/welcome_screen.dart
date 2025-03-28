@@ -14,59 +14,61 @@ class WelcomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Stack(children: [
-        Image.asset(
-          ImageAssets.onBoarding1,
-          width: double.infinity,
-          height: double.infinity,
-          fit: BoxFit.cover,
-        ),
-        Container(
-          decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                AppColors.gradientOnBoarding1De1,
-                AppColors.gradientOnBoarding1De2,
-                AppColors.gradientOnBoarding1De3,
-                AppColors.gradientOnBoarding1De4
-              ])),
-        ),
-        Align(
-          alignment: Alignment.bottomCenter,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              spacing: 16.h,
-              children: [
-                Text(
-                  getTranslations(context).onBoardingTitlePage1,
-                  style: getMediumStyle(),
-                  textAlign: TextAlign.center,
-                ),
-                Text(
-                  getTranslations(context).onBoardingDescPage1,
-                  style: getRegularStyle(
-                      fontSize: FontSize.s20,
-                      fontFamily: FontConstants.interFont,
-                      color: AppColors.lightWhiteColor),
-                  textAlign: TextAlign.center,
-                ),
-                CustomizedElevatedButton(
-                  text: getTranslations(context).exploreNow,
-                  onPressed: () {
-                    Navigator.pushReplacementNamed(
-                        context, Routes.onBoardingRoute);
-                  },
-                ),
-              ],
-            ),
+    return SafeArea(
+      child: Scaffold(
+        body: Stack(children: [
+          Image.asset(
+            ImageAssets.onBoarding1,
+            width: double.infinity,
+            height: double.infinity,
+            fit: BoxFit.cover,
           ),
-        )
-      ]),
+          Container(
+            decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                  AppColors.gradientOnBoarding1De1,
+                  AppColors.gradientOnBoarding1De2,
+                  AppColors.gradientOnBoarding1De3,
+                  AppColors.gradientOnBoarding1De4
+                ])),
+          ),
+          Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                spacing: 16.h,
+                children: [
+                  Text(
+                    getTranslations(context).onBoardingTitlePage1,
+                    style: getMediumStyle(),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
+                    getTranslations(context).onBoardingDescPage1,
+                    style: getRegularStyle(
+                        fontSize: FontSize.s20,
+                        fontFamily: FontConstants.interFont,
+                        color: AppColors.lightWhiteColor),
+                    textAlign: TextAlign.center,
+                  ),
+                  CustomizedElevatedButton(
+                    text: getTranslations(context).exploreNow,
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, Routes.onBoardingRoute);
+                    },
+                  ),
+                ],
+              ),
+            ),
+          )
+        ]),
+      ),
     );
   }
 }

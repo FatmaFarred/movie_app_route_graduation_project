@@ -54,7 +54,8 @@ class MyApp extends StatelessWidget {
   String? myToken;
   LocaleCubit localeCubit;
 
-  MyApp({super.key,
+  MyApp({
+    super.key,
     required this.showOnboarding,
     required this.myToken,
     required this.localeCubit,
@@ -73,10 +74,12 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: AppTheme.themeData,
-              //initialRoute: Routes.loginRoute,
-              initialRoute: showOnboarding == false
+              initialRoute: Routes.registerRoute,
+              /*initialRoute: showOnboarding == false
                   ? Routes.welcomeRoute
-                  : (myToken == null ? Routes.loginRoute : Routes.homeRoute),
+                  : (myToken == null || myToken!.trim().isEmpty
+                      ? Routes.loginRoute
+                      : Routes.homeRoute),*/
               onGenerateRoute: RouteGenerator.getRoute,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,

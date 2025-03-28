@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_route_graduation_project/domain/use_cases/register_use_case.dart';
+import 'package:movie_app_route_graduation_project/features/auth/register/Register_cubit/register_state.dart';
 
-import 'register_state.dart';
+import '../../../../domain/use_cases/register_use_case.dart';
 
 @injectable
 class RegisterViewModel extends Cubit<RegisterState> {

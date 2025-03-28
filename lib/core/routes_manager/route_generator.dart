@@ -18,7 +18,7 @@ class RouteGenerator {
       case Routes.onBoardingRoute:
         return MaterialPageRoute(builder: (_) => const OnBoardingScreen());
       case Routes.registerRoute:
-        return MaterialPageRoute(builder: (_) => const RegisterScreen());
+        return MaterialPageRoute(builder: (_) => RegisterScreen());
       case Routes.forgetRoute:
         return MaterialPageRoute(builder: (_) => const ForgetScreen());
       case Routes.changePasswordRoute:

@@ -64,20 +64,22 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           ]),
     ];
 
-    return Scaffold(
-        body: PageView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            controller: _pageController,
-            itemCount: onBoardingList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return CustomPageView(
-                currentPage: index,
-                pageCount: onBoardingList.length - 1,
-                onBoardingData: onBoardingList[index],
-                onNextPage: onNextPage,
-                onPreviousPage: onPreviousPage,
-              );
-            }));
+    return SafeArea(
+      child: Scaffold(
+          body: PageView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              controller: _pageController,
+              itemCount: onBoardingList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return CustomPageView(
+                  currentPage: index,
+                  pageCount: onBoardingList.length - 1,
+                  onBoardingData: onBoardingList[index],
+                  onNextPage: onNextPage,
+                  onPreviousPage: onPreviousPage,
+                );
+              })),
+    );
   }
 
   void onNextPage() {
