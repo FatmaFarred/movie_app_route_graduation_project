@@ -9,11 +9,11 @@ import 'register_state.dart';
 class RegisterViewModel extends Cubit<RegisterState> {
   RegisterUseCase registerUseCase;
   var formKey = GlobalKey<FormState>();
-  var emailController = TextEditingController(text: "Fatma78@gmail.com");
-  var nameController = TextEditingController(text: "fatma");
-  var passwordController = TextEditingController(text: "Fatm2510@");
-  var confirmPasswordController = TextEditingController(text: "Fatm2510@");
-  var phoneNumberController = TextEditingController(text: "+201277140023");
+  var emailController = TextEditingController();
+  var nameController = TextEditingController();
+  var passwordController = TextEditingController();
+  var confirmPasswordController = TextEditingController();
+  var phoneNumberController = TextEditingController();
   var selectedAvatar = 0;
   int selectedIndex = 0;
 
