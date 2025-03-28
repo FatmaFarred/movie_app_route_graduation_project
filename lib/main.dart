@@ -74,12 +74,11 @@ class MyApp extends StatelessWidget {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
               theme: AppTheme.themeData,
-              initialRoute: Routes.registerRoute,
-              /*initialRoute: showOnboarding == false
+              initialRoute: showOnboarding == false
                   ? Routes.welcomeRoute
                   : (myToken == null || myToken!.trim().isEmpty
                       ? Routes.loginRoute
-                      : Routes.homeRoute),*/
+                      : Routes.homeRoute),
               onGenerateRoute: RouteGenerator.getRoute,
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
