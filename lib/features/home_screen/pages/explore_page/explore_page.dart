@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/customized_card_item.dart';
 import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
 import 'package:movie_app_route_graduation_project/features/home_screen/pages/explore_page/cubit/explore_cubit.dart';
 
-import '../../../../Api manager/dependency injection/Di.dart';
-import '../../../../core/customized widgets/reusable widgets/custom_dialog.dart';
-import '../../../../core/customized widgets/reusable widgets/custom_loading.dart';
+import '../../../../di/di.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_loading.dart';
+import '../../../../core/customized_widgets/reusable_widgets/customized_card_item.dart';
 import '../../../../core/resources/app_colors.dart';
 import '../../../../l10n/app_translations.dart';
 import 'explore_widgets.dart';
@@ -106,7 +106,7 @@ class _ExplorePageState extends State<ExplorePage> {
                     ),
                   );
                 }
-                return CustomLoading();
+                return const CustomLoading();
               },
             ),
           ),

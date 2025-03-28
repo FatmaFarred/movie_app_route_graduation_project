@@ -9,7 +9,7 @@ class GenresWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var genresList = state.response?.data?.movie?.genres ?? [];
+    var genresList = state.response?.data?.movie?.genres?? [];
 
     return Container(
       height: 200.h,

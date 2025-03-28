@@ -1,11 +1,11 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/data/data_sources/favorites_online_data_source.dart';
-
-import '../../../Api manager/Api_constant.dart';
-import '../../../Api manager/Api_manager.dart';
-import '../../../Api manager/end_points.dart';
-import '../../../Api manager/errors/failure.dart';
+import '../../../api/api_constant.dart';
+import '../../../api/api_manager.dart';
+import '../../../api/end_points.dart';
+import '../../../api/errors/failure.dart';
+import '../../../core/utils/app_constants.dart';
 import '../../model/common_response.dart';
 import '../../model/favorites/add_favorite_response.dart';
 import '../../model/favorites/favorites_response.dart';
@@ -14,7 +14,7 @@ import '../../model/movie/movie_model.dart';
 
 @Injectable(as: FavoritesOnlineDataSource)
 class FavoritesOnlineDataSourceImpl implements FavoritesOnlineDataSource {
-  final ApiManager _apiManager;
+  ApiManager _apiManager;
 
   FavoritesOnlineDataSourceImpl(this._apiManager);
 
@@ -42,10 +42,10 @@ class FavoritesOnlineDataSourceImpl implements FavoritesOnlineDataSource {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return addFavoriteResponse.data;
       } else {
-        throw serverError(errorMessage: addFavoriteResponse.message);
+        throw ServerError(errorMessage: addFavoriteResponse.message);
       }
     } else {
-      throw NetworkError(errorMessage: "No Internet Connection");
+      throw NetworkError(errorMessage: AppConstants.noInternetConnection);
     }
   }
 
@@ -63,10 +63,10 @@ class FavoritesOnlineDataSourceImpl implements FavoritesOnlineDataSource {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return removeFavoriteResponse;
       } else {
-        throw serverError(errorMessage: removeFavoriteResponse.message);
+        throw ServerError(errorMessage: removeFavoriteResponse.message);
       }
     } else {
-      throw NetworkError(errorMessage: "No Internet Connection");
+      throw NetworkError(errorMessage: AppConstants.noInternetConnection);
     }
   }
 
@@ -84,10 +84,10 @@ class FavoritesOnlineDataSourceImpl implements FavoritesOnlineDataSource {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return favoritesResponse.data;
       } else {
-        throw serverError(errorMessage: favoritesResponse.message);
+        throw ServerError(errorMessage: favoritesResponse.message);
       }
     } else {
-      throw NetworkError(errorMessage: "No Internet Connection");
+      throw NetworkError(errorMessage: AppConstants.noInternetConnection);
     }
   }
 
@@ -106,10 +106,10 @@ class FavoritesOnlineDataSourceImpl implements FavoritesOnlineDataSource {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return isFavoriteResponse;
       } else {
-        throw serverError(errorMessage: isFavoriteResponse.message);
+        throw ServerError(errorMessage: isFavoriteResponse.message);
       }
     } else {
-      throw NetworkError(errorMessage: "No Internet Connection");
+      throw NetworkError(errorMessage: AppConstants.noInternetConnection);
     }
   }
 }

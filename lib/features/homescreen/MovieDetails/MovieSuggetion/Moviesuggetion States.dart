@@ -1,6 +1,5 @@
-import 'package:movie_app_route_graduation_project/Api%20manager/errors/failure.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/MovieDetailsResponseEntity.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/MovieSuggetionResponseEntity.dart';
+import '../../../../api/errors/failure.dart';
+import '../../../../domain/entities/movie_suggestion_response_entity.dart';
 
 abstract class MovieSuggetionState {}
 
@@ -10,7 +9,7 @@ class LoadingSuggetionState extends MovieSuggetionState {}
 
 class SuccessSuggetionState extends MovieSuggetionState {
 
-MovieSuggetionResponseEntity? response;
+MovieSuggestionResponseEntity? response;
 
 SuccessSuggetionState({ this.response });
 

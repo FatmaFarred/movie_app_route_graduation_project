@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../core/customized widgets/reusable widgets/customized_card_item.dart';
+import '../../../../../core/customized_widgets/reusable_widgets/customized_card_item.dart';
 import '../../../../../core/resources/assets_manager.dart';
 import '../../../../../data/model/movie/movie_model.dart';
 

@@ -2,12 +2,14 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:movie_app_route_graduation_project/core/shared_%20preferences.dart';
+import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
+import 'package:movie_app_route_graduation_project/core/utils/prefs_manager.dart';
+
 import 'package:movie_app_route_graduation_project/domain/use_cases/delete_profile_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_profile_use_case.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/update_profile_use_case.dart';
 
-import '../../../Api manager/errors/failure.dart';
+import '../../../api/errors/failure.dart';
 import '../../../data/model/common_response.dart';
 import '../../../domain/entities/profile_entity.dart';
 
@@ -19,26 +21,26 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   final UpdateProfileUseCase _updateProfileUseCase;
   final DeleteProfileUseCase _deleteProfileUseCase;
 
-  String token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3ZDkwMjBiMDdhNjE1NzE0MDlhZDdhOCIsImVtYWlsIjoieW9qbzAyNThAZ21haWwuY29tIiwiaWF0IjoxNzQyMjc1MDg3fQ.EvSVcTkYfWM6OtWLbSujG9Zb9J-eFo1yD3YzmYctZMo";
-
   var formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   int selectedAvatar = -1;
   int avatarIndex = -1;
 
+  late String myToken;
+
   UpdateProfileCubit(this._getProfileUseCase, this._updateProfileUseCase,
       this._deleteProfileUseCase)
       : super(ProfileInitialState());
 
   Future<void> loadProfile() async {
+    myToken = await PrefsManager.getData(key: AppConstants.prefsTokenKey) ?? "";
     emit(ProfileLoadingState());
     try {
-      var response = await _getProfileUseCase(token);
-      nameController.text = response!.name!;
-      phoneController.text = response.phone!;
-      selectedAvatar = response.avaterId!;
+      var response = await _getProfileUseCase(myToken);
+      nameController.text = response?.name ?? "";
+      phoneController.text = response?.phone ?? "";
+      selectedAvatar = response?.avaterId ?? 0;
       avatarIndex = selectedAvatar;
       emit(ProfileSuccessState(profileData: response));
     } catch (e) {
@@ -51,12 +53,11 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   }
 
   Future<void> updateProfile() async {
-    String mytoken= await Shared_preferences.getData(key: "token") ?? "";
     if (formKey.currentState?.validate() == true) {
       emit(UpdateProfileLoadingState());
       try {
         var response = await _updateProfileUseCase(
-            mytoken, nameController.text, phoneController.text, avatarIndex);
+            myToken, nameController.text, phoneController.text, avatarIndex);
         selectedAvatar = avatarIndex;
         emit(UpdateProfileSuccessState(response: response));
       } catch (e) {
@@ -73,7 +74,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   Future<void> deleteProfile() async {
     emit(DeleteProfileLoadingState());
     try {
-      var response = await _deleteProfileUseCase(token);
+      var response = await _deleteProfileUseCase(myToken);
       emit(DeleteProfileSuccessState(response: response));
     } catch (e) {
       if (e is Failure) {

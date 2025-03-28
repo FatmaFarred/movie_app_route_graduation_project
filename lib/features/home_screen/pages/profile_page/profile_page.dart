@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/dependency%20injection/Di.dart';
-import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/custom_dialog.dart';
-import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
+import 'package:movie_app_route_graduation_project/core/resources/app_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
-import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
 import 'package:movie_app_route_graduation_project/features/home_screen/pages/profile_page/cubit/profile_cubit.dart';
 import 'package:movie_app_route_graduation_project/features/home_screen/pages/profile_page/widgets/profile_header.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
-import '../../../../core/customized widgets/reusable widgets/custom_loading.dart';
+import '../../../../core/resources/style_manager.dart';
+import '../../../../di/di.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_loading.dart';
 import '../../../../core/routes_manager/routes.dart';
 import 'widgets/tab_page.dart';
 

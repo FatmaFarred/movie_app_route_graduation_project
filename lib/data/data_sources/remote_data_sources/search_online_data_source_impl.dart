@@ -2,10 +2,11 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:injectable/injectable.dart';
 import 'package:movie_app_route_graduation_project/data/data_sources/search_online_data_source.dart';
 
-import '../../../Api manager/Api_constant.dart';
-import '../../../Api manager/Api_manager.dart';
-import '../../../Api manager/end_points.dart';
-import '../../../Api manager/errors/failure.dart';
+import '../../../api/api_constant.dart';
+import '../../../api/api_manager.dart';
+import '../../../api/end_points.dart';
+import '../../../api/errors/failure.dart';
+import '../../../core/utils/app_constants.dart';
 import '../../model/movies/movies_response.dart';
 
 @Injectable(as: SearchOnlineDataSource)
@@ -28,10 +29,10 @@ class SearchOnlineDataSourceImpl implements SearchOnlineDataSource {
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return searchResponse;
       } else {
-        throw serverError(errorMessage: searchResponse.statusMessage);
+        throw ServerError(errorMessage: searchResponse.statusMessage);
       }
     } else {
-      throw NetworkError(errorMessage: "No Internet Connection");
+      throw NetworkError(errorMessage: AppConstants.noInternetConnection);
     }
   }
 }

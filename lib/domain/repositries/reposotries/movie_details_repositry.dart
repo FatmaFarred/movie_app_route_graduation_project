@@ -1,13 +1,14 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/errors/failure.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/MovieDetailsResponseEntity.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/MovieSuggetionResponseEntity.dart';
+import 'package:movie_app_route_graduation_project/domain/entities/movie_details_response_entity.dart';
+import 'package:movie_app_route_graduation_project/domain/entities/movie_suggestion_response_entity.dart';
 
-abstract class MovieDetailsRepositry {
+import '../../../../api/errors/failure.dart';
 
-Future <Either<Failure,MovieDetailsResponseEntity>> getMovieDeatials(int id );
+abstract class MovieDetailsRepository {
 
-Future <Either<Failure,MovieSuggetionResponseEntity>> getMovieSuggetion(int id );
+Future <Either<Failure,MovieDetailsResponseEntity>> getMovieDetails(String id );
+
+Future <Either<Failure,MovieSuggestionResponseEntity>> getMovieSuggestion(String id );
 
 }
 

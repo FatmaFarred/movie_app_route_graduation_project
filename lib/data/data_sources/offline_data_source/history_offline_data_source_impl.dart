@@ -9,18 +9,20 @@ class HistoryOfflineDataSourceImpl implements HistoryOfflineDataSource {
 
   @override
   Future<void> addMovieToHistory(MovieModel movie) async {
-    var box = await Hive.openBox<MovieModel>(AppConstants.hiveHistoryBox);
-
-    if (box.length >= AppConstants.historyBoxLimit) {
-      await box.deleteAt(0);
-    }
-
-    await box.add(movie);
+    var box = await Hive.openBox(AppConstants.hiveHistoryBox);
+    await box.put(movie.movieId, movie);
+    await box.close();
   }
 
   @override
   Future<List<MovieModel>?> getMovieFromHistory() async {
-    var box = await Hive.openBox<MovieModel>(AppConstants.hiveHistoryBox);
-    return box.values.toList();
+    var box = await Hive.openBox(AppConstants.hiveHistoryBox);
+    List<MovieModel> historyMovies = [];
+    for (var movie in box.values) {
+      if (movie is MovieModel) {
+        historyMovies.add(movie);
+      }
+    }
+    return historyMovies ;
   }
 }

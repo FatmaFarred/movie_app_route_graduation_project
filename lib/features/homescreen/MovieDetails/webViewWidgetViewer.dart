@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app_route_graduation_project/core/resources/style%20manager.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import '../../../core/resources/App_colors.dart';
+import '../../../core/resources/style_manager.dart';
 
 class MovieWebView extends StatelessWidget {
   String movieUrl;

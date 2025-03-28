@@ -2,17 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/dependency%20injection/Di.dart';
-import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/custom_dialog.dart';
+import 'package:movie_app_route_graduation_project/core/customized_widgets/reusable_widgets/customized_elevated_button.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 import 'package:movie_app_route_graduation_project/core/utils/validation_utils.dart';
 import 'package:movie_app_route_graduation_project/features/auth/change/cubit/change_password_cubit.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
-import '../../../core/customized widgets/reusable widgets/Customized Elevated bottom.dart';
-import '../../../core/customized widgets/reusable widgets/custom_text_field.dart';
-import '../../../core/resources/App_colors.dart';
-import '../../../core/resources/font_manager.dart';
+import '../../../di/di.dart';
+import '../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
+import '../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
 
 class ChangePasswordScreen extends StatefulWidget {
   @override
@@ -38,23 +36,17 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 message: getTranslations(context).loading,
                 cancelable: false);
           case ChangePasswordSuccessState():
-            Navigator.pop(context);
+            Navigator.of(context).pop;
             CustomDialog.positiveButton(
                 context: context,
                 title: getTranslations(context).success,
-                message: state.response!.message,
-                positiveOnClick: () {
-                  Navigator.pop(context);
-                });
+                message: state.response!.message);
           case ChangePasswordErrorState():
-            Navigator.pop(context);
+            Navigator.of(context).pop;
             CustomDialog.positiveButton(
                 context: context,
                 title: getTranslations(context).error,
-                message: state.error.errorMessage,
-                positiveOnClick: () {
-                  Navigator.pop(context);
-                });
+                message: state.error.errorMessage);
         }
       },
       child: Scaffold(
@@ -73,7 +65,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: CustomTextField(
                     controller: changePasswordCubit.oldPasswordController,
-                    keyBoardType: TextInputType.text,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
                     prefixIcon: SvgPicture.asset(SvgAssets.icPassword,
                         height: 25.h, width: 25.h, fit: BoxFit.scaleDown),
                     hintText: getTranslations(context).oldPassword,
@@ -100,7 +93,8 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
                   child: CustomTextField(
                     controller: changePasswordCubit.newPasswordController,
-                    keyBoardType: TextInputType.text,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.done,
                     prefixIcon: SvgPicture.asset(SvgAssets.icPassword,
                         height: 25.h, width: 25.h, fit: BoxFit.scaleDown),
                     hintText: getTranslations(context).newPassword,
@@ -125,12 +119,9 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),
-                  child: CustomeizedElevatedButtom(
+                  child: CustomizedElevatedButton(
                     text: getTranslations(context).changePassword,
-                    style: Theme.of(context).textTheme.bodySmall!.copyWith(
-                        color: AppColors.blackColor,
-                        fontWeight: FontWeightManager.semiBold),
-                    onpressed: () {
+                    onPressed: () {
                       changePasswordCubit.changePassword();
                     },
                   ),

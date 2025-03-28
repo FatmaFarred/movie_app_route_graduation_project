@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app_route_graduation_project/core/routes_manager/routes.dart';
-import 'package:movie_app_route_graduation_project/features/auth/Reigster/Resister_Screen.dart';
 
 import 'package:movie_app_route_graduation_project/features/auth/change/change_password_screen.dart';
 import 'package:movie_app_route_graduation_project/features/auth/forget/forget_screen.dart';
@@ -13,6 +12,7 @@ import 'package:movie_app_route_graduation_project/features/onboarding/onboardin
 import 'package:movie_app_route_graduation_project/features/welcome/welcome_screen.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
+import '../../features/auth/register/register_screen.dart';
 import '../../features/home_screen/home_screen.dart';
 import '../../features/update_profile/update_profile_screen.dart';
 
@@ -35,10 +35,8 @@ class RouteGenerator {
       case Routes.updateProfileRoute:
         return MaterialPageRoute(builder: (_) => UpdateProfileScreen());
 
-        case Routes.loginRoute:
-          return MaterialPageRoute(builder: (_) => LoginView());
-      case Routes.movieDetailsRoute:
-        return MaterialPageRoute(builder: (_) => Moviedetailsscreen());
+      case Routes.loginRoute:
+        return MaterialPageRoute(builder: (_) => LoginView());
 
       default:
         return unDefinedRoute();

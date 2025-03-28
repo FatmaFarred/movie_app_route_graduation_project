@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/errors/failure.dart';
 import 'package:movie_app_route_graduation_project/data/model/common_response.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/change_password_use_case.dart';
+
+import '../../../../api/errors/failure.dart';
 
 part 'change_password_state.dart';
 

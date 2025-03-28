@@ -2,7 +2,7 @@ class MovieModel {
   MovieModel({
     String? movieId,
     String? name,
-    double? rating,
+    num? rating,
     String? imageURL,
     String? year,
   }) {
@@ -22,7 +22,7 @@ class MovieModel {
   }
   String? _movieId;
   String? _name;
-  double? _rating;
+  num? _rating;
   String? _imageURL;
   String? _year;
   MovieModel copyWith({
@@ -41,7 +41,7 @@ class MovieModel {
       );
   String? get movieId => _movieId;
   String? get name => _name;
-  double? get rating => _rating;
+  double? get rating => _rating?.toDouble();
   String? get imageURL => _imageURL;
   String? get year => _year;
 

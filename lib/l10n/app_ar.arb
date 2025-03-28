@@ -65,6 +65,8 @@
     "passwordIsEmpty": "برجاء إدخال كلمة المرور",
     "passwordTooShort": "كلمة المرور يجب ان تحتوي على 8 أحرف على الأقل",
     "invalidPassword": "كلمة المرور غير صحيحة",
+    "confirmPasswordIsEmpty": "يرجى تأكيد كلمة المرور",
+    "confirmPasswordDoesNotMatch": "تأكيد كلمة المرور غير متطابق",
     "phoneIsEmpty": "برجاء إدخال رقم الهاتف",
     "invalidPhone": "رقم الهاتف غير صحيح",
     "warning": "تحذير",

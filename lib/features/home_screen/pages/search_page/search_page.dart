@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/custom_dialog.dart';
-import 'package:movie_app_route_graduation_project/core/customized%20widgets/reusable%20widgets/custom_loading.dart';
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
-import '../../../../Api manager/dependency injection/Di.dart';
-import '../../../../core/customized widgets/reusable widgets/custom_text_field.dart';
-import '../../../../core/customized widgets/reusable widgets/customized_card_item.dart';
+import '../../../../di/di.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_loading.dart';
+import '../../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
+import '../../../../core/customized_widgets/reusable_widgets/customized_card_item.dart';
 import '../../../../core/resources/assets_manager.dart';
 import 'cubit/search_cubit.dart';
 
@@ -34,7 +34,7 @@ class _SearchPageState extends State<SearchPage> {
                         padding:
                             EdgeInsets.only(top: 21.h, right: 16.w, left: 16.w),
                         child: CustomTextField(
-                          keyBoardType: TextInputType.text,
+                          keyboardType: TextInputType.text,
                           prefixIcon: SvgPicture.asset(SvgAssets.icSearch,
                               height: 25.h, width: 25.h, fit: BoxFit.scaleDown),
                           hintText: getTranslations(context).search,

@@ -1,11 +1,12 @@
 import 'dart:ui';
 
 class OnBoardingModel {
+  String background, title;
 
-  String? background, title, desc;
+  String? desc;
 
   List<Color> gradientColors;
 
-  OnBoardingModel({this.background, this.title, this.desc, required this.gradientColors});
-
+  OnBoardingModel(
+      {required this.background, required this.title, this.desc, required this.gradientColors});
 }

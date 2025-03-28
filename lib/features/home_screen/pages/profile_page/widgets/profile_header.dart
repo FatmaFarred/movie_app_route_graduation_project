@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
-import '../../../../../core/customized widgets/reusable widgets/Customized Elevated bottom.dart';
-import '../../../../../core/resources/App_colors.dart';
+import '../../../../../core/customized_widgets/reusable_widgets/customized_elevated_button.dart';
+import '../../../../../core/resources/app_colors.dart';
 
 import '../../../../../core/resources/font_manager.dart';
-import '../../../../../core/resources/style manager.dart';
+import '../../../../../core/resources/style_manager.dart';
 
 typedef OnButtonClick = void Function();
 
@@ -86,22 +86,22 @@ class ProfileHeader extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: CustomeizedElevatedButtom(
+                child: CustomizedElevatedButton(
                   color: AppColors.orangeColor,
                   text: getTranslations(context).editProfile,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  textStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: AppColors.blackColor,
                       fontWeight: FontWeightManager.semiBold),
-                  onpressed: onEditButtonClick,
+                  onPressed: onEditButtonClick,
                 ),
               ),
               Expanded(
                 flex: 1,
-                child: CustomeizedElevatedButtom(
+                child: CustomizedElevatedButton(
                   color: AppColors.redColor,
-                  bordercolor: AppColors.redColor,
+                  borderColor: AppColors.redColor,
                   text: getTranslations(context).exit,
-                  style: Theme.of(context).textTheme.bodySmall!.copyWith(
+                  textStyle: Theme.of(context).textTheme.bodySmall!.copyWith(
                       color: AppColors.whiteColor,
                       fontWeight: FontWeightManager.semiBold),
                   suffixIcon: const Icon(
@@ -109,7 +109,7 @@ class ProfileHeader extends StatelessWidget {
                     color: AppColors.whiteColor,
                     size: 24,
                   ),
-                  onpressed: onExitButtonClick,
+                  onPressed: onExitButtonClick,
                 ),
               ),
             ],

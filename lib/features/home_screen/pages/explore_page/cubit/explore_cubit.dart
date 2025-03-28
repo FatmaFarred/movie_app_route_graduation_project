@@ -2,7 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../Api manager/errors/failure.dart';
+import '../../../../../api/errors/failure.dart';
 import '../../../../../data/model/movie/movie_model.dart';
 import '../../../../../domain/use_cases/get_genre_use_case.dart';
 
@@ -39,9 +39,9 @@ class ExploreCubit extends Cubit<ExploreState> {
 
       var moviesListResponse = response?.data?.movies
           ?.map((moviesDto) => moviesDto.toMovieModel())
-          .toList();
+          .toList() ?? [];
 
-      moviesList.addAll(moviesListResponse!);
+      moviesList.addAll(moviesListResponse);
 
       currentPage++;
 
@@ -50,7 +50,7 @@ class ExploreCubit extends Cubit<ExploreState> {
       if (e is Failure) {
         emit(ExploreErrorState(error: e));
       } else {
-        emit(ExploreErrorState(error: serverError(errorMessage: e.toString())));
+        emit(ExploreErrorState(error: ServerError(errorMessage: e.toString())));
       }
     }
     isLoading = false;

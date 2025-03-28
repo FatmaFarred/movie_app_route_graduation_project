@@ -5,6 +5,11 @@ abstract class AppConstants {
 
   static const int historyBoxLimit = 10;
 
+  static const String prefsTokenKey = "token";
+  static const String prefsLanguageKey = "language";
+
+  static const String noInternetConnection = "No Internet Connection";
+
   static const List<String> genresList = [
     "Action",
     "Adventure",
@@ -43,4 +48,5 @@ abstract class AppConstants {
     ImageAssets.avatar8,
     ImageAssets.avatar9,
   ];
+
 }

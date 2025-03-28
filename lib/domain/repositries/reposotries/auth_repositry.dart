@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/errors/failure.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/LoginResponseEntity.dart';
-import 'package:movie_app_route_graduation_project/domain/entities/RegisterResponseEntity.dart';
+import 'package:movie_app_route_graduation_project/domain/entities/register_response_entity.dart';
+
+import '../../../../api/errors/failure.dart';
 
 
 abstract class RegisterRepositry {

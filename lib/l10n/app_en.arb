@@ -65,6 +65,8 @@
     "passwordIsEmpty": "Please enter your password",
     "passwordTooShort": "The password must be at least 8 characters",
     "invalidPassword": "The password is not valid",
+    "confirmPasswordIsEmpty": "Please confirm your password",
+    "confirmPasswordDoesNotMatch": "The confirmation password does not match",
     "phoneIsEmpty": "Please enter your phone number",
     "invalidPhone": "The phone number is not valid",
     "warning": "Warning",
@@ -74,6 +76,6 @@
     "newPassword": "New Password",
     "charactar": "Character",
     "newPassword": "New Password",
-    "confirmLogout": "Confirm Logout؟?",
+    "confirmLogout": "Confirm Logout?",
     "emptySearch": "Empty Search."
 }

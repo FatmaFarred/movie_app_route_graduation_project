@@ -1,12 +1,12 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:injectable/injectable.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/Api_constant.dart';
-import 'package:movie_app_route_graduation_project/Api%20manager/Api_manager.dart';
-import 'package:movie_app_route_graduation_project/data/data_sources/change_password_online_data_source.dart';
-
-import '../../../Api manager/end_points.dart';
-import '../../../Api manager/errors/failure.dart';
+import '../../../api/api_constant.dart';
+import '../../../api/api_manager.dart';
+import '../../../api/end_points.dart';
+import '../../../api/errors/failure.dart';
+import '../../../core/utils/app_constants.dart';
 import '../../model/common_response.dart';
+import '../change_password_online_data_source.dart';
 
 @Injectable(as: ChangePasswordOnlineDataSource)
 class ChangePasswordOnlineDataSourceImpl
@@ -31,10 +31,10 @@ class ChangePasswordOnlineDataSourceImpl
       if (response.statusCode! >= 200 && response.statusCode! < 300) {
         return changePasswordResponse;
       } else {
-        throw serverError(errorMessage: changePasswordResponse.message);
+        throw ServerError(errorMessage: changePasswordResponse.message);
       }
     } else {
-      throw NetworkError(errorMessage: "No Internet Connection");
+      throw NetworkError(errorMessage: AppConstants.noInternetConnection);
     }
   }
 }

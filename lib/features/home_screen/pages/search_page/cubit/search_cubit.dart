@@ -5,7 +5,7 @@ import 'package:meta/meta.dart';
 import 'package:movie_app_route_graduation_project/data/model/movie/movie_model.dart';
 import 'package:movie_app_route_graduation_project/domain/use_cases/get_search_use_case.dart';
 
-import '../../../../../Api manager/errors/failure.dart';
+import '../../../../../api/errors/failure.dart';
 
 part 'search_state.dart';
 
@@ -40,9 +40,9 @@ class SearchCubit extends Cubit<SearchState> {
 
       var searchListResponse = response?.data?.movies
           ?.map((moviesDto) => moviesDto.toMovieModel())
-          .toList();
+          .toList() ?? [];
 
-      searchList.addAll(searchListResponse!);
+      searchList.addAll(searchListResponse);
 
       currentPage++;
 

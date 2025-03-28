@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/resources/App_colors.dart';
+import '../../../core/resources/app_colors.dart';
 
 
 typedef OnButtonClick = void Function(int);
