@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
+import 'package:movie_app_route_graduation_project/l10n/app_translations.dart';
 
 import '../../../core/resources/font_manager.dart';
 import '../../../core/resources/style_manager.dart';
@@ -56,10 +56,10 @@ class CastWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 _buildText(
-                    context, "${AppLocalizations.of(context)!.name}: $name"),
+                    context, "${getTranslations(context).name}: $name"),
                 SizedBox(height: 5.h),
                 _buildText(context,
-                    "${AppLocalizations.of(context)!.charactar}: $character"),
+                    "${getTranslations(context)..charactar}: $character"),
               ],
             ),
           ],

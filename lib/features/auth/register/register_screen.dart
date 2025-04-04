@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app_route_graduation_project/core/resources/app_colors.dart';
 import 'package:movie_app_route_graduation_project/core/resources/assets_manager.dart';
 import 'package:movie_app_route_graduation_project/core/utils/app_constants.dart';
+import 'package:movie_app_route_graduation_project/features/auth/register/register_cubit/register_cubit.dart';
 
 import '../../../core/customized_widgets/reusable_widgets/custom_dialog.dart';
 import '../../../core/customized_widgets/reusable_widgets/custom_text_field.dart';
@@ -20,7 +21,6 @@ import '../../../l10n/app_translations.dart';
 import '../../../l10n/cubit/locale_cubit.dart';
 import '../login/widgets/language_switch.dart';
 import 'Register_cubit/register_state.dart';
-import 'Register_cubit/register_view_model.dart';
 import 'avatar_widget.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
-  RegisterViewModel registerViewModel = getIt<RegisterViewModel>();
+  RegisterCubit registerViewModel = getIt<RegisterCubit>();
 
   int selectedIndex = 0;
 
@@ -38,7 +38,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RegisterViewModel, RegisterState>(
+    return BlocListener<RegisterCubit, RegisterState>(
       bloc: registerViewModel,
       listener: (context, state) {
         if (state is LoadingRegisterState) {

@@ -2,10 +2,10 @@ import 'dart:io';
 import 'dart:ui';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:movie_app_route_graduation_project/core/utils/prefs_manager.dart';
 
 import '../../core/utils/app_constants.dart';
+import '../app_localizations.dart';
 
 class LocaleCubit extends Cubit<Locale> {
   static const Locale fallBackLocale = Locale("en");

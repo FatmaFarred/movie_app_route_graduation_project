@@ -91,8 +91,7 @@ import '../domain/use_cases/remove_from_favorite_use_case.dart' as _i687;
 import '../domain/use_cases/update_profile_use_case.dart' as _i403;
 import '../features/auth/change/cubit/change_password_cubit.dart' as _i108;
 import '../features/auth/login/login_cubit/login_view_model.dart' as _i868;
-import '../features/auth/register/register_cubit/register_view_model.dart'
-    as _i102;
+import '../features/auth/register/register_cubit/register_cubit.dart' as _i330;
 import '../features/home_screen/MovieDetails/cubit/MovieDetailsViewModel.dart'
     as _i349;
 import '../features/home_screen/MovieDetails/MovieSuggetion/MovieSuggetionViewModel.dart'
@@ -184,8 +183,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i895.AddToHistoryUseCase(gh<_i540.HistoryRepo>()));
     gh.factory<_i294.GetMovieFromHistoryUseCase>(
         () => _i294.GetMovieFromHistoryUseCase(gh<_i540.HistoryRepo>()));
-    gh.factory<_i102.RegisterViewModel>(() =>
-        _i102.RegisterViewModel(registerUseCase: gh<_i772.RegisterUseCase>()));
+    gh.factory<_i330.RegisterCubit>(() =>
+        _i330.RegisterCubit(registerUseCase: gh<_i772.RegisterUseCase>()));
     gh.factory<_i589.GetSearchUseCase>(
         () => _i589.GetSearchUseCase(gh<_i402.SearchRepo>()));
     gh.factory<_i594.AddToFavoriteUseCase>(

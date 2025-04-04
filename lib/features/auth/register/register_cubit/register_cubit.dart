@@ -6,7 +6,7 @@ import 'package:movie_app_route_graduation_project/features/auth/register/Regist
 import '../../../../domain/use_cases/register_use_case.dart';
 
 @injectable
-class RegisterViewModel extends Cubit<RegisterState> {
+class RegisterCubit extends Cubit<RegisterState> {
   RegisterUseCase registerUseCase;
   var formKey = GlobalKey<FormState>();
   var emailController = TextEditingController();
@@ -17,7 +17,7 @@ class RegisterViewModel extends Cubit<RegisterState> {
   var selectedAvatar = 0;
   int selectedIndex = 0;
 
-  RegisterViewModel({required this.registerUseCase})
+  RegisterCubit({required this.registerUseCase})
       : super(IntialRegisterState());
 
   void register() async {

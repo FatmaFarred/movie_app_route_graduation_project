@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:movie_app_route_graduation_project/core/customized_widgets/reusable_widgets/custom_loading.dart';
 import 'package:movie_app_route_graduation_project/core/resources/App_colors.dart';
@@ -13,6 +12,7 @@ import 'package:movie_app_route_graduation_project/features/home_screen/MovieDet
 import '../../../core/resources/font_manager.dart';
 import '../../../core/resources/style_manager.dart';
 import '../../../di/di.dart';
+import '../../../l10n/app_translations.dart';
 import 'MovieSuggetion/MovieSuggetionScreen.dart';
 import 'Textwidget.dart';
 import 'cast widget.dart';
@@ -118,7 +118,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                 ),
               ),
               TextWidget(
-                  text: AppLocalizations.of(context)!.screenShots,
+                  text: getTranslations(context).screenShots,
                   style: getBoldStyle(
                       color: AppColors.whiteColor,
                       fontSize: 24,
@@ -140,7 +140,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
               ),
               SizedBox(height: 9.h),
               TextWidget(
-                  text: AppLocalizations.of(context)!.similar,
+                  text: getTranslations(context).similar,
                   style: getBoldStyle(
                       color: AppColors.whiteColor,
                       fontSize: 24,
@@ -152,7 +152,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
               Padding(
                 padding: EdgeInsets.only(top: 16.h, bottom: 16.h),
                 child: TextWidget(
-                  text: AppLocalizations.of(context)!.summary,
+                  text: getTranslations(context).summary,
                   style: getBoldStyle(
                       color: AppColors.whiteColor,
                       fontSize: 24,
@@ -170,7 +170,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                 ),
               ),
               TextWidget(
-                text: AppLocalizations.of(context)!.cast,
+                text: getTranslations(context).cast,
                 style: getBoldStyle(
                     color: AppColors.whiteColor,
                     fontSize: 24,
@@ -190,7 +190,7 @@ class _MoviedetailsscreenState extends State<Moviedetailsscreen> {
                     }),
               ),
               TextWidget(
-                text: AppLocalizations.of(context)!.genres,
+                text: getTranslations(context).genres,
                 style: getBoldStyle(
                     color: AppColors.whiteColor,
                     fontSize: 24,

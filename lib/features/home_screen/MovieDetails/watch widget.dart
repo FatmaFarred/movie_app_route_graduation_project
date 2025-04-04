@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:movie_app_route_graduation_project/core/customized_widgets/reusable_widgets/customized_elevated_button.dart';
@@ -15,6 +14,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../core/resources/App_colors.dart';
 import '../../../core/resources/assets_manager.dart';
 import '../../../core/resources/style_manager.dart';
+import '../../../l10n/app_translations.dart';
 import 'Textwidget.dart';
 import 'cubit/MovieDetailsScreenStates.dart';
 
@@ -164,7 +164,7 @@ class _PlaywidgetState extends State<Playwidget> {
             onPressed: () {
               widget.onWatchClick(widget.state);
             },
-            text: AppLocalizations.of(context)!.watch,
+            text: getTranslations(context).watch,
             color: AppColors.redColor,
             textStyle: getBoldStyle(color: AppColors.whiteColor, fontSize: 20),
             borderColor: AppColors.redColor,
