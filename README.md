@@ -142,7 +142,7 @@ flutter run
 
 | Movie Details | Edit Profile | Language Feature |
 | ------------ | ------------ | ------------ |
-| <img src="screenshots/movie_details.png" alt="MovieDetails" width="200"/> | <img src="screenshots/edit_profile.png" alt="EditProfile" width="200"/> | <img src="screenshots/language_feature.png" alt="LanguageFeature" width="200"/> |
+| <img src="screenshots/movie_details.png" alt="MovieDetails" width="200"/> | <img src="screenshots/edit_profile.png" alt="EditProfile" width="200"/> | <img src="screenshots/language_feature.gif" alt="LanguageFeature" width="200"/> |
 
 # 👨‍💻 Contributors
 - [Youssef Mohamed](https://github.com/youssefmdev22)
