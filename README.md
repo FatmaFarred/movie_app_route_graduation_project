@@ -5,6 +5,23 @@ A modern Flutter movie app that brings movie browsing, favorites, smart search, 
 A production-ready Flutter movie app that showcases clean architecture, modular design, and real-world features such as authentication, movie browsing, favorites, search, and profile management.​
 The app integrates a custom movie API (YTS) for content and a separate backend for user management, delivering a full-stack experience with robust error handling and offline support for watch history via Hive.​
 
+# 📸 Screenshots
+| Login | Register | Forget Password |
+| ------------ | ------------ | ------------ |
+| <img src="screenshots/login.png" alt="Login" width="200"/> | <img src="screenshots/register.png" alt="Register" width="200"/> | <img src="screenshots/forget_password.png" alt="Forget Password" width="200"/> |
+
+| Home | Home Categories | Search |
+| ------------ | ------------ | ------------ |
+| <img src="screenshots/home.png" alt="Home" width="200"/> | <img src="screenshots/home_categories.png" alt="HomeCategories" width="200"/> | <img src="screenshots/search.png" alt="Search" width="200"/> |
+
+| Categories | Profile |
+| ------------ | ------------ |
+| <img src="screenshots/categories.png" alt="Categories" width="200"/> | <img src="screenshots/profile.png" alt="Profile" width="200"/> |
+
+| Movie Details | Edit Profile | Language Feature |
+| ------------ | ------------ | ------------ |
+| <img src="screenshots/movie_details.png" alt="MovieDetails" width="200"/> | <img src="screenshots/edit_profile.png" alt="EditProfile" width="200"/> | <img src="screenshots/language_feature.gif" alt="LanguageFeature" width="200"/> |
+
 # 🛠️ Tech Stack
 - Framework: Flutter, Dart, Flutter ScreenUtil, Flutter Native Splash​
 - State Management: Bloc / Cubit with custom BlocObserver​
@@ -125,24 +142,6 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ```
 flutter run
 ```
-
-# 📸 Screenshots
-
-| Login | Register | Forget Password |
-| ------------ | ------------ | ------------ |
-| <img src="screenshots/login.png" alt="Login" width="200"/> | <img src="screenshots/register.png" alt="Register" width="200"/> | <img src="screenshots/forget_password.png" alt="Forget Password" width="200"/> |
-
-| Home | Home Categories | Search |
-| ------------ | ------------ | ------------ |
-| <img src="screenshots/home.png" alt="Home" width="200"/> | <img src="screenshots/home_categories.png" alt="HomeCategories" width="200"/> | <img src="screenshots/search.png" alt="Search" width="200"/> |
-
-| Categories | Profile |
-| ------------ | ------------ |
-| <img src="screenshots/categories.png" alt="Categories" width="200"/> | <img src="screenshots/profile.png" alt="Profile" width="200"/> |
-
-| Movie Details | Edit Profile | Language Feature |
-| ------------ | ------------ | ------------ |
-| <img src="screenshots/movie_details.png" alt="MovieDetails" width="200"/> | <img src="screenshots/edit_profile.png" alt="EditProfile" width="200"/> | <img src="screenshots/language_feature.gif" alt="LanguageFeature" width="200"/> |
 
 # 👨‍💻 Contributors
 - [Youssef Mohamed](https://github.com/youssefmdev22)
